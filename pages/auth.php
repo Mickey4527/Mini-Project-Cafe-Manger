@@ -1,4 +1,5 @@
 <?php
+include_once('../pages/setup/setup-check.php');
 @session_start();
 
 class database{
@@ -47,10 +48,5 @@ class database{
     }
 }
 
-$database = new database();
-$database->setServername('db');
-$database->setUsername('root');
-$database->setPassword('1234');
-$database->setDbname('project_sm');
-$database->getconn();
+include_once('../pages/function.php');
 ?>

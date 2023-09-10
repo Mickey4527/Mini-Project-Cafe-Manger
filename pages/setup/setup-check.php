@@ -1,7 +1,9 @@
 <?php
 /* Hight Level */
 function checkMySqliExp(){
-    return extension_loaded('mysqli') && class_exists('mysqli') ? true : "MySQLi extension is not available or disable.";
+    return extension_loaded('mysqli') && class_exists('mysqli');
 }
-
+function checkPHP($reqphp){
+    return !version_compare(PHP_VERSION, $reqphp, '<');
+}
 ?>

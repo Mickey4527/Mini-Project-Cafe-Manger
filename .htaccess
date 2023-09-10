@@ -1,0 +1,13 @@
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+
+Options +FollowSymlinks
+Options +Indexes
+IndexOptions +FancyIndexing
+DirectoryIndex .index.php .index.html index.php index.html .redirect.html redirect.html landing.html landing.php .landing.html .landing.php .redirect.php redirect.php
+ErrorDocument 404 /wm_db/pages/404.html
+<FilesMatch "\.json$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
