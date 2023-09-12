@@ -1,4 +1,42 @@
-.form-setup {
-    max-width: 430px;
-    background-color: white;
+:root{
+    --color-green-primary: #025951;
+    --color-green-secondary: #02735E;
+    --color-green-tertiary: #0CF25D;
+    --color-green-quaternary: #034159;
+    --color-green-quinary: #0CF25D;
 }
+/*Background color*/
+.bg-green-primary{
+    background-color: var(--color-green-primary);
+}
+.bg-green-secondary{
+    background-color: var(--color-green-secondary);
+}
+.bg-green-tertiary{
+    background-color: var(--color-green-tertiary);
+}
+.bg-midnight{
+    background-color: var(--color-green-quaternary);
+}
+.bg-jade{
+    background-color: var(--color-green-quinary);
+}
+/*********************************/
+/*text color*/
+.text-green-primary{
+    color: var(--color-green-primary);
+}
+.text-green-secondary{
+    color: var(--color-green-secondary);
+}
+.text-green-tertiary{
+    color: var(--color-green-tertiary);
+}
+.text-midnight{
+    color: var(--color-green-quaternary);
+}
+.text-jade{
+    color: var(--color-green-quinary);
+}
+/*********************************/
+/*animation*/
