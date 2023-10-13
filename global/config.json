@@ -1,0 +1,6 @@
+{
+    "enqueue_style": [
+        "bootstrap-5.3.1-dist/css/bootstrap.min.css",
+        "css/style.css"
+    ]
+}

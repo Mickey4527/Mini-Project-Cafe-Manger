@@ -1,0 +1,10 @@
+{
+    "app":
+    {
+        "name": "Popcorn",
+        "version": "0.0.1",
+        "description": "My App Description",
+        "author": "My Name",
+        "email": ""
+    }
+}
