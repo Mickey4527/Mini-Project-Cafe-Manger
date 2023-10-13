@@ -1,5 +1,4 @@
 # project_sm
-## project sm คืออะไร
 เป็นโปรเจค mini สำหรับวิชา Web Application Program Development และ Business System Software Development
 ---
 ## Author
