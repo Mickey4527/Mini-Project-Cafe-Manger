@@ -16,7 +16,7 @@ Code name **popcorn**
 ---
 ## คำอธิบาย function
 
-### htmlHeader( __string__ $title, __string__ $style = null, __string__ $BodyClass = null, __string__ $lang = null)
+### htmlHeader( _string_ $title, _string_ $style = null, _string_ $BodyClass = null, _string_ $lang = null)
 
 **คำอธิบาย** ส่งค่าที่จำเป็นของ header HTML เช่น ภาษาของหน้า, meta, title, css link และ body ใน page นั้น จำเป็นต้องมีชื่อหน้า (title) เมื่อเรียกใช้ฟังก์ชั่น
 + $style - **ค่าเริ่มต้น คือ null** คำสั่ง css ที่ต้องการเรียกใช้ในหน้าที่มีการเรียกใช้คำสั่ง htmlHeader
