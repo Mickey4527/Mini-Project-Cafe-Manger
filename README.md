@@ -16,14 +16,17 @@ Code name **popcorn**
 ---
 ## คำอธิบาย function
 
-### htmlHeader($title, $style = null,$BodyClass = null, $lang = null)
+### htmlHeader( __string__ $title, __string__ $style = null, __string__ $BodyClass = null, __string__ $lang = null)
 
 **คำอธิบาย** ส่งค่าที่จำเป็นของ header HTML เช่น ภาษาของหน้า, meta, title, css link และ body ใน page นั้น จำเป็นต้องมีชื่อหน้า (title) เมื่อเรียกใช้ฟังก์ชั่น
-+ style - **ค่าเริ่มต้น คือ null** คำสั่ง css ที่ต้องการเรียกใช้ในหน้าที่มีการเรียกใช้คำสั่ง htmlHeader
-+ BodyClass - **ค่าเริ่มต้น คือ null** class ของ body ที่ต้องการกำหนด
-+ lang - **ค่าเริ่มต้น คือ null** ภาษาของหน้า
++ $style - **ค่าเริ่มต้น คือ null** คำสั่ง css ที่ต้องการเรียกใช้ในหน้าที่มีการเรียกใช้คำสั่ง htmlHeader
++ $BodyClass - **ค่าเริ่มต้น คือ null** class ของ body ที่ต้องการกำหนด
++ $lang - **ค่าเริ่มต้น คือ null** ภาษาของหน้า
   
+**Return**
+ไม่มีการ return ใด แสดงค่าในรูปแบบ HTML
+
 **วิธีใช้**
-```
+```php
 htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-body-tertiary');
 ```
