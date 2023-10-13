@@ -5,7 +5,7 @@
 
 ## Author
 + [Saran Saeeung](https://github.com/Mickey4527)
-+ [THANAWAT JANTAWONG](https://github.com/thanawat88)
++ [Thanawat Jatntawong](https://github.com/thanawat88)
 
 ## Roadmap
 
