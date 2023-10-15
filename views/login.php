@@ -12,7 +12,6 @@
 
     htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-body-tertiary');
 ?>
-
 <main class="form-signin px-5 pt-5 w-100 m-auto bg-body border rounded">
   <form name="loginForm" method="post" action="../global/auth/login.php">
     <h6 class="mb-4">Code name : <?php echo GLOBAL_APP['app']['name'];?></h6>

@@ -23,4 +23,5 @@ function styleOnly($css){
     $output = '<style>'.$css.'</style>';
     return $output;
 }
+
 ?>
