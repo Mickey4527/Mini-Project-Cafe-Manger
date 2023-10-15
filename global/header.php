@@ -9,7 +9,7 @@
 
 // output header of the page
 function htmlHeader($title, $style = null,$BodyClass = null, $lang = null){
-    echo '<!DOCTYPE html><html lang="'.$lang.'" data-bs-theme="dark"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>'.$title.
+    echo '<!DOCTYPE html><html lang="'.$lang.'" data-bs-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>'.$title.
     '</title>'.cssOut(CONFIG['enqueue_style']).'</head>'.$style.'<body class="'.$BodyClass.'">';
 }
 

@@ -15,8 +15,15 @@ function cssOut($css){
 function jsOut($js){
     $output = '';
     foreach($js as $script){
-        $output .= '<script src="../assets/js'.$script.'"></script>';
+        $output .= '<script src="../assets/js/'.$script.'"></script>';
     }
     return $output;
+}
+
+function authLogin($conn,$email,$password){
+    
+}
+function authRegister($conn,$email,$password,$firstName,$lastName){
+    
 }
 ?>

@@ -29,5 +29,5 @@ Code name **popcorn**
 
 **วิธีใช้**
 ```php
-htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-body-tertiary');
+htmlHeader('ลงชื่อเข้าใช้งาน');
 ```
