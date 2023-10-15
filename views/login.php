@@ -3,13 +3,7 @@
     include_once '../global/function.php';
     include_once '../global/header.php';
 
-    $css = styleOnly('
-    html,
-    body {
-        height: 100%;
-    }
-    ');
-
+    
     htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-body-tertiary');
 ?>
 
