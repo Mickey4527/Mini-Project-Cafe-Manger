@@ -15,6 +15,10 @@ if (isset($_POST['loginSubmit'])){
         header("Location: ../../views/index.php");
         exit();
     }
+    else{
+        header("Location: ../../views/login.php?error=wrongpassword");
+        exit();
+    }
 
 }
 

@@ -6,16 +6,17 @@
  * @param string $lang ภาษาของหน้านั้นๆ
  * @param string $BodyClass class ของ body ในหน้านั้นๆ
  */
+include_once '../global/function.php';
 
 // output header of the page
 function htmlHeader($title, $style = null,$BodyClass = null, $lang = null){
-    echo '<!DOCTYPE html><html lang="'.$lang.'" data-bs-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>'.$title.
-    '</title>'.cssOut(CONFIG['enqueue_style']).'</head>'.$style.'<body class="'.$BodyClass.'">';
+    echo '<!DOCTYPE html><html lang="'.$lang.'" data-bs-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>'.$title.' - '.
+    GLOBAL_APP['app']['name'].'</title>'.cssOut(CONFIG['enqueue_style']).'</head>'.$style.'<body class="'.$BodyClass.'">';
 }
 
 // output footer of the page
 function htmlFooter($js = null){
-    echo $js.'</body></html>';
+    echo $js.jsOut(CONFIG['enqueue_script']).'</body></html>';
 }
 
 // เขียน css ในหน้าเดียว

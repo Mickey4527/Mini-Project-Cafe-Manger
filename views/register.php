@@ -1,6 +1,5 @@
 <?php
     include_once '../global/conn.php';
-    include_once '../global/function.php';
     include_once '../global/header.php';
 
     $css = styleOnly('
@@ -17,7 +16,7 @@
 ?>
 
 <main class="form-signin px-5 pt-5 w-100 m-auto bg-body border rounded">
-  <form name="registerForm" method="post" action="../global/auth/login.php">
+  <form name="registerForm" method="post" action="../global/auth/login.php" aria-autocomplete="off">
     <h6 class="mb-4">Code name : <?php echo GLOBAL_APP['app']['name'];?></h6>
 
     <h1 class="h4 fw-normal">ลงทะเบียนเข้าใช้งาน</h1>
@@ -25,7 +24,7 @@
     <div class="row g-3">
         <div class="col-sm-6">
             <label for="firstName" class="form-label">ชื่อ</label>
-            <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
+            <input name="firstName" type="text" class="form-control" id="firstName" placeholder="" value="" required="">
               <div class="invalid-feedback">
                 โปรดระบุชื่อของคุณ
               </div>
@@ -33,7 +32,7 @@
 
             <div class="col-sm-6">
               <label for="lastName" class="form-label">นามสกุล <span class="text-secondary">(ไม่จำเป็นต้องระบุ)</span></label>
-              <input type="text" class="form-control" id="lastName" placeholder="" value="" >
+              <input name="lastName" type="text" class="form-control" id="lastName" placeholder="" value="">
               <div class="invalid-feedback">
                 โปรดระบุนามสกุลของคุณ
               </div>
@@ -41,7 +40,7 @@
 
             <div class="col-12 mt-4">
               <label for="email" class="form-label">อีเมล์</label>
-              <input type="email" class="form-control" id="email" >
+              <input name="email" type="email" class="form-control" id="email">
               <div class="invalid-feedback">
                 โปรดระบุอีเมล์ของคุณ
               </div>
@@ -49,20 +48,21 @@
 
             <div class="col-12">
               <label for="password" class="form-label">รหัสผ่าน</label>
-              <input type="password" class="form-control" id="password" oninput="checkPassword()">
+              <input name="password" type="password" class="form-control" id="password" oninput="checkPassword()">
               <div class="invalid-feedback">
                 โปรดระบุรหัสผ่านของคุณ
               </div>
             </div>
             <div class="col-12">
               <label for="password-check" class="form-label">ยืนยันรหัสผ่าน</label>
-              <input type="password" class="form-control" id="password-check" oninput="checkPassword()">
+              <input name="passwordCheck" type="password" class="form-control" id="password-check" oninput="checkPassword()">
               <div class="invalid-feedback" id="password-check-invalid">
                 รหัสผ่านไม่ตรงกัน
               </div>
             </div>
           </div>
-    <div class="d-flex justify-content-end align-items-center mt-5">
+    <div class="d-flex justify-content-between align-items-center mt-5">
+        <a class="btn small py-2" href="login.php">ย้อนกลับ</a>
         <button name="registerSubmit" class="btn btn-primary py-2" type="submit">ลงทะเบียน</button>
     </div>
 
@@ -71,5 +71,5 @@
 </main>
 
 <?php
-    htmlFooter(jsOut(['login.js']));
+    htmlFooter(jsOut(['../assets/js/login.js']));
 ?>

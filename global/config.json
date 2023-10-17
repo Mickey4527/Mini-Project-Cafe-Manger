@@ -1,6 +1,10 @@
 {
     "enqueue_style": [
-        "bootstrap-5.3.1-dist/css/bootstrap.min.css",
-        "css/style.css"
+        "../assets/bootstrap-5.3.1-dist/css/bootstrap.min.css",
+        "../assets/css/style.css",
+        "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
+    ],
+    "enqueue_script": [
+        "../assets/bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js"
     ]
 }

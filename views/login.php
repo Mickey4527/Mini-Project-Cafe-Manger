@@ -1,19 +1,15 @@
 <?php
     include_once '../global/conn.php';
-    include_once '../global/function.php';
     include_once '../global/header.php';
 
     $css = styleOnly('
-    html,
-    body {
-        height: 100%;
-    }
     .form-signin{
         max-width: 400px;
     }
     ');
 
     htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-body-tertiary');
+
 ?>
 <main class="form-signin px-5 pt-5 w-100 m-auto bg-body border rounded">
   <form name="loginForm" method="post" action="../global/auth/login.php">

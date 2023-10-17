@@ -43,6 +43,10 @@
 /*animation*/
 
 /*********************************/
+
+html,body {
+    height: 100vh;
+}
 /*form*/
 .form-signin {
     max-width: 400px;
@@ -58,4 +62,10 @@
         max-width: 100%;
     }
 }
+
 /*********************************/
+
+.bi{
+    font-size: 16px;
+    padding: 8px;
+}
