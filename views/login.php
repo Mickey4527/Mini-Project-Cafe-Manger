@@ -8,6 +8,9 @@
     body {
         height: 100%;
     }
+    .form-signin{
+        max-width: 400px;
+    }
     ');
 
     htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-body-tertiary');
