@@ -13,7 +13,7 @@
     }
     ');
 
-    htmlHeader('Register',$css,'d-flex align-items-center py-4 bg-body-tertiary')
+    htmlHeader('Register',$css,'d-flex align-items-center py-4 bg-body-tertiary');
 ?>
 
 <main class="form-signin px-5 pt-5 w-100 m-auto bg-body border rounded">

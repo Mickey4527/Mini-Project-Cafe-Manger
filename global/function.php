@@ -24,6 +24,6 @@ function authLogin($conn,$email,$password){
     
 }
 function authRegister($conn,$email,$password,$firstName,$lastName){
-    
+    return $conn->query("INSERT INTO `user` (`id`, `email`, `password`, `first_name`, `last_name`, `role`, `status`, `created_at`, `updated_at`) VALUES (NULL, '$email', '$password', '$firstName', '$lastName', 'user', 'active', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)");
 }
 ?>
