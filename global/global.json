@@ -6,5 +6,18 @@
         "description": "My App Description",
         "author": "My Name",
         "email": ""
+    },
+    "menu":
+    {
+        "home": {
+            "title": "หน้าแรก",
+            "url": "/project_sm/views/index.php",
+            "icon": "bi bi-house-fill"
+        },
+        "employee_manager": {
+            "title": "จัดการบัญชีพนักงาน",
+            "url": "/project_sm/views/employee_manager.php",
+            "icon": "bi bi-person-fill-gear"
+        }
     }
 }

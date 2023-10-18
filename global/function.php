@@ -30,6 +30,7 @@ function authLogin($conn,$email,$password){
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['email'] = $row['email'];
+        $_SESSION['business_id'] = $row['business_id'];
         $_SESSION['first_name'] = $row['first_name'];
         $_SESSION['last_name'] = $row['last_name'];
         $_SESSION['roles'] = $row['roles'];
@@ -40,5 +41,9 @@ function authLogin($conn,$email,$password){
 }
 function authRegister($conn,$email,$password,$firstName,$lastName){
     return $conn->query("INSERT INTO `account_member` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'user')");
+}
+
+function deleteSql($conn,$table,$query){
+    return $conn->query("DELETE FROM $table WHERE $query");
 }
 ?>
