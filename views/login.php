@@ -8,7 +8,7 @@
     }
     ');
 
-    htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-body-tertiary');
+    htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-salt');
 
 ?>
 <main class="form-signin px-5 pt-5 w-100 m-auto bg-body border rounded">
