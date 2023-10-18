@@ -12,7 +12,12 @@
 + [MsWord เล่มโครงงาน](https://mailrmuttac-my.sharepoint.com/:w:/g/personal/1164109050834_mail_rmutt_ac_th/EVoxOPICQLNOlR3Os3zXfJUB_4y-54cq6vF33k4R58UFgQ?e=Y0dhyo)
 
 ## Roadmap
-
+🕑 หน้าล็อกอิน
+🕑 หน้าลงทะเบียนเข้าใช้งาน
+🕑 หน้าจัดการบัญชีเฉพาะร้าน
+❌ หน้าตั้งค่าร้าน
+❌ หน้าคิดเงิน
+❌ หน้าจัดการรายการสินค้า
 ## What's new in v.0.0.1?
 Code name **popcorn**
 + หน้าล็อกอินที่ยังทำอะไรไม่ได้ 🎊
