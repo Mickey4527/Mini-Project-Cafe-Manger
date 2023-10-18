@@ -12,7 +12,6 @@
     navbar();
 ?>
 <div class="container p-5">
-    <h1>สวัสดี <?php echo $_SESSION['first_name'];?></h1>
     <?php
         checkBusiness();
     ?>

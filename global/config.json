@@ -5,6 +5,7 @@
         "https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css"
     ],
     "enqueue_script": [
-        "../assets/bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js"
+        "../assets/bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js",
+        "../assets/js/index.js"
     ]
 }

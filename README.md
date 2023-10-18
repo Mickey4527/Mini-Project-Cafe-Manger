@@ -36,4 +36,14 @@ Code name **popcorn**
 htmlHeader('ลงชื่อเข้าใช้งาน');
 ```
 
-**test**
+### htmlFooter(_string_ $js = null)
+**คำอธิบาย** ส่งค่าที่จำเป็นของ footer HTML เช่น script ที่ต้องการเรียกใช้ในหน้าที่มีการเรียกใช้คำสั่ง htmlFooter
++ $js - **ค่าเริ่มต้น คือ null** คำสั่ง script ที่ต้องการเรียกใช้ในหน้าที่มีการเรียกใช้คำสั่ง htmlFooter
+**Return**
+
+ไม่มีการ return ใด แสดงค่าในรูปแบบ HTML
+
+**วิธีใช้**
+```php
+htmlFooter();
+```

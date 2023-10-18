@@ -43,7 +43,10 @@ function authRegister($conn,$email,$password,$firstName,$lastName){
     return $conn->query("INSERT INTO `account_member` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'user')");
 }
 
-function deleteSql($conn,$table,$query){
+function getAnySql(){
+    
+}
+function deleteAnySql($conn,$table,$query){
     return $conn->query("DELETE FROM $table WHERE $query");
 }
 ?>
