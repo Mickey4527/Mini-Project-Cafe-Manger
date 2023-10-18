@@ -1,4 +1,4 @@
-# project_sm
+# Seed
 
 เป็นโปรเจค mini สำหรับวิชา Web Application Program Development และ Business System Software Development
 
