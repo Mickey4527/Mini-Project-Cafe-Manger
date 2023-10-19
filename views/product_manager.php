@@ -35,7 +35,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    $result = getAnySql($conn,'product_id','product_name','product_category','product_stock','product_price','date_added');
+                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added','product_manager');
                     foreach($result as $row){
                         echo '<tr>';
                         echo '<th scope="row">'.$row['product_id'].'</th>';
