@@ -5,7 +5,7 @@ class dbConn{
     private $host = "localhost";
     private $user = "root";
     private $pass = "";
-    private $db = "cafe_buisness_system";
+    private $db = "cafe_buisness_system"; 
 
     public function connDB(){
         $conn = mysqli_connect($this->host,$this->user,$this->pass,$this->db);

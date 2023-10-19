@@ -36,7 +36,7 @@
                         echo '<td>'.$row['first_name'].'</td>';
                         echo '<td>'.$row['last_name'].'</td>';
                         echo '<td>'.$row['email'].'</td>';
-                        echo '<td><a href="#"><i class="bi bi-pencil-square"></i></a><a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
+                        echo '<td><a class="btn small" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</a><a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
                         echo '</tr>';
                     }
                     ?>
