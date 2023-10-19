@@ -24,19 +24,21 @@
                     <th scope="col">Firstname</th>
                     <th scope="col">Lastname</th>
                     <th scope="col">email</th>
-                    <th scope="col">Edit</th>
+                    <th scope="col">telephone</th>
+                    <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $result = getAnySql($conn,'user_id,first_name,last_name,email','account_member','user_id','1');
+                    $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone','account_member','user_id','1');
                     foreach($result as $row){
                         echo '<tr>';
                         echo '<th scope="row">'.$row['user_id'].'</th>';
                         echo '<td>'.$row['first_name'].'</td>';
                         echo '<td>'.$row['last_name'].'</td>';
                         echo '<td>'.$row['email'].'</td>';
-                        echo '<td><a class="btn small" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</a><a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
+                        echo '<td>'.$row['telephone'].'</td>';
+                        echo '<td><a class="btn small py-0 px-2" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</a><a class="btn small py-0 px-2" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
                         echo '</tr>';
                     }
                     ?>
