@@ -17,7 +17,7 @@
     <h1 class="h3">จัดการสินค้า</h1>
     <div class="row">
         <div class="col-12 mt-3">
-            <a class="btn small" href="#" data-bs-toggle="offcanvas" data-bs-target="#AddEmp" aria-controls="AddEmp"><i class="bi bi-plus-lg text-primary"></i>เพิ่มสินค้า</a>
+            <a class="btn small" href="#" data-bs-toggle="offcanvas" data-bs-target="Addpro" aria-controls="Addpro"><i class="bi bi-plus-lg text-primary"></i>เพิ่มสินค้า</a>
         </div>
         <div class="col-12">
             <table class="table">
@@ -54,11 +54,11 @@
     </div>
 </div>
 
-<div class="modal" id="ModalCrate" tabindex="-1" aria-labelledby="ModalCrateLabel" aria-hidden="true">
+<div class="modal" id="Addpro" tabindex="-1" aria-labelledby="AddproLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="ModalCrateLabel">สร้างบัญชีพนักงาน</h1>
+        <h1 class="modal-title fs-5" id="AddproLabel">สร้างบัญชีพนักงาน</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
