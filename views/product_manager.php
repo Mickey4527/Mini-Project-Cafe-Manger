@@ -96,9 +96,29 @@
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="Dateadded" class="form-label">วันที่เพิ่มสินค้า</label>
-                            <input type="date" class="form-control" id="Dateadded" placeholder="วันที่เพิ่มสินค้า">
-                        </div>
-                    </div>
+                            <input name="Dateadded" type="date" class="form-control" id="date" placeholder="วันที่เพิ่มสินค้า">
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    ตั้งเป็นวันที่ปัจจุบัน
+                                </label>
+                            </div>
+                            <script>
+                                document.getElementById("flexCheckDefault").addEventListener("click", function(){
+                                    var date = new Date();
+                                    var day = date.getDate();
+                                    var month = date.getMonth() + 1;
+                                    var year = date.getFullYear();
+                                    if(day < 10){
+                                        day = "0" + day;
+                                    }
+                                    if(month < 10){
+                                        month = "0" + month;
+                                    }
+                                    var today = year + "-" + month + "-" + day;
+                                    document.getElementById("date").value = today;
+                                });
+                            </script>
 
 
                 </div>
