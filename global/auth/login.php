@@ -39,6 +39,14 @@ if (isset($_POST['registerSubmit'])){
         exit();
     }
 
+    if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+        header("Location: ../../views/register.php?error=invalidemail");
+        exit();
+    }
+    if(checkValueSQL($conn,'account_member','email',$email)){
+        header("Location: ../../views/register.php?error=emailtaken");
+        exit();
+    }
     if(authRegister($conn,$email,$password,$firstName,$lastName)){
         header("Location: ../../views/login.php?success=register");
         exit();

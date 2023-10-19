@@ -7,6 +7,14 @@
             header('Location: ../../views/employee_manager.php?error=emptyfields');
             exit();
         }
+        else if(!filter_var($_POST['Empemail'],FILTER_VALIDATE_EMAIL)){
+            header('Location: ../../views/employee_manager.php?error=invalidemail');
+            exit();
+        }
+        else if(checkValueSQL($conn,'account_member','email',$_POST['Empemail'])){
+            header('Location: ../../views/employee_manager.php?error=emailtaken');
+            exit();
+        }
         else{
             $firstName = $_POST['EmpfirstName'];
             $lastName = $_POST['EmplastName'];

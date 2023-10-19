@@ -65,6 +65,12 @@ function insertAnySql($conn,$table,$val,$val2){
     return $conn->query("INSERT INTO $table ($val) VALUES ($val2)");
 }
 
+function checkValueSQL($conn,$table,$val,$val2){
+    if($val === null || $table === null || $val2 === null)
+        return false;
+    return $conn->query("SELECT $val FROM $table WHERE $val = '$val2'");
+}
+
 function deleteAnySql($conn,$table,$query){
     return $conn->query("DELETE FROM $table WHERE $query");
 }
