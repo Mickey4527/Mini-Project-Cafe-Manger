@@ -25,7 +25,7 @@ function checkLogin(){
 }
 
 function authLogin($conn,$email,$password){
-    $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles  FROM account_member WHERE email = '$email' AND password = ?");
+    $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles, business_id  FROM account_member WHERE email = '$email' AND password = ?");
     $stmt->bind_param("s",$password);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -50,7 +50,7 @@ function authRegister($conn,$email,$password,$firstName,$lastName){
 function getAnySql($conn,$val,$table,$key,$KeyVal){
     if($val === null || $table === null || $key === null || $KeyVal === null)
         return false;
-    return $conn->query("SELECT $val FROM $table WHERE $key = $KeyVal");
+    return $conn->query("SELECT $val FROM $table WHERE $key = '$KeyVal'");
 }
 
 function getAllSql($conn,$val,$table){
@@ -68,7 +68,9 @@ function insertAnySql($conn,$table,$val,$val2){
 function checkValueSQL($conn,$table,$val,$val2){
     if($val === null || $table === null || $val2 === null)
         return false;
-    return $conn->query("SELECT $val FROM $table WHERE $val = '$val2'");
+    if($conn->query("SELECT $val FROM $table WHERE $val = '$val2'")->num_rows > 0)
+        return true;
+    return false;
 }
 
 function deleteAnySql($conn,$table,$query){

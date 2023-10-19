@@ -30,16 +30,21 @@
                 </thead>
                 <tbody>
                     <?php
-                    $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone','account_member','user_id','1');
-                    foreach($result as $row){
-                        echo '<tr>';
-                        echo '<th scope="row">'.$row['user_id'].'</th>';
-                        echo '<td>'.$row['first_name'].'</td>';
-                        echo '<td>'.$row['last_name'].'</td>';
-                        echo '<td>'.$row['email'].'</td>';
-                        echo '<td>'.$row['telephone'].'</td>';
-                        echo '<td><a class="btn small py-0 px-2" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</a><a class="btn small py-0 px-2" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
-                        echo '</tr>';
+                    $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone','account_member','business_id',$_SESSION['business_id']);
+                    if(!$result){
+                        echo '<tr><td class="text-center" colspan="6">ไม่มีข้อมูล</td></tr>';
+                    }
+                    else{
+                        foreach($result as $row){
+                            echo '<tr>';
+                            echo '<th scope="row">'.$row['user_id'].'</th>';
+                            echo '<td>'.$row['first_name'].'</td>';
+                            echo '<td>'.$row['last_name'].'</td>';
+                            echo '<td>'.$row['email'].'</td>';
+                            echo '<td>'.$row['telephone'].'</td>';
+                            echo '<td><a class="btn small py-0 px-2" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</a><a class="btn small py-0 px-2" href="#" data-bs-toggle="modal" data-bs-target="#DeleteEmp"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
+                            echo '</tr>';
+                        }
                     }
                     ?>
                 </tbody>
@@ -49,7 +54,7 @@
 </div>
 
 <div class="modal" id="ModalCrate" tabindex="-1" aria-labelledby="ModalCrateLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="ModalCrateLabel">สร้างบัญชีพนักงาน</h1>
@@ -71,16 +76,53 @@
                             <input name="EmplastName" type="text" class="form-control" id="lastname" placeholder="นามสกุล">
                         </div>
                     </div>
-                    <div class="col-12">
+                    <div class="col-6">
                         <div class="mb-3">
                             <label for="email" class="form-label">อีเมล</label>
                             <input name="Empemail" type="email" class="form-control" id="email" placeholder="อีเมล">
                         </div>
                     </div>
+
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="telephone" class="form-label">เบอร์โทรศัพท์</label>
+                            <input name="Emptelephone" type="text" class="form-control" id="telephone" placeholder="เบอร์โทรศัพท์">
+                        </div>
+                    </div>
+
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="password" class="form-label">รหัสผ่าน</label>
                             <input name="Emppassword" type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">วันที่เข้าทำงาน</label>
+                            <input name="Empdate" type="date" class="form-control" id="date" placeholder="วันที่เข้าทำงาน">
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    ตั้งเป็นวันที่ปัจจุบัน
+                                </label>
+                            </div>
+                            <script>
+                                document.getElementById("flexCheckDefault").addEventListener("click", function(){
+                                    var date = new Date();
+                                    var day = date.getDate();
+                                    var month = date.getMonth() + 1;
+                                    var year = date.getFullYear();
+                                    if(day < 10){
+                                        day = "0" + day;
+                                    }
+                                    if(month < 10){
+                                        month = "0" + month;
+                                    }
+                                    var today = year + "-" + month + "-" + day;
+                                    document.getElementById("date").value = today;
+                                });
+                            </script>
                         </div>
                     </div>
 
@@ -96,6 +138,20 @@
   </div>
 </div>
 
+<div class="modal" id="DeleteEmp" tabindex="-1" aria-labelledby="DeleteEmpLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3 shadow">
+        <div class="modal-body p-4 text-center">
+            <h5 class="mb-0">ต้องการลบข้อมูลหรือไม่ ?</h5>
+            <p class="mb-0">เมื่อลบข้อมูลแล้ว จะไม่สามารถกู้คืนกลับมาได้</p>
+        </div>
+        <div class="modal-footer flex-nowrap p-0">
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong class="text-danger">ลบบัญชี</strong></button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">ยกเลิก</button>
+        </div>
+    </div>
+  </div>
+</div>
 <?php
     htmlFooter();
 ?>

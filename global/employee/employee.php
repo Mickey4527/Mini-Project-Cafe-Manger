@@ -11,6 +11,7 @@
             header('Location: ../../views/employee_manager.php?error=invalidemail');
             exit();
         }
+        // ตรวจสอบว่ามี email นี้ในระบบหรือยัง
         else if(checkValueSQL($conn,'account_member','email',$_POST['Empemail'])){
             header('Location: ../../views/employee_manager.php?error=emailtaken');
             exit();
@@ -20,7 +21,8 @@
             $lastName = $_POST['EmplastName'];
             $email = $_POST['Empemail'];
             $password = $_POST['Emppassword'];
-            if(insertAnySql($conn,'account_member','first_name,last_name,email,password',"'$firstName','$lastName','$email','$password'")){
+            $business_id = getAnySql($conn,'business_id','account_member','user_id',$_SESSION['user_id'])->fetch_assoc()['business_id'];
+            if(insertAnySql($conn,'account_member','first_name,last_name,email,password,business_id',"'$firstName','$lastName','$email','$password','$business_id'")){
                 header('Location: ../../views/employee_manager.php?success=insert');
                 exit();
             }
@@ -30,4 +32,5 @@
             }
         }
     }
-?>
+?>	
+	

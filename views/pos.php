@@ -5,7 +5,7 @@
 
     htmlHeader('POS');
 ?>
-<div class="border-bottom py-5">
+<div class="border-bottom py-3">
     <ul class="nav col-12 col-lg-auto my-md-0 text-small mx-5">
          <li>
             <a href="../views/index.php" class="nav-link text-secondary border">
