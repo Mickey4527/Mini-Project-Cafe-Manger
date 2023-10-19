@@ -12,6 +12,7 @@ function cssOut($css){
     }
     return $output;
 }
+
 function jsOut($js){
     $output = '';
     foreach($js as $script){
@@ -43,28 +44,33 @@ function authLogin($conn,$email,$password){
 
     return false;
 }
+// สำหรับการลงทะเบียน
 function authRegister($conn,$email,$password,$firstName,$lastName){
     return $conn->query("INSERT INTO `account_member` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'user')");
 }
 
+// สำหรับการเข้าถึงข้อมูลในตาราง
 function getAnySql($conn,$val,$table,$key,$KeyVal){
     if($val === null || $table === null || $key === null || $KeyVal === null)
         return false;
     return $conn->query("SELECT $val FROM $table WHERE $key = '$KeyVal'");
 }
 
+// สำหรับการเข้าถึงข้อมูลในตารางทั้งหมด
 function getAllSql($conn,$val,$table){
     if($val === null || $table === null)
         return false;
     return $conn->query("SELECT $val FROM $table");
 }
 
+// สำหรับการแทรกข้อมูลในตาราง
 function insertAnySql($conn,$table,$val,$val2){
     if($val === null || $table === null || $val2 === null)
         return false;
     return $conn->query("INSERT INTO $table ($val) VALUES ($val2)");
 }
 
+// เช็คการมีข้อมูลในตาราง
 function checkValueSQL($conn,$table,$val,$val2){
     if($val === null || $table === null || $val2 === null)
         return false;
@@ -73,6 +79,7 @@ function checkValueSQL($conn,$table,$val,$val2){
     return false;
 }
 
+// สำหรับการลบข้อมูลในตาราง
 function deleteAnySql($conn,$table,$query){
     return $conn->query("DELETE FROM $table WHERE $query");
 }
