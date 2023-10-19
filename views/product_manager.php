@@ -62,32 +62,44 @@
       </div>
       <div class="modal-body">
         <div class="container p-3">
-            <form> <!--edit-->
+            <form method="post" action="../global/product/product.php">
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="firstname" class="form-label">ชื่อจริง</label>
-                            <input type="text" class="form-control" id="firstname" placeholder="ชื่อ">
+                            <label for="ProductName" class="form-label">ชื่อสินค้า</label>
+                            <input type="text" class="form-control" id="ProductName" placeholder="ชื่อสินค้า">
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="mb-3">
-                            <label for="lastname" class="form-label">นามสกุล</label>
-                            <input type="text" class="form-control" id="lastname" placeholder="นามสกุล">
+                
+                        <label for="Category" class="form-label">ประเภทสินค้า</label>
+                        <select class="form-select" id="Category" aria-label="Floating label select example">
+                            <option selected>ประเภทสินค้า</option>
+                            <option value="1">Coffee</option>
+                            <option value="2">Tea</option>
+                        </select>
                         </div>
                     </div>
+
+                    <label for="Stock" class="form-label">จำนวน</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Stock">
+                        <span class="input-group-text" id="Stock">แก้ว</span>
+                    </div>
+
+                    <label for="SellingPrice" class="form-label">ราคา</label>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="ราคา" aria-label="ราคา" aria-describedby="SellingPrice">
+                        <span class="input-group-text" id="SellingPrice">บาท</span>
+                    </div>
+
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="email" class="form-label">อีเมล</label>
-                            <input type="email" class="form-control" id="email" placeholder="อีเมล">
+                            <label for="Dateadded" class="form-label">วันที่เพิ่มสินค้า</label>
+                            <input type="date" class="form-control" id="Dateadded" placeholder="วันที่เพิ่มสินค้า">
                         </div>
                     </div>
-                    <div class="col-12">
-                        <div class="mb-3">
-                            <label for="password" class="form-label">รหัสผ่าน</label>
-                            <input type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
-                        </div>
-                    </div>
+
 
                 </div>
         </div>
