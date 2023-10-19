@@ -53,7 +53,28 @@
   </div>
   <div class="offcanvas-body">
     <div>
-      เมื่อต้องการเพิ่มพนักงานของคุณ ให้พนักงานเข้าสู่ระบบแล้วกรอกโค๊ด business id ด้านล่างนี้
+      <form>
+        <div class="mb-3">
+          <label for="firstname" class="form-label">ชื่อ</label>
+          <input type="text" class="form-control" id="firstname" aria-describedby="firstnameHelp">
+          <div id="firstnameHelp" class="form-text">ชื่อจริงของพนักงาน</div>
+        </div>
+        <div class="mb-3">
+          <label for="lastname" class="form-label">นามสกุล</label>
+          <input type="text" class="form-control" id="lastname" aria-describedby="lastnameHelp">
+          <div id="lastnameHelp" class="form-text">นามสกุลของพนักงาน</div>
+        </div>
+        <div class="mb-3">
+          <label for="email" class="form-label">อีเมล</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">อีเมลของพนักงาน</div>
+        </div>
+        <div class="mb-3">
+          <label for="password" class="form-label">รหัสผ่าน</label>
+          <input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
+          <div id="passwordHelp" class="form-text">รหัสผ่านของพนักงาน</div>
+        </div>
+      </form>
     </div>
   </div>
 </div>
