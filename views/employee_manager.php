@@ -55,30 +55,30 @@
       </div>
       <div class="modal-body">
         <div class="container p-3">
-            <form>
+            <form method="post" action="../global/employee/employee.php">
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="firstname" class="form-label">ชื่อจริง</label>
-                            <input type="text" class="form-control" id="firstname" placeholder="ชื่อ">
+                            <label for="firstName" class="form-label">ชื่อจริง</label>
+                            <input name="EmpfirstName" type="text" class="form-control" id="firstname" placeholder="ชื่อ">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="lastname" class="form-label">นามสกุล</label>
-                            <input type="text" class="form-control" id="lastname" placeholder="นามสกุล">
+                            <label for="lastName" class="form-label">นามสกุล</label>
+                            <input name="EmplastName" type="text" class="form-control" id="lastname" placeholder="นามสกุล">
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="email" class="form-label">อีเมล</label>
-                            <input type="email" class="form-control" id="email" placeholder="อีเมล">
+                            <input name="Empemail" type="email" class="form-control" id="email" placeholder="อีเมล">
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="password" class="form-label">รหัสผ่าน</label>
-                            <input type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
+                            <input name="Emppassword" type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
                         </div>
                     </div>
 
@@ -87,7 +87,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-        <button type="submit" class="btn btn-primary">สร้าง</button>
+        <button name="submitCreateUser" type="submit" class="btn btn-primary">สร้าง</button>
       </div>
       </form>
     </div>

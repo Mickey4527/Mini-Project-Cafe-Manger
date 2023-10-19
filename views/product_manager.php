@@ -5,7 +5,7 @@
     include_once '../global/function.php';
 
     if(!checkLogin()){
-        header('Location: login.php');
+        header('Location: login.php?callback='.$_SERVER['REQUEST_URI']);
     }
 
     htmlHeader('จัดการสินค้า',null,'d-flex');
