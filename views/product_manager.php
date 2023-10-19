@@ -17,7 +17,7 @@
     <h1 class="h3">จัดการสินค้า</h1>
     <div class="row">
         <div class="col-12 mt-3">
-            <a class="btn small" href="#" data-bs-toggle="offcanvas" data-bs-target="Addpro" aria-controls="Addpro"><i class="bi bi-plus-lg text-primary"></i>เพิ่มสินค้า</a>
+            <a class="btn small" href="#" data-bs-toggle="modal" data-bs-target="#Addpro"><i class="bi bi-plus-lg text-primary"></i>เพิ่มสินค้า</a>
         </div>
         <div class="col-12">
             <table class="table">

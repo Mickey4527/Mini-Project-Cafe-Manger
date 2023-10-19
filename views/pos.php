@@ -7,5 +7,5 @@
 ?>
 
 <?php
-    htmlFooter('pos.js');
+    htmlFooter(['../asspos.js']);
 ?>
