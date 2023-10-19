@@ -1,12 +1,17 @@
 <?php
+    include_once '../global/conn.php';
+    include_once '../global/function.php';
     include_once '../global/header.php';
+    include_once '../global/navbar.php';
+
+    if(!checkLogin()){
+        header('Location: login.php');
+    }
+
     htmlHeader('A');
+    navbar();
 ?>
-<div class="container ">
-<h1>Hello World</h1>
-<button class="btn btn-primary">Primary</button>
-<a href="#">Link</a>
-</div>
+<!-- Content -->
 
 <?php
     htmlFooter();

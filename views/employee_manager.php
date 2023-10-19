@@ -14,7 +14,7 @@
     <h1 class="h3">จัดการบัญชีพนักงาน</h1>
     <div class="row">
         <div class="col-12 mt-3">
-            <a class="btn small" href="#" data-bs-toggle="offcanvas" data-bs-target="#AddEmp" aria-controls="AddEmp"><i class="bi bi-plus-lg text-primary"></i>เพิ่มบัญชี</a>
+            <a class="btn small" href="#" data-bs-toggle="modal" data-bs-target="#ModalCrate"><i class="bi bi-plus-lg text-primary"></i>เพิ่มบัญชี</a>
         </div>
         <div class="col-12">
             <table class="table">
@@ -46,38 +46,54 @@
     </div>
 </div>
 
-<div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="AddEmp" aria-labelledby="AddEmpLabel">
-  <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="AddEmpLabel">เพิ่มพนักงานของคุณ</h5>
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <div>
-      <form>
-        <div class="mb-3">
-          <label for="firstname" class="form-label">ชื่อ</label>
-          <input type="text" class="form-control" id="firstname" aria-describedby="firstnameHelp">
-          <div id="firstnameHelp" class="form-text">ชื่อจริงของพนักงาน</div>
+<div class="modal" id="ModalCrate" tabindex="-1" aria-labelledby="ModalCrateLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="ModalCrateLabel">สร้างบัญชีพนักงาน</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container p-3">
+            <form>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="firstname" class="form-label">ชื่อจริง</label>
+                            <input type="text" class="form-control" id="firstname" placeholder="ชื่อ">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="mb-3">
+                            <label for="lastname" class="form-label">นามสกุล</label>
+                            <input type="text" class="form-control" id="lastname" placeholder="นามสกุล">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">อีเมล</label>
+                            <input type="email" class="form-control" id="email" placeholder="อีเมล">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">รหัสผ่าน</label>
+                            <input type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
+                        </div>
+                    </div>
+
+                </div>
         </div>
-        <div class="mb-3">
-          <label for="lastname" class="form-label">นามสกุล</label>
-          <input type="text" class="form-control" id="lastname" aria-describedby="lastnameHelp">
-          <div id="lastnameHelp" class="form-text">นามสกุลของพนักงาน</div>
-        </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">อีเมล</label>
-          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-          <div id="emailHelp" class="form-text">อีเมลของพนักงาน</div>
-        </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">รหัสผ่าน</label>
-          <input type="password" class="form-control" id="password" aria-describedby="passwordHelp">
-          <div id="passwordHelp" class="form-text">รหัสผ่านของพนักงาน</div>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+        <button type="submit" class="btn btn-primary">สร้าง</button>
+      </div>
       </form>
     </div>
   </div>
 </div>
+
 <?php
     htmlFooter();
 ?>

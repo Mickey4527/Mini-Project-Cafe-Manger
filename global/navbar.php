@@ -7,14 +7,16 @@
   function menuNavbar(){
     $list_menu = '';
     foreach(GLOBAL_APP['menu'] as $menu){
-      if($menu['url'] == $_SERVER['REQUEST_URI']){
-        $list_menu .= '<li class="nav-item">
-          <a href="'.$menu['url'].'" class="nav-link active" aria-current="page">
-              <i class="'.$menu['icon'].'"></i>
-              '.$menu['title'].'
-          </a>
-        </li>';
-        continue;
+      // ถ้า $_SERVER['REQUEST_URI'] มี ? ให้ตัดเอาเฉพาะ url ไม่เอาค่าที่อยู่หลัง ?
+      $url = explode('?',$_SERVER['REQUEST_URI']);
+      if($menu['url'] == $url[0]){
+          $list_menu .= '<li class="nav-item">
+            <a href="'.$menu['url'].'" class="nav-link active" aria-current="page">
+                <i class="'.$menu['icon'].'"></i>
+                '.$menu['title'].'
+            </a>
+          </li>';
+          continue;
       }
       $list_menu .= '<li class="nav-item">
         <a href="'.$menu['url'].'" class="nav-link text-white" aria-current="page">
