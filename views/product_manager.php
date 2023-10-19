@@ -24,7 +24,6 @@
                 <thead>
                     <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Product ID</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Stock</th>
@@ -44,7 +43,7 @@
                         echo '<td>'.$row['product_stock'].'</td>';
                         echo '<td>'.$row['product_price'].'</td>';
                         echo '<td>'.$row['date_added'].'</td>';
-                        echo '<td><a class="btn small" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</a><a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
+                        echo '<td><a class="btn small" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขสินค้า</a><a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบสินค้า</a></td>';
                         echo '</tr>';
                     }
                     ?>
@@ -58,12 +57,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="AddproLabel">สร้างบัญชีพนักงาน</h1>
+        <h1 class="modal-title fs-5" id="AddproLabel">สร้างสินค้า</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="container p-3">
-            <form>
+            <form> <!--edit-->
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
