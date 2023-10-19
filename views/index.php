@@ -5,9 +5,10 @@
     include_once '../global/dashboard/dashboard.php';
     
     
-    if(!isset($_SESSION['user_id'])){
+    if(!checkLogin()){
         header('Location: login.php');
     }
+    
     htmlHeader('Home',null,'d-flex');
     navbar();
 ?>

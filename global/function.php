@@ -20,6 +20,10 @@ function jsOut($js){
     return $output;
 }
 
+function checkLogin(){
+    return isset($_SESSION['user_id']);
+}
+
 function authLogin($conn,$email,$password){
     $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles  FROM account_member WHERE email = '$email' AND password = ?");
     $stmt->bind_param("s",$password);
@@ -43,9 +47,12 @@ function authRegister($conn,$email,$password,$firstName,$lastName){
     return $conn->query("INSERT INTO `account_member` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'user')");
 }
 
-function getAnySql(){
-    
+function getAnySql($conn,$val,$table,$key,$KeyVal){
+    if($val === null || $table === null || $key === null || $KeyVal === null)
+        return false;
+    return $conn->query("SELECT $val FROM $table WHERE $key = $KeyVal");
 }
+
 function deleteAnySql($conn,$table,$query){
     return $conn->query("DELETE FROM $table WHERE $query");
 }

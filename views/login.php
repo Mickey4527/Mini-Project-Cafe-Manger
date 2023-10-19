@@ -20,7 +20,7 @@
 
     <div class="form-floating">
       <input name="email" type="email" class="form-control mb-2" id="floatingInput" placeholder="name@example.com">
-      <label for="floatingInput">อีเมล์</label>
+      <label for="floatingInput">อีเมล</label>
     </div>
     <div class="form-floating">
       <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">

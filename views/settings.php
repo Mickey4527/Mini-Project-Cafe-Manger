@@ -3,7 +3,7 @@
     include_once '../global/header.php';
     include_once '../global/navbar.php';
     
-    if(!isset($_SESSION['user_id'])){
+    if(!checkLogin()){
         header('Location: login.php');
     }
 

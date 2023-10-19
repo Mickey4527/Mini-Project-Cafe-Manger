@@ -39,7 +39,7 @@
             </div>
 
             <div class="col-12 mt-4">
-              <label for="email" class="form-label">อีเมล์</label>
+              <label for="email" class="form-label">อีเมล</label>
               <input name="email" type="email" class="form-control" id="email">
               <div class="invalid-feedback">
                 โปรดระบุอีเมล์ของคุณ
