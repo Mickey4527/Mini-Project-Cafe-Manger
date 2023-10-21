@@ -20,7 +20,7 @@
             <a class="btn small" href="#" data-bs-toggle="modal" data-bs-target="#Addpro"><i class="bi bi-plus-lg text-primary"></i>เพิ่มสินค้า</a>
         </div>
         <div class="col-12">
-            <table class="table">
+            <table class="table align-middle">
                 <thead>
                     <tr>
                     <th scope="col">#</th>
@@ -35,6 +35,10 @@
                 <tbody>
                     <?php
                     $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_Quantity,date_added','product_manager');
+                    if(!$result){
+                        echo '<tr><td class="text-center" colspan="6">ไม่มีข้อมูล</td></tr>';
+                    }
+                    else{
                     foreach($result as $row){
                         echo '<tr>';
                         echo '<th scope="row">'.$row['product_id'].'</th>';
@@ -45,6 +49,7 @@
                         echo '<td>'.$row['date_added'].'</td>';
                         echo '<td><a class="btn small" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขสินค้า</a><a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบสินค้า</a></td>';
                         echo '</tr>';
+                        }
                     }
                     ?>
                 </tbody>
