@@ -43,7 +43,7 @@
                         echo '<td>'.$row['product_stock'].'</td>';
                         echo '<td>'.$row['product_quantity'].'</td>';
                         echo '<td>'.$row['date_added'].'</td>';
-                        echo '<td> <a class="btn small" href=""><i class="bi bi-pencil-square text-primary" data-bs-toggle="modal" data-bs-target="#Editpro"></i>แก้ไขสินค้า</a> <a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบสินค้า</a></td>';
+                        echo '<td> <a class="btn btn-secondary" href="#"><i class="bi bi-pencil-square text-light" data-bs-toggle="modal" data-bs-target="#Editpro"></i>แก้ไขสินค้า</a> <a class="btn btn-danger" href="#"><i class="bi bi-trash-fill text-light"></i>ลบสินค้า</a></td>';
                         echo '</tr>';
                     }
                     ?>
@@ -53,6 +53,8 @@
     </div>
 </div>
 
+
+// เพิ่มสินค้า
 <div class="modal" id="Addpro" tabindex="-1" aria-labelledby="AddproLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -109,6 +111,8 @@
   </div>
 </div>
 
+
+// แก้ไขสินค้า
 <div class="modal" id="Editpro" tabindex="-1" aria-labelledby="EditproLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -118,7 +122,7 @@
       </div>
       <div class="modal-body">
         <div class="container p-3">
-            
+            <form method="post" action="../global/product/product.php">
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
