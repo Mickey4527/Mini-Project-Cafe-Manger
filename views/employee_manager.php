@@ -42,7 +42,7 @@
                             echo '<td>'.$row['last_name'].'</td>';
                             echo '<td>'.$row['email'].'</td>';
                             echo '<td>'.$row['telephone'].'</td>';
-                            echo '<td><a class="btn small py-0 px-2" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</a><a class="btn small py-0 px-2" href="#" data-bs-toggle="modal" data-bs-target="#DeleteEmp"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
+                            echo '<td><a class="btn small py-0 px-2" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</a><a class="btn small py-0 px-2" href="#" data-id="'.$row['user_id'].'" data-bs-toggle="modal" data-bs-target="#DeleteEmp"><i class="bi bi-trash-fill text-primary"></i>ลบบัญชี</a></td>';
                             echo '</tr>';
                         }
                     }
@@ -107,22 +107,6 @@
                                     ตั้งเป็นวันที่ปัจจุบัน
                                 </label>
                             </div>
-                            <script>
-                                document.getElementById("flexCheckDefault").addEventListener("click", function(){
-                                    var date = new Date();
-                                    var day = date.getDate();
-                                    var month = date.getMonth() + 1;
-                                    var year = date.getFullYear();
-                                    if(day < 10){
-                                        day = "0" + day;
-                                    }
-                                    if(month < 10){
-                                        month = "0" + month;
-                                    }
-                                    var today = year + "-" + month + "-" + day;
-                                    document.getElementById("date").value = today;
-                                });
-                            </script>
                         </div>
                     </div>
 
@@ -146,12 +130,54 @@
             <p class="mb-0">เมื่อลบข้อมูลแล้ว จะไม่สามารถกู้คืนกลับมาได้</p>
         </div>
         <div class="modal-footer flex-nowrap p-0">
-            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end"><strong class="text-danger">ลบบัญชี</strong></button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" id="confirm"><strong class="text-danger">ลบบัญชี</strong></button>
             <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">ยกเลิก</button>
         </div>
     </div>
   </div>
 </div>
+
+<script>
+// ถ้ากดลบบัญชี ให้ยืนยันอีกครั้ง ส่งการลบด้วย ajax
+$('#DeleteEmp').on('show.bs.modal', function (event) {
+    var button = $(event.relatedTarget) // Button that triggered the modal
+    var id = button.data('id') // Extract info from data-* attributes
+    $('#confirm').click(function(){
+        $.ajax({
+            url: '../global/employee/employee.php',
+            type: 'post',
+            data: {Empdelete: id},
+            beforeSend: function(){
+                button.attr('disabled',true);
+            },
+            success: function(response){
+                //hide modal
+                $('#DeleteEmp').modal('hide');
+                //display toast
+                const toast = new bootstrap.Toast(document.querySelector('.toast'));
+                toast.show();
+                $('.toast-body').html(response);
+                setTimeout(function(){
+                    window.location.reload();
+                }, 2000);
+            }
+        });
+    });
+});
+
+</script>
+
+<div class="toast-container position-fixed top-0 end-0 p-3">
+<div class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+  <div class="d-flex">
+    <div class="toast-body">
+      Hello, world! This is a toast message.
+    </div>
+    <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+  </div>
+</div>
+</div>
+
 <?php
     htmlFooter();
 ?>

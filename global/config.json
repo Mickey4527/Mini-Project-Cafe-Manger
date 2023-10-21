@@ -6,6 +6,10 @@
     ],
     "enqueue_script": [
         "../assets/bootstrap-5.3.1-dist/js/bootstrap.bundle.min.js",
+        "../assets/js/jquery-3.7.1.min.js"
+    ],
+    "enqueue_script_footer": [
         "../assets/js/index.js"
     ]
+
 }

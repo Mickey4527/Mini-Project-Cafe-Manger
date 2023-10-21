@@ -14,6 +14,9 @@ class dbConn{
             die("Connection failed: " . mysqli_connect_error());
             return false;
         }
+
+        error_reporting(0);
+        ini_set('display_errors', 0);
         return $conn;
     }
 }
