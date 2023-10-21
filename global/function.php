@@ -80,7 +80,7 @@ function checkValueSQL($conn,$table,$val,$val2){
 }
 
 // สำหรับการลบข้อมูลในตาราง
-function deleteAnySql($conn,$table,$query){
-    return $conn->query("DELETE FROM $table WHERE $query");
+function deleteAnySql($conn,$table,$key,$keyVal){
+    return $conn->query("DELETE FROM $table WHERE $key = '$keyVal'");
 }
 ?>

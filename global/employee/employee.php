@@ -2,6 +2,7 @@
     include_once '../conn.php';
     include_once '../function.php';
 
+    // สำหรับการสร้างบัญชี
     if(isset($_POST['submitCreateUser'])){
         if(empty($_POST['EmpfirstName']) || empty($_POST['EmplastName']) || empty($_POST['Empemail']) || empty($_POST['Emppassword'])){
             header('Location: ../../views/employee_manager.php?error=emptyfields');
@@ -32,5 +33,24 @@
             }
         }
     }
+    // สำหรับการลบบัญชี
+    if(isset($_POST['Empdelete'])){
+        if(empty($_POST['Empdelete'])){
+            header('Location: ../../views/employee_manager.php?error=emptyfields');
+            exit();
+        }
+        else{
+            $user_id = $_POST['Empdelete'];
+            if(deleteAnySql($conn,'account_member','user_id',$user_id)){
+                echo 'ลบข้อมูลเรียบร้อย';
+                exit();
+            }
+            else{
+                echo $user_id.'error';
+                exit();
+            }
+        }
+    }
+    
 ?>	
 	
