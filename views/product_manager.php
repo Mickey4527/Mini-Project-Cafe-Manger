@@ -39,16 +39,16 @@
                         echo '<tr><td class="text-center" colspan="6">ไม่มีข้อมูล</td></tr>';
                     }
                     else{
-                    foreach($result as $row){
-                        echo '<tr>';
-                        echo '<th scope="row">'.$row['product_id'].'</th>';
-                        echo '<td>'.$row['product_name'].'</td>';
-                        echo '<td>'.$row['product_category'].'</td>';
-                        echo '<td>'.$row['product_stock'].'</td>';
-                        echo '<td>'.$row['product_Quantity'].'</td>';
-                        echo '<td>'.$row['date_added'].'</td>';
-                        echo '<td><a class="btn small" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขสินค้า</a><a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบสินค้า</a></td>';
-                        echo '</tr>';
+                        foreach($result as $row){
+                            echo '<tr>';
+                            echo '<th scope="row">'.$row['product_id'].'</th>';
+                            echo '<td>'.$row['product_name'].'</td>';
+                            echo '<td>'.$row['product_category'].'</td>';
+                            echo '<td>'.$row['product_stock'].'</td>';
+                            echo '<td>'.$row['product_Quantity'].'</td>';
+                            echo '<td>'.$row['date_added'].'</td>';
+                            echo '<td><a class="btn small" href="#"><i class="bi bi-pencil-square text-primary"></i>แก้ไขสินค้า</a><a class="btn small" href="#"><i class="bi bi-trash-fill text-primary"></i>ลบสินค้า</a></td>';
+                            echo '</tr>';
                         }
                     }
                     ?>

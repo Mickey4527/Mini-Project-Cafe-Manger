@@ -6,7 +6,7 @@
 // สำหรับเรียกใช้ลิงค์ที่กำหนดไว้ในไฟล์ global/app.json
   function menuNavbar(){
     $list_menu = '';
-    foreach(GLOBAL_APP['menu'] as $menu){
+    foreach(APP['menu'] as $menu){
       // ถ้า $_SERVER['REQUEST_URI'] มี ? ให้ตัดเอาเฉพาะ url ไม่เอาค่าที่อยู่หลัง ?
       $url = explode('?',$_SERVER['REQUEST_URI']);
       if($menu['url'] == $url[0]){
@@ -33,7 +33,7 @@
     return '<main class="d-flex flex-nowrap">
               <div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px; height: 100vh;">
                 <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                  <span class="fs-4">'.GLOBAL_APP['app']['name'].'</span></a>
+                  <span class="fs-4">'.APP['app']['name'].'</span></a>
                 <hr>
                 <ul class="nav nav-pills flex-column mb-auto">
                   '.$nav.'

@@ -1,6 +1,7 @@
 <?php
     include_once '../conn.php';
     include_once '../function.php';
+    include_once '../layout.php';
 
     // สำหรับการสร้างบัญชี
     if(isset($_POST['submitCreateUser'])){
@@ -22,8 +23,10 @@
             $lastName = $_POST['EmplastName'];
             $email = $_POST['Empemail'];
             $password = $_POST['Emppassword'];
+            $telephone = $_POST['Emptelephone'];
+            $date = $_POST['Empdate'];
             $business_id = getAnySql($conn,'business_id','account_member','user_id',$_SESSION['user_id'])->fetch_assoc()['business_id'];
-            if(insertAnySql($conn,'account_member','first_name,last_name,email,password,business_id',"'$firstName','$lastName','$email','$password','$business_id'")){
+            if(insertAnySql($conn,'account_member','first_name,last_name,email,password,business_id,telephone,hire_date',"'$firstName','$lastName','$email','$password','$business_id','$telephone','$date'")){
                 header('Location: ../../views/employee_manager.php?success=insert');
                 exit();
             }
@@ -36,13 +39,17 @@
     // สำหรับการลบบัญชี
     if(isset($_POST['Empdelete'])){
         if(empty($_POST['Empdelete'])){
-            header('Location: ../../views/employee_manager.php?error=emptyfields');
+            toast('ไม่มีค่าข้อมูล','text-success','check-circle-fill');
             exit();
         }
         else{
             $user_id = $_POST['Empdelete'];
+            if($user_id == $_SESSION['user_id']){
+                toast('ไม่สามารถลบบัญชีของคุณเองได้','text-danger','exclamation-triangle-fill');
+                exit();
+            }
             if(deleteAnySql($conn,'account_member','user_id',$user_id)){
-                echo 'ลบข้อมูลเรียบร้อย';
+                toast('ลบข้อมูลเรียบร้อย','text-success','check-circle-fill');
                 exit();
             }
             else{

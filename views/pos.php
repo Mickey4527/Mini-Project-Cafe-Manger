@@ -16,11 +16,18 @@
 </div>
 <div class="container-fluid mt-5">
     <div class="row">
-        <div class="col-7 border p-5 mx-3">
+        
+        <div class="col-7 ms-3 me-1">
+            <span class="small text-secondary">รายการสินค้า</span>
+            <div class="border p-5 ">
 
+            </div>
         </div>
-        <div class="col-4 border p-5 mx-3">
+        <div class="col-4 ms-1 me-3">
+        <span class="small text-secondary">สรุป</span>
+            <div class="border p-5 ">
 
+            </div>
         </div>
     </div>
 </div>

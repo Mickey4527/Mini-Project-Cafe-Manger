@@ -1,9 +1,10 @@
 <?php
-// import global config json file
-define('GLOBAL_APP', json_decode(file_get_contents('../global/global.json'),true));
-// import config json file
-define('CONFIG', json_decode(file_get_contents('../global/config.json'),true));
-
+// import global config json file check file exists 
+if(file_exists('../global/global.json') || file_exists('../global/config.json')){
+    define('APP', json_decode(file_get_contents('../global/global.json'),true));
+    // import config json file
+    define('CONFIG', json_decode(file_get_contents('../global/config.json'),true));
+}
 // function return CSS and JS path from assets folder
 function cssOut($css){
     $output = '';

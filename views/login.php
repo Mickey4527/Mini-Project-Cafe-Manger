@@ -13,7 +13,7 @@
 ?>
 <main class="form-signin px-5 pt-5 w-100 m-auto bg-body border rounded">
   <form name="loginForm" method="post" action="../global/auth/login.php">
-    <h6 class="mb-4">Code name : <?php echo GLOBAL_APP['app']['name'];?></h6>
+    <h6 class="mb-4">Code name : <?php echo APP['app']['name'];?></h6>
 
     <h1 class="h4 fw-normal">ลงชื่อเข้าใช้งาน</h1>
     <p class="mb-5 small">เพื่อใช้งานระบบจัดการร้านของคุณ</p>
@@ -32,7 +32,7 @@
         <button name="loginSubmit" class="btn btn-primary py-2" type="submit">ลงชื่อเข้าใช้</button>
     </div>
 
-    <p class="mt-5 mb-3 text-body-secondary small">©2023 <?php echo GLOBAL_APP['app']['name'];?> - เวอร์ชั่น <?php echo GLOBAL_APP['app']['version'];?></p>
+    <p class="mt-5 mb-3 text-body-secondary small">©2023 <?php echo APP['app']['name'];?> - เวอร์ชั่น <?php echo APP['app']['version'];?></p>
   </form>
 </main>
 

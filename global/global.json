@@ -2,7 +2,7 @@
     "app":
     {
         "name": "Seed",
-        "version": "0.2",
+        "version": "0.4",
         "description": "My App Description",
         "author": "My Name",
         "email": ""
@@ -22,12 +22,14 @@
         "employee_manager": {
             "title": "จัดการบัญชีพนักงาน",
             "url": "/project_sm/views/employee_manager.php",
-            "icon": "bi bi-person-fill-gear"
+            "icon": "bi bi-person-fill-gear",
+            "isOwner": true
         },
         "product_manager":{
             "title": "จัดการสินค้า",
             "url": "/project_sm/views/product_manager.php",
-            "icon": "bi bi-box-seam"
+            "icon": "bi bi-box-seam",
+            "isOwner": true
         }
     }
 }
