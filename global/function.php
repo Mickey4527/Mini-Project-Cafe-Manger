@@ -27,7 +27,7 @@ function checkLogin(){
 }
 
 function authLogin($conn,$email,$password){
-    $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles, business_id  FROM account_member WHERE email = '$email' AND password = ?");
+    $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles, business_id  FROM employee_account WHERE email = '$email' AND password = ?");
     $stmt->bind_param("s",$password);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -47,7 +47,7 @@ function authLogin($conn,$email,$password){
 }
 // สำหรับการลงทะเบียน
 function authRegister($conn,$email,$password,$firstName,$lastName){
-    return $conn->query("INSERT INTO `account_member` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'user')");
+    return $conn->query("INSERT INTO `employee_account` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'user')");
 }
 
 // สำหรับการเข้าถึงข้อมูลในตาราง
