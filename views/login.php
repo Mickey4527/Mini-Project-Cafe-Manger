@@ -1,6 +1,7 @@
 <?php
     include_once '../global/conn.php';
     include_once '../global/header.php';
+    include_once '../global/function.php';
 
     $css = styleOnly('
     .form-signin{

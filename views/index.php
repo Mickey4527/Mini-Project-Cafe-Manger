@@ -2,6 +2,7 @@
     include_once '../global/conn.php';
     include_once '../global/header.php';
     include_once '../global/navbar.php';
+    include_once '../global/function.php';
     include_once '../global/dashboard/dashboard.php';
     
     
