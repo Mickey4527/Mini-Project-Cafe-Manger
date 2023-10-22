@@ -84,4 +84,38 @@ function checkValueSQL($conn,$table,$val,$val2){
 function deleteAnySql($conn,$table,$key,$keyVal){
     return $conn->query("DELETE FROM $table WHERE $key = '$keyVal'");
 }
+
+// ฟังก์ชั่นสำหรับลบอักขระ html toon--------------------------------------
+function remove_junk($str){
+    $str = nl2br($str);
+    $str = htmlspecialchars(strip_tags($str, ENT_QUOTES));
+    return $str;
+  }
+
+//ฟังก์ชั่นสำหรับตรวจสอบช่องป้อนข้อมูลไม่ว่างเปล่า
+function validate_fields($var){
+ global $errors;
+    foreach ($var as $field) {
+      $val = remove_junk($_POST[$field]);
+      if(isset($val) && $val==''){
+        $errors = $field ." can't be blank.";
+        return $errors;
+      }
+    }
+  }
+
+  //ฟังก์ชันสำหรับการเปลี่ยนเส้นทาง
+  function redirect($url, $permanent = false)
+  {
+      if (headers_sent() === false)
+      {
+        header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
+      }
+  
+      exit();
+  }
+
+
 ?>
+
+

@@ -27,14 +27,14 @@
                     <th scope="col">Product Name</th>
                     <th scope="col">Category</th>
                     <th scope="col">Stock</th>
-                    <th scope="col">Quantity used</th>
+                    <th scope="col">Price</th>
                     <th scope="col">Date added</th>
                     <th scope="col">edit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php
-                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_Quantity,date_added','product_manager');
+                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added','product_manager');
                     if(!$result){
                         echo '<tr><td class="text-center" colspan="6">ไม่มีข้อมูล</td></tr>';
                     }
@@ -45,7 +45,7 @@
                             echo '<td>'.$row['product_name'].'</td>';
                             echo '<td>'.$row['product_category'].'</td>';
                             echo '<td>'.$row['product_stock'].'</td>';
-                            echo '<td>'.$row['product_quantity'].'</td>';
+                            echo '<td>'.$row['product_price'].'</td>';
                             echo '<td>'.$row['date_added'].'</td>';
                             echo '<td> <a class="btn btn-secondary" href="#"><i class="bi bi-pencil-square text-light" data-bs-toggle="modal" data-bs-target="#Editpro"></i>แก้ไขสินค้า</a> <a class="btn btn-danger" href="#"><i class="bi bi-trash-fill text-light"></i>ลบสินค้า</a></td>';
                             echo '</tr>';
@@ -59,7 +59,7 @@
 </div>
 
 
-// เพิ่มสินค้า
+
 <div class="modal" id="Addpro" tabindex="-1" aria-labelledby="AddproLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -87,11 +87,18 @@
                         </select>
                         </div>
                     </div>
+                    
 
                     <label for="Stock" class="form-label">จำนวน</label>
                     <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Stock">
-                        <span class="input-group-text" id="Stock">ชอต/แก้ว</span>
+                        <input type="number" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Stock">
+                        <span class="input-group-text" id="Stock">หน่วย/แก้ว</span>
+                    </div>
+
+                    <label for="Price" class="form-label">ราคา</label>
+                    <div class="input-group mb-3">
+                        <input type="number" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Price">
+                        <span class="input-group-text" id="Price">บาท</span>
                     </div>
 
                     <div class="col-12">
@@ -117,7 +124,7 @@
 </div>
 
 
-// แก้ไขสินค้า
+
 <div class="modal" id="Editpro" tabindex="-1" aria-labelledby="EditproLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
