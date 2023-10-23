@@ -32,7 +32,7 @@
         </div>
         <div class="col-12">
             <div id="table">
-                <?php table($result,'employee','user_id',['ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่สร้าง'],['first_name','last_name','email','telephone','creation_date']);?>
+                <?php table($result,'พนักงาน','user_id',['ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่สร้าง'],['first_name','last_name','email','telephone','creation_date']);?>
             </div>
         </div>
     </div>

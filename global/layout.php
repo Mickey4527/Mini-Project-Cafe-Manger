@@ -15,7 +15,7 @@ function toast($message,$type,$icon = null){
 //table แบบมีปุ่มแก้ไขและลบ
 function table($result,$table_name,$table_id,$table_header,$table_body,$table_footer = null){
     if(!$result || $result->num_rows == 0){
-        echo '<p class="text-center"> ไม่มีข้อมูล</p>';
+        echo displayEmptyMsg($table_name);
         return;
     }
 
@@ -54,6 +54,15 @@ function table($result,$table_name,$table_id,$table_header,$table_body,$table_fo
                 </tfoot>
             </table>
         ';
+}
+
+function displayEmptyMsg($table_name){
+    return '<div class="d-flex justify-content-center align-items-center" style="height: calc(100vh - 200px);">
+                <div class="text-center text-secondary">
+                    <i class="bi bi-emoji-frown" style="font-size: 56px"></i>
+                    <h3>ไม่พบข้อมูล '.$table_name.'</h3>
+                </div>
+            </div>';
 }
 
 ?>

@@ -27,9 +27,19 @@
         },
         "product_manager":{
             "title": "จัดการสินค้า",
-            "url": "/seed/views/product_manager.php",
+            "url": "",
             "icon": "bi bi-box-seam",
-            "isOwner": true
+            "isOwner": true,
+            "sub": {
+                "stock": {
+                    "title": "จัดการสต๊อกสินค้า",
+                    "url": "/seed/views/stock_manager.php"
+                },
+                "about": {
+                    "title": "จัดการเมนูสินค้า",
+                    "url": "/seed/views/product_manager.php"
+                }
+            }
         }
     }
 }

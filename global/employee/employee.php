@@ -14,7 +14,7 @@
             exit();
         }
         // ตรวจสอบว่ามี email นี้ในระบบหรือยัง
-        else if(checkValueSQL($conn,'account_member','email',$_POST['Empemail'])){
+        else if(checkValueSQL($conn,'employees_account','email',$_POST['Empemail'])){
             header('Location: ../../views/employee_manager.php?error=emailtaken');
             exit();
         }
@@ -25,8 +25,8 @@
             $password = $_POST['Emppassword'];
             $telephone = $_POST['Emptelephone'];
             $date = $_POST['Empdate'];
-            $business_id = getAnySql($conn,'business_id','account_member','user_id',$_SESSION['user_id'])->fetch_assoc()['business_id'];
-            if(insertAnySql($conn,'account_member','first_name,last_name,email,password,business_id,telephone,hire_date',"'$firstName','$lastName','$email','$password','$business_id','$telephone','$date'")){
+
+            if(insertAnySql($conn,'employees_account','first_name,last_name,email,password,telephone',"'$firstName','$lastName','$email','$password','$telephone'")){
                 header('Location: ../../views/employee_manager.php?success=insert');
                 exit();
             }
@@ -48,7 +48,7 @@
                 toast('ไม่สามารถลบบัญชีของคุณเองได้','text-danger','exclamation-triangle-fill');
                 exit();
             }
-            if(deleteAnySql($conn,'account_member','user_id',$user_id)){
+            if(deleteAnySql($conn,'employees_account','user_id',$user_id)){
                 toast('ลบข้อมูลเรียบร้อย','text-success','check-circle-fill');
                 exit();
             }

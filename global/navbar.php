@@ -6,28 +6,42 @@
 // สำหรับเรียกใช้ลิงค์ที่กำหนดไว้ในไฟล์ global/app.json
   function menuNavbar(){
     $list_menu = '';
+    $sub_menu = '';
+    $toggle = '';
+
     foreach(APP['menu'] as $menu){
+      if(isset($menu['sub'])){
+        $toggle = 'data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true"';
+        $sub_menu .= '<div class="collapse show" id="dashboard-collapse"><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">';
+        foreach($menu['sub'] as $sub){
+          $sub_menu .= '<li><a class="link-body-emphasis d-inline-flex text-decoration-none rounded ms-5 text-white" href="'.$sub['url'].'">'.$sub['title'].'</a></li>';
+        }
+        $sub_menu .= '</ul></li>';
+      }
+
       // ถ้า $_SERVER['REQUEST_URI'] มี ? ให้ตัดเอาเฉพาะ url ไม่เอาค่าที่อยู่หลัง ?
       $url = explode('?',$_SERVER['REQUEST_URI']);
       if($menu['url'] == $url[0]){
-          $list_menu .= '<li class="nav-item">
-            <a href="'.$menu['url'].'" class="nav-link active" aria-current="page">
-                <i class="'.$menu['icon'].'"></i>
+          $list_menu .= '<li class="nav-item">';
+          $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-white dropdown-toggle active" '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-white active">';
+          $list_menu .= '<i class="'.$menu['icon'].'"></i>
                 '.$menu['title'].'
             </a>
+            '.$sub_menu.'
           </li>';
           continue;
       }
-      $list_menu .= '<li class="nav-item">
-        <a href="'.$menu['url'].'" class="nav-link text-white" aria-current="page">
-            <i class="'.$menu['icon'].'"></i>
+      
+      $list_menu .= '<li class="nav-item">';
+      $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-white dropdown-toggle" '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-white">';
+      $list_menu .= '<i class="'.$menu['icon'].'"></i>
             '.$menu['title'].'
         </a>
+        '.$sub_menu.'
       </li>';
     }
     return $list_menu;
   }
-
 // โครงสร้างของ Navbar
   function layoutNavbar($nav = null){
     return '<main class="d-flex flex-nowrap">
