@@ -7,6 +7,40 @@
         "author": "My Name",
         "email": ""
     },
+    "service":{
+        "employees manager":{
+            "isON": true,
+            "permission": {
+                "owner": true,
+                "manager": true,
+                "employee": false
+            }
+        },
+        "product manager":{
+            "isON": true,
+            "permission": {
+                "owner": true,
+                "manager": true,
+                "employee": false
+            }
+        },
+        "stock manager":{
+            "isON": true,
+            "permission": {
+                "owner": true,
+                "manager": true,
+                "employee": false
+            }
+        },
+        "pos":{
+            "isON": true,
+            "permission": {
+                "owner": true,
+                "manager": true,
+                "employee": true
+            }
+        }
+    },
     "menu":
     {
         "home": {
