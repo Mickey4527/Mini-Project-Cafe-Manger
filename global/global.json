@@ -11,23 +11,23 @@
     {
         "home": {
             "title": "หน้าแรก",
-            "url": "/project_sm/views/index.php",
+            "url": "/seed/views/index.php",
             "icon": "bi bi-house-fill"
         },
         "pos":{
             "title": "ขายสินค้า",
-            "url": "/project_sm/views/pos.php",
+            "url": "/seed/views/pos.php",
             "icon": "bi bi-cash-stack"
         },
         "employee_manager": {
             "title": "จัดการบัญชีพนักงาน",
-            "url": "/project_sm/views/employee_manager.php",
+            "url": "/seed/views/employee_manager.php",
             "icon": "bi bi-person-fill-gear",
             "isOwner": true
         },
         "product_manager":{
             "title": "จัดการสินค้า",
-            "url": "/project_sm/views/product_manager.php",
+            "url": "/seed/views/product_manager.php",
             "icon": "bi bi-box-seam",
             "isOwner": true
         }

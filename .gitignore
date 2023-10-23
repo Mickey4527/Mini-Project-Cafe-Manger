@@ -1,3 +1,2 @@
-conn.php
-DigiCertGlobalRootCA.crt.pem
-/global
+global/conn.php
+global/DigiCertGlobalRootCA.crt.pem
