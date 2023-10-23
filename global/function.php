@@ -27,7 +27,7 @@ function checkLogin(){
 }
 
 function authLogin($conn,$email,$password){
-    $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles, business_id  FROM employee_account WHERE email = '$email' AND password = ?");
+    $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles  FROM employees_account WHERE email = '$email' AND password = ?");
     $stmt->bind_param("s",$password);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -36,7 +36,6 @@ function authLogin($conn,$email,$password){
         $row = $result->fetch_assoc();
         $_SESSION['user_id'] = $row['user_id'];
         $_SESSION['email'] = $row['email'];
-        $_SESSION['business_id'] = $row['business_id'];
         $_SESSION['first_name'] = $row['first_name'];
         $_SESSION['last_name'] = $row['last_name'];
         $_SESSION['roles'] = $row['roles'];
@@ -47,7 +46,7 @@ function authLogin($conn,$email,$password){
 }
 // สำหรับการลงทะเบียน
 function authRegister($conn,$email,$password,$firstName,$lastName){
-    return $conn->query("INSERT INTO `employee_account` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'user')");
+    return $conn->query("INSERT INTO `employees_account` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'employee')");
 }
 
 // สำหรับการเข้าถึงข้อมูลในตาราง

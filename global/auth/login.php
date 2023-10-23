@@ -43,7 +43,7 @@ if (isset($_POST['registerSubmit'])){
         header("Location: ../../views/register.php?error=invalidemail");
         exit();
     }
-    if(checkValueSQL($conn,'account_member','email',$email)){
+    if(checkValueSQL($conn,'employees_account','email',$email)){
         header("Location: ../../views/register.php?error=emailtaken");
         exit();
     }

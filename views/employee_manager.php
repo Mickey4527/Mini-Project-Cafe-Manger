@@ -12,7 +12,7 @@
     htmlHeader('จัดการบัญชีพนักงาน',null,'d-flex');
     navbar();
 
-    $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone,hire_date','account_member','business_id',$_SESSION['business_id']);
+    $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone,creation_date','employees_account','roles','employee');
 ?>
 <div class="container p-5">
     <div class="col-12 d-flex justify-content-between align-items-center">
@@ -32,7 +32,7 @@
         </div>
         <div class="col-12">
             <div id="table">
-                <?php table($result,'employee','user_id',['ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่เข้าทำงาน'],['first_name','last_name','email','telephone','hire_date']);?>
+                <?php table($result,'employee','user_id',['ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่สร้าง'],['first_name','last_name','email','telephone','creation_date']);?>
             </div>
         </div>
     </div>
