@@ -15,7 +15,7 @@
 ?>
 <div class="container p-5">
     <?php
-        checkBusiness();
+        checkGetttingStart();
     ?>
 </div>
 <?php

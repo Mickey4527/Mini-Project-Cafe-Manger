@@ -38,7 +38,7 @@
     </div>
 </div>
 
-<div class="modal" id="ModalCrate" tabindex="-1" aria-labelledby="ModalCrateLabel" aria-hidden="true">
+<div class="modal" id="ModalCrate" tabindex="-1" aria-labelledby="ModalCrateLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -51,7 +51,7 @@
                 <div class="row">
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="firstName" class="form-label">ชื่อจริง</label>
+                            <label for="firstName" class="form-label">ชื่อจริง*</label>
                             <input name="EmpfirstName" type="text" class="form-control" id="firstname" placeholder="ชื่อ">
                         </div>
                     </div>
@@ -63,38 +63,61 @@
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="email" class="form-label">อีเมล</label>
+                            <label for="email" class="form-label">อีเมล*</label>
                             <input name="Empemail" type="email" class="form-control" id="email" placeholder="อีเมล">
                         </div>
                     </div>
 
                     <div class="col-6">
                         <div class="mb-3">
-                            <label for="telephone" class="form-label">เบอร์โทรศัพท์</label>
+                            <label for="telephone" class="form-label">เบอร์โทรศัพท์*</label>
                             <input name="Emptelephone" type="text" class="form-control" id="telephone" placeholder="เบอร์โทรศัพท์">
                         </div>
                     </div>
 
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="password" class="form-label">รหัสผ่าน</label>
+                            <label for="password" class="form-label">รหัสผ่าน*</label>
                             <input name="Emppassword" type="password" class="form-control" id="password" placeholder="รหัสผ่าน">
                         </div>
                     </div>
-
                     <div class="col-12">
                         <div class="mb-3">
-                            <label for="password" class="form-label">วันที่เข้าทำงาน</label>
-                            <input name="Empdate" type="date" class="form-control" id="date" placeholder="วันที่เข้าทำงาน">
-                            <div class="form-check mt-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    ตั้งเป็นวันที่ปัจจุบัน
-                                </label>
-                            </div>
+                            <label for="password" class="form-label">ยืนยันรหัสผ่าน*</label>
+                            <input name="EmpconfirmPassword" type="password" class="form-control" id="confirmPassword" placeholder="ยืนยันรหัสผ่าน">
                         </div>
                     </div>
 
+                    <small class="mt-3 text-danger">* จำเป็นต้องกรอก</small><br>
+                    <small class="text-secondary">** รหัสผ่านจะถูกส่งไปยังอีเมลที่ระบุ</small>
+
+                    <button class="btn mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                        ข้อมูลเพิ่มเติม <i class="bi bi-caret-down-fill"></i>
+                    </button>
+                    <div class="collapse" id="collapseExample">
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="password" class="form-label">วันที่เข้าทำงาน</label>
+                                <input name="Empdate" type="date" class="form-control" id="date" placeholder="วันที่เข้าทำงาน">
+                                <div class="form-check mt-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                        ตั้งเป็นวันที่ปัจจุบัน
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="mb-3">
+                                <label for="roles" class="form-label">ตำแหน่ง*</label>
+                                <select name="Emproles" class="form-select" aria-label="Default select example">
+                                    <option selected>เลือกตำแหน่ง</option>
+                                    <option value="employee">พนักงาน</option>
+                                    <option value="manager">ผู้จัดการ</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
         </div>
       </div>

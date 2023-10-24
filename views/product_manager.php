@@ -71,6 +71,12 @@
         <div class="container p-3">
             <form method="post" action="../global/product/product.php">
                 <div class="row">
+                    <div class="col-12">
+                        <div class="mb-3">
+                            <label for="ProductPic" class="form-label">รูปสินค้า</label>
+                            <input type="file" class="form-control" id="PicProduct" placeholder="รูปสินค้า">
+                        </div>
+                    </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="ProductName" class="form-label">ชื่อสินค้า</label>

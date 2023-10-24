@@ -110,7 +110,7 @@ function validate_fields($var){
       {
         header('Location: ' . $url, true, ($permanent === true) ? 301 : 302);
       }
-  
+
       exit();
   }
 

@@ -1,21 +1,16 @@
 <?php
-    function checkBusiness(){
-        if($_SESSION['business_id'] === null){
-            echo '<div class = "row">
-                    <div class="col-12">
-                        <h2 class="text-center mb-3">เริ่มต้นใช้งาน</h2>
-                        <p class="text-center text-secondary mb-4">เริ่มต้นใช้งานโดยการสร้างร้านค้าของคุณเองหรือเข้าร่วมร้านค้าที่มีอยู่แล้ว</p>
-                    </div>
-                    <div class="col-6">
-                        '.CardSetup('ฉันเป็นเจ้าของร้าน','สร้างร้านค้าของคุณเองเพื่อเริ่มต้นใช้งาน','<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createModal">สร้างร้านค้า</a>','shop').'
-                    </div>
-                    <div class="col-6">
-                        '.CardSetup('ฉันเป็นพนักงาน','เข้าร่วมร้านค้าที่มีอยู่แล้วเพื่อเริ่มต้นใช้งาน','<a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#joinModal">เข้าร่วมร้านค้า</a>','person-badge-fill').'
-                    </div>
-                </div>';
-                modalForm('createModal','สร้างร้านค้า','สร้างร้านค้าของคุณเองเพื่อเริ่มต้นใช้งาน');
-                modalForm('joinModal','เข้าร่วมร้านค้า','เข้าร่วมร้านค้าที่มีอยู่แล้วเพื่อเริ่มต้นใช้งาน');
-        }
+    function checkGetttingStart(){
+      if($_SESSION['roles'] == 'employee'){
+        echo '<div class = "row justify-content-center">
+                <div class="col-12">
+                    <h2 class="text-center mb-3">เริ่มต้นใช้งาน</h2>
+                    <p class="text-center text-secondary mb-4">นี้เป็นครั้งแรกที่คุณเข้ามาใช้งานใช่มั้ย? เรียนรู้วิธีการใช้งานได้ที่นี่</p>
+                </div>
+                <div class="col-6">
+                  '.CardSetup('เพิ่มสินค้า','เพิ่มสินค้าเข้าสู่ระบบของคุณ','<a href="#" class="btn btn-primary">เพิ่มสินค้า</a>','plus').'
+                </div> 
+              </div>';
+      }
     }
     
     function cardSetup($header,$content,$button, $icon = null){
