@@ -8,19 +8,19 @@
     $list_menu = '';
     $sub_menu = '';
     $toggle = '';
+    $url = explode('?',$_SERVER['REQUEST_URI']);
 
     foreach(APP['menu'] as $menu){
       if(isset($menu['sub'])){
         $toggle = 'data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true"';
         $sub_menu .= '<div class="collapse show" id="dashboard-collapse"><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">';
         foreach($menu['sub'] as $sub){
-          $sub_menu .= '<li><a class="nav-link text-cafe-dark ms-4 py-2" href="'.$sub['url'].'">'.$sub['title'].'</a></li>';
+          $sub_menu .= ($sub['url'] == $url[0]) ? '<li><a class="nav-link text-cafe-dark ms-4 py-2 active" href="'.$sub['url'].'">'.$sub['title'].'</a></li>' : '<li><a class="nav-link text-cafe-dark ms-4 py-2" href="'.$sub['url'].'">'.$sub['title'].'</a></li>';
         }
         $sub_menu .= '</ul></li>';
       }
 
       // ถ้า $_SERVER['REQUEST_URI'] มี ? ให้ตัดเอาเฉพาะ url ไม่เอาค่าที่อยู่หลัง ?
-      $url = explode('?',$_SERVER['REQUEST_URI']);
       if($menu['url'] == $url[0]){
           $list_menu .= '<li class="nav-item">';
           $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark dropdown-toggle active" '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark active">';

@@ -11,7 +11,6 @@ $('#Delete').on('show.bs.modal', function (event) {
                 button.attr('disabled',true);
             },
             success: function(response){
-                console.log(response);
                 //hide modal
                 $('#Delete').modal('hide');
                 //display toast
@@ -23,7 +22,28 @@ $('#Delete').on('show.bs.modal', function (event) {
                 setTimeout(function(){
                     window.location.reload();
                 }, 2000);
-            }
+            },
         });
+    });
+});
+
+
+// ถ้ากดแก้ไขบัญชี ให้ดึงข้อมูลมาแสดงใน modal
+$('[id^=Edit]').click(function(){
+    var id = $(this).data('id');
+    $.ajax({
+        url: '../global/product/product.php',
+        type: 'post',
+        data: {Proedit: id},
+        beforeSend: function(){
+            $('[id^=Edit]').attr('disabled',true);
+        },
+        success: function(response){
+            console.log(response);
+            $('#edit').html(response);
+            //show modal
+            $('#EditProduct').modal('show');
+            $('[id^=Edit]').attr('disabled',false);
+        },
     });
 });

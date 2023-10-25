@@ -69,9 +69,13 @@
                     "title": "จัดการสต๊อกสินค้า",
                     "url": "/seed/views/stock_manager.php"
                 },
-                "about": {
+                "product": {
                     "title": "จัดการเมนูสินค้า",
                     "url": "/seed/views/product_manager.php"
+                },
+                "category": {
+                    "title": "จัดการหมวดหมู่สินค้า",
+                    "url": "/seed/views/category_manager.php"
                 }
             }
         }

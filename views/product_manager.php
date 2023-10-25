@@ -17,44 +17,17 @@
 <div class="container p-5">
     <h1 class="h3">จัดการสินค้า</h1>
     <div class="row">
-        <div class="col-12 mt-3">
+        <div class="col-12 my-3">
             <a class="btn small" href="#" data-bs-toggle="modal" data-bs-target="#Addpro"><i class="bi bi-plus-lg text-primary"></i>เพิ่มสินค้า</a>
         </div>
         <div class="col-12">
-            <table class="table align-middle">
-                <thead>
-                    <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Product Name</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Stock</th>
-                    <th scope="col">Price</th>
-                    <th scope="col">Date added</th>
-                    <th scope="col">edit</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added','products');
-                    if(!$result){
-                        echo '<tr><td class="text-center" colspan="6">ไม่มีข้อมูล</td></tr>';
-                    }
-                    else{
-                        foreach($result as $row){
-                            echo '<tr>';
-                            echo '<th scope="row">'.$row['product_id'].'</th>';
-                            echo '<td>'.$row['product_name'].'</td>';
-                            echo '<td>'.$row['product_category'].'</td>';
-                            echo '<td>'.$row['product_stock'].'</td>';
-                            echo '<td>'.$row['product_price'].'</td>';
-                            echo '<td>'.$row['date_added'].'</td>';
-                            echo '<td> <a class="btn btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#Edit"><i class="bi bi-pencil-square text-light"></i>แก้ไขสินค้า</a> <a class="btn btn-danger" href="#" data-id="'.$row['product_id'].'"data-bs-toggle="modal" data-bs-target="#Delete" ><i class="bi bi-trash-fill text-light" ></i>ลบสินค้า</a></td>';
-                            echo '</tr>';
-                        }
-                    }
-                    ?>
-                </tbody>
-            </table>
+            <div id="table">
+                <?php 
+                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added,product_img','products');
+                    table($result,'สินค้า','product_id',['รูปภาพ','ชื่อสินค้า','หมวดหมู่','จำนวน','ราคา','วันที่เปลี่ยนแปลง'],
+                    ['product_img','product_name','product_category','product_stock','product_price','date_added'],null,true,'product_img','../source/img/product/');
+                ?>
+            </div>
         </div>
     </div>
 </div>
@@ -205,6 +178,7 @@
 </div> 
 </div>
 
+<div id="edit"></div>
 <?php
     htmlFooter(jsOut(['../assets/js/product.js']));
 ?>

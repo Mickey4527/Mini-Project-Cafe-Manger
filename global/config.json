@@ -10,6 +10,66 @@
     ],
     "enqueue_script_footer": [
         "../assets/js/index.js"
-    ]
+    ],
 
+    "form": {
+        "EditProduct":{
+            "name": "Edit Product",
+            "input": {
+                "id": {
+                    "type": "hidden",
+                    "value": ""
+                },
+                "name": {
+                    "type": "text",
+                    "label": "Name",
+                    "value": "",
+                    "placeholder": "Enter name",
+                    "required": true
+                },
+                "price": {
+                    "type": "number",
+                    "label": "Price",
+                    "value": "",
+                    "placeholder": "Enter price",
+                    "required": true
+                },
+                "description": {
+                    "type": "textarea",
+                    "label": "Description",
+                    "value": "",
+                    "placeholder": "Enter description",
+                    "required": true
+                },
+                "image": {
+                    "type": "file",
+                    "label": "Image",
+                    "value": "",
+                    "placeholder": "Enter image",
+                    "required": true
+                },
+                "category_id": {
+                    "type": "select",
+                    "label": "Category",
+                    "value": "",
+                    "placeholder": "Enter category",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "1",
+                            "text": "Category 1"
+                        },
+                        {
+                            "value": "2",
+                            "text": "Category 2"
+                        },
+                        {
+                            "value": "3",
+                            "text": "Category 3"
+                        }
+                    ]
+                }
+            }
+            }
+        }
 }

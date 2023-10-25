@@ -9,7 +9,19 @@
             exit();
         }*/
 
-        
+if(isset($_POST['Proedit'])){
+  if(empty($_POST['Proedit'])){
+      toast('ไม่มีค่าข้อมูล','text-success','check-circle-fill');
+      exit();
+  }
+  else{
+      $productId = $_POST['Proedit'];
+      $result = getAnySql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added,product_img','products','product_id',$productId);
+      $row = $result->fetch_assoc();
+      echo modalForm('EditProduct','2','3');
+      exit();
+  }
+}       
 // เพิ่ม product
 if(isset($_POST['add_product'])){
   $req_fields = array('ProductName','ProCat','Procount','ProPrice','Dateadded');
@@ -45,6 +57,24 @@ if(isset($_POST['add_product'])){
       echo "Something went wrong";
       exit();
     }
+  }
+}
+ // สำหรับการลบ 
+ if(isset($_POST['Prodelete'])){
+  if(empty($_POST['Prodelete'])){
+      toast('ไม่มีค่าข้อมูล','text-success','check-circle-fill');
+      exit();
+  }
+  else{
+      $productId = $_POST['Prodelete'];
+      if(deleteAnySql($conn,'products','product_id',$productId)){
+          toast('ลบข้อมูลเรียบร้อย','text-success','check-circle-fill');
+          exit();
+      }
+      else{
+          echo $productId.'error';
+          exit();
+      }
   }
 }
 

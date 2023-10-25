@@ -20,7 +20,18 @@
         <div class="col-7 ms-3 me-1">
             <span class="small text-secondary">รายการสินค้า</span>
             <div class="border p-5 ">
-
+            <?php
+                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added,product_img','products');
+                    if(!$result){
+                        echo '<tr><td class="text-center" colspan="6">ไม่มีข้อมูล</td></tr>';
+                    }
+                    else{
+                        foreach($result as $row){
+                            echo '
+                            ';
+                        }
+                    }
+                    ?>           
             </div>
         </div>
         <div class="col-4 ms-1 me-3">
