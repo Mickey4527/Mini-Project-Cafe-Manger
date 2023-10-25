@@ -3,6 +3,7 @@
     include_once '../global/header.php';
     include_once '../global/navbar.php';
     include_once '../global/function.php';
+    include_once '../global/layout.php';
 
     if(!checkLogin()){
         header('Location: login.php?callback='.$_SERVER['REQUEST_URI']);
@@ -34,7 +35,7 @@
                 </thead>
                 <tbody>
                     <?php
-                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added','product_manager');
+                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added','products');
                     if(!$result){
                         echo '<tr><td class="text-center" colspan="6">ไม่มีข้อมูล</td></tr>';
                     }
@@ -47,7 +48,7 @@
                             echo '<td>'.$row['product_stock'].'</td>';
                             echo '<td>'.$row['product_price'].'</td>';
                             echo '<td>'.$row['date_added'].'</td>';
-                            echo '<td> <a class="btn btn-secondary" href="#"><i class="bi bi-pencil-square text-light" data-bs-toggle="modal" data-bs-target="#Editpro"></i>แก้ไขสินค้า</a> <a class="btn btn-danger" href="#"><i class="bi bi-trash-fill text-light"></i>ลบสินค้า</a></td>';
+                            echo '<td> <a class="btn btn-secondary" href="#" data-bs-toggle="modal" data-bs-target="#Edit"><i class="bi bi-pencil-square text-light"></i>แก้ไขสินค้า</a> <a class="btn btn-danger" href="#" data-id="'.$row['product_id'].'"data-bs-toggle="modal" data-bs-target="#Delete" ><i class="bi bi-trash-fill text-light" ></i>ลบสินค้า</a></td>';
                             echo '</tr>';
                         }
                     }
@@ -59,7 +60,7 @@
 </div>
 
 
-
+<!--Modal Add Product-->
 <div class="modal" id="Addpro" tabindex="-1" aria-labelledby="AddproLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -67,26 +68,26 @@
         <h1 class="modal-title fs-5" id="AddproLabel">เพิ่มสินค้า</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+    <div class="modal-body">
         <div class="container p-3">
-            <form method="post" action="../global/product/product.php">
+            <form method="post" action="../global/product/product.php" enctype="multipart/form-data">
                 <div class="row">
                     <div class="col-12">
                         <div class="mb-3">
                             <label for="ProductPic" class="form-label">รูปสินค้า</label>
-                            <input type="file" class="form-control" id="PicProduct" placeholder="รูปสินค้า">
+                            <input name="ProImg" type="file" class="form-control" id="ProductPic" placeholder="รูปสินค้า" accept="image/*">
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="mb-3">
                             <label for="ProductName" class="form-label">ชื่อสินค้า</label>
-                            <input type="text" class="form-control" id="ProductName" placeholder="ชื่อสินค้า">
+                            <input name="ProductName" type="text" class="form-control" id="ProductName" placeholder="ชื่อสินค้า">
                         </div>
                     </div>
                     <div class="col-6">
                 
                         <label for="Category" class="form-label">ประเภทสินค้า</label>
-                        <select class="form-select" id="Category" aria-label="Floating label select example">
+                        <select name="ProCat" class="form-select" id="Category" aria-label="Floating label select example">
                             <option selected>ประเภทสินค้า</option>
                             <option value="1">Coffee</option>
                             <option value="2">Tea</option>
@@ -97,13 +98,13 @@
 
                     <label for="Stock" class="form-label">จำนวน</label>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Stock">
+                        <input name="Procount" type="number" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Stock">
                         <span class="input-group-text" id="Stock">หน่วย/แก้ว</span>
                     </div>
 
                     <label for="Price" class="form-label">ราคา</label>
                     <div class="input-group mb-3">
-                        <input type="number" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Price">
+                        <input name="ProPrice" type="number" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Price">
                         <span class="input-group-text" id="Price">บาท</span>
                     </div>
 
@@ -118,24 +119,40 @@
                                 </label>
                             </div>
                 </div>
+            </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-        <button type="submit" class="btn btn-primary">เพิ่ม</button>
-      </div>
-      </form>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+            <button name="add_product" type="submit" class="btn btn-primary">เพิ่ม</button>
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
+</div>
+
+<div class="modal" id="Delete" tabindex="-1" aria-labelledby="DeleteLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-3 shadow">
+        <div class="modal-body p-4 text-center">
+            <h5 class="mb-0">ต้องการลบข้อมูลหรือไม่ ?</h5>
+            <p class="mb-0">เมื่อลบข้อมูลแล้ว จะไม่สามารถกู้คืนกลับมาได้</p>
+        </div>
+        <div class="modal-footer flex-nowrap p-0">
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" id="confirm"><strong class="text-danger">ลบบัญชี</strong></button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">ยกเลิก</button>
+        </div>
     </div>
   </div>
 </div>
 
 
 
-<div class="modal" id="Editpro" tabindex="-1" aria-labelledby="EditproLabel" aria-hidden="true">
+<div class="modal" id="Edit" tabindex="-1" aria-labelledby="EditLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="EditproLabel">เพิ่มสินค้า</h1>
+        <h1 class="modal-title fs-5" id="EditLabel">เพิ่มสินค้า</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -186,7 +203,8 @@
     </div>
   </div>
 </div> 
+</div>
 
 <?php
-    htmlFooter();
+    htmlFooter(jsOut(['../assets/js/product.js']));
 ?>

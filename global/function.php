@@ -79,6 +79,13 @@ function checkValueSQL($conn,$table,$val,$val2){
     return false;
 }
 
+function updateAnySql($conn,$table,$val,$key,$keyVal)
+{
+    if($val === null || $table === null || $key === null || $keyVal === null)
+        return false;
+    return $conn->query("UPDATE $table SET $val WHERE $key = '$keyVal'");
+}
+
 // สำหรับการลบข้อมูลในตาราง
 function deleteAnySql($conn,$table,$key,$keyVal){
     return $conn->query("DELETE FROM $table WHERE $key = '$keyVal'");
@@ -97,14 +104,15 @@ function validate_fields($var){
     foreach ($var as $field) {
       $val = remove_junk($_POST[$field]);
       if(isset($val) && $val==''){
-        $errors = $field ." can't be blank.";
-        return $errors;
+        $errors = $field ." ไม่สามารถเป็นค่าว่างได้";
+        return true;
       }
     }
+    return false;
   }
 
   //ฟังก์ชันสำหรับการเปลี่ยนเส้นทาง
-  function redirect($url, $permanent = false)
+function redirect($url, $permanent = false)
   {
       if (headers_sent() === false)
       {
@@ -114,7 +122,13 @@ function validate_fields($var){
       exit();
   }
 
-
+function checkImgFile($file){
+    $allowed = array('jpg','jpeg','png');
+    $ext = pathinfo($file, PATHINFO_EXTENSION);
+    if(in_array($ext,$allowed)){
+        return false;
+    }
+    return true;
+}
 ?>
-
 

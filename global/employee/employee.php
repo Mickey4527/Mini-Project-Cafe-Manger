@@ -36,6 +36,37 @@
             }
         }
     }
+    if(isset($_POST['submitEditUser'])){
+        if(empty($_POST['EmpfirstName']) || empty($_POST['EmplastName']) || empty($_POST['Empemail'])){
+            header('Location: ../../views/employee_manager.php?error=emptyfields');
+            exit();
+        }
+        else if(!filter_var($_POST['Empemail'],FILTER_VALIDATE_EMAIL)){
+            header('Location: ../../views/employee_manager.php?error=invalidemail');
+            exit();
+        }
+        // ตรวจสอบว่ามี email นี้ในระบบหรือยัง
+        else if(checkValueSQL($conn,'employees_account','email',$_POST['Empemail'])){
+            header('Location: ../../views/employee_manager.php?error=emailtaken');
+            exit();
+        }
+        else{
+            $firstName = $_POST['EmpfirstName'];
+            $lastName = $_POST['EmplastName'];
+            $email = $_POST['Empemail'];
+            $telephone = $_POST['Emptelephone'];
+            $user_id = $_POST['Empuser_id'];
+
+            if(updateAnySql($conn,'employees_account',"first_name = '$firstName',last_name = '$lastName',email = '$email',telephone = '$telephone'","user_id",$user_id)){
+                header('Location: ../../views/employee_manager.php?success=update');
+                exit();
+            }
+            else{
+                header('Location: ../../views/employee_manager.php?error=update');
+                exit();
+            }
+        }
+    }
     // สำหรับการลบบัญชี
     if(isset($_POST['Empdelete'])){
         if(empty($_POST['Empdelete'])){

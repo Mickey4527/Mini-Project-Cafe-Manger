@@ -32,7 +32,7 @@
         </div>
         <div class="col-12">
             <div id="table">
-                <?php table($result,'พนักงาน','user_id',['ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่สร้าง'],['first_name','last_name','email','telephone','creation_date']);?>
+                <?php table($result,'พนักงาน','user_id',['รหัสพนักงาน','ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่สร้าง'],['user_id','first_name','last_name','email','telephone','creation_date']);?>
             </div>
         </div>
     </div>
@@ -130,7 +130,7 @@
   </div>
 </div>
 
-<div class="modal" id="DeleteEmp" tabindex="-1" aria-labelledby="DeleteEmpLabel" aria-hidden="true">
+<div class="modal" id="Delete" tabindex="-1" aria-labelledby="DeleteLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content rounded-3 shadow">
         <div class="modal-body p-4 text-center">

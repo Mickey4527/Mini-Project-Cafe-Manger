@@ -4,13 +4,14 @@ $('#Delete').on('show.bs.modal', function (event) {
     var id = button.data('id') // Extract info from data-* attributes
     $('#confirm').click(function(){
         $.ajax({
-            url: '../global/employee/employee.php',
+            url: '../global/product/product.php',
             type: 'post',
-            data: {Empdelete: id},
+            data: {Prodelete: id},
             beforeSend: function(){
                 button.attr('disabled',true);
             },
             success: function(response){
+                console.log(response);
                 //hide modal
                 $('#Delete').modal('hide');
                 //display toast
