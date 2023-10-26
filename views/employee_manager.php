@@ -9,7 +9,7 @@
         header('Location: login.php');
     }
 
-    htmlHeader('จัดการบัญชีพนักงาน',null,'d-flex');
+    htmlHeader('จัดการบัญชีพนักงาน',null,'d-flex bg-cafe-white');
     navbar();
 
     $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone,creation_date','employees_account','roles','employee');

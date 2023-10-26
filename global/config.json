@@ -14,62 +14,57 @@
 
     "form": {
         "EditProduct":{
-            "name": "Edit Product",
-            "input": {
-                "id": {
+            "action": "edit_product",
+            "method": "POST",
+            "enctype": "multipart/form-data",
+            "class": "form-horizontal",
+            "id": "EditProduct",
+            "submit": "Save",
+            "fields": [
+                {
                     "type": "hidden",
-                    "value": ""
+                    "id": "product_id",
+                    "name": "product_id",
+                    "value": "",
+                    "size": "6"
                 },
-                "name": {
+                {
                     "type": "text",
-                    "label": "Name",
-                    "value": "",
+                    "name": "product_name",
+                    "id": "product_name",
                     "placeholder": "Enter name",
+                    "value": "",
+                    "size": "6",
                     "required": true
                 },
-                "price": {
-                    "type": "number",
-                    "label": "Price",
-                    "value": "",
+                {
+                    "type": "text",
+                    "name": "product_price",
+                    "id": "product_price",
                     "placeholder": "Enter price",
-                    "required": true
-                },
-                "description": {
-                    "type": "textarea",
-                    "label": "Description",
                     "value": "",
-                    "placeholder": "Enter description",
+                    "size": "6",
                     "required": true
                 },
-                "image": {
+                {
+                    "type": "text",
+                    "name": "product_stock",
+                    "id": "product_stock",
+                    "placeholder": "Enter quantity",
+                    "value": "",
+                    "size": "6",
+                    "required": true
+                },
+                {
                     "type": "file",
-                    "label": "Image",
-                    "value": "",
+                    "name": "product_img",
+                    "id": "product_img",
                     "placeholder": "Enter image",
-                    "required": true
-                },
-                "category_id": {
-                    "type": "select",
-                    "label": "Category",
                     "value": "",
-                    "placeholder": "Enter category",
-                    "required": true,
-                    "options": [
-                        {
-                            "value": "1",
-                            "text": "Category 1"
-                        },
-                        {
-                            "value": "2",
-                            "text": "Category 2"
-                        },
-                        {
-                            "value": "3",
-                            "text": "Category 3"
-                        }
-                    ]
+                    "size": "6",
+                    "required": true
                 }
-            }
-            }
+            ]
         }
+    }
 }

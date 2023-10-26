@@ -2,7 +2,7 @@
     "app":
     {
         "name": "Seed",
-        "version": "0.4",
+        "version": "0.5",
         "description": "My App Description",
         "author": "My Name",
         "email": ""
@@ -49,7 +49,7 @@
             "icon": "bi bi-house-fill"
         },
         "pos":{
-            "title": "ขายสินค้า",
+            "title": "ขายหน้าร้าน",
             "url": "/seed/views/pos.php",
             "icon": "bi bi-cash-stack"
         },

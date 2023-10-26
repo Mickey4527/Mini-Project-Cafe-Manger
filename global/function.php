@@ -5,6 +5,10 @@ if(file_exists('../global/global.json') || file_exists('../global/config.json'))
     // import config json file
     define('CONFIG', json_decode(file_get_contents('../global/config.json'),true));
 }
+else{
+    define('APP', json_decode(file_get_contents('../global.json'),true));
+    define('CONFIG', json_decode(file_get_contents('../config.json'),true));
+}
 // function return CSS and JS path from assets folder
 function cssOut($css){
     $output = '';

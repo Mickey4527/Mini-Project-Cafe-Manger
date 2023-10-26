@@ -10,7 +10,7 @@
         header('Location: login.php');
     }
     
-    htmlHeader('Home',null,'d-flex');
+    htmlHeader('Home',null,'d-flex bg-cafe-white');
     navbar();
 ?>
 <div class="container p-5">

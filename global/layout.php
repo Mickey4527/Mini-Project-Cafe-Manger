@@ -91,4 +91,44 @@ function modalForm($ModalId, $header, $content){
     </div>
   </div>';
 }
+
+function formTemplate($form_id,$input, $inputVal = null, $submit = false , $submitId = null){
+    $output = '<form id="'.$form_id.'">';
+    foreach ($input as $col){
+        $output .= '<div class="col-'.$col['size'].'">';
+        $output .= '<div class="mb-3">';
+        $output .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
+        switch ($col['type']){
+            case 'select':
+                $output .= '<select class="form-select" id="'.$col['id'].'">';
+                foreach ($col['option'] as $option){
+                    $output .= '<option value="'.$option['value'].'">'.$option['name'].'</option>';
+                }
+                $output .= '</select>';
+                break;
+            case 'textarea':
+                $output .= '<textarea class="form-control" id="'.$col['id'].'" rows="'.$col['rows'].'">'.$inputVal[$col['id']].'</textarea>';
+                break;
+            case 'hidden':
+                $output .= '<input type="'.$col['type'].'" class="form-control" id="'.$col['id'].'" value="'.$inputVal[$col['id']].'">';
+                break;
+            default:
+                $output .= '<input type="'.$col['type'].'" class="form-control" id="'.$col['id'].'" placeholder="'.$col['placeholder'].'" value="'.$inputVal[$col['id']].'">';
+                break;
+        }
+        if(isset($col['description'])){
+            $output .= '<div id="'.$col['id'].'_description" class="form-text">'.$col['description'].'</div>';
+        }
+        $output .= '</div>';
+        $output .= '</div>';
+    }
+   
+    if($submit){
+        $output .= '<button type="submit" class="btn btn-primary" id="'.$submitId.'">Submit</button>';
+    }
+    $output .= '</form>';
+    return $output;
+}
+
 ?>
+
