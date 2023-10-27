@@ -14,7 +14,7 @@
 
 ?>
 <!-- Content -->
-<div class="container p-5">
+<div class="container-fluid p-5">
     <h1 class="h3">จัดการสินค้า</h1>
     <div class="row">
         <div class="col-12 my-3">

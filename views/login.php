@@ -13,7 +13,7 @@
 
 ?>
 <main class="form-signin px-5 pt-5 w-100 m-auto bg-cafe-white border rounded">
-  <form name="loginForm" method="post" action="../global/auth/login.php">
+  <form name="loginForm" method="post" action="../global/auth/login.php?callback=<?php echo $_GET['callback'];?>">
     <h6 class="mb-4">Code name : <?php echo APP['app']['name'];?></h6>
 
     <h1 class="h4 fw-normal">ลงชื่อเข้าใช้งาน</h1>
@@ -27,6 +27,7 @@
       <input name="password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
       <label for="floatingPassword">รหัสผ่าน</label>
     </div>
+
 
     <div class="d-flex justify-content-between align-items-center mt-5">
         <a class="btn small py-2" href="register.php">สมัครสมาชิก</a>

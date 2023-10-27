@@ -23,14 +23,12 @@
             "fields": [
                 {
                     "type": "hidden",
-                    "id": "product_id",
-                    "name": "product_id",
-                    "value": "",
-                    "size": "6"
+                    "name": "รหัสสินค้า",
+                    "id": "product_id"
                 },
                 {
                     "type": "text",
-                    "name": "product_name",
+                    "name": "ชื่อสินค้า",
                     "id": "product_name",
                     "placeholder": "Enter name",
                     "value": "",
@@ -38,8 +36,39 @@
                     "required": true
                 },
                 {
+                    "type": "select",
+                    "name": "ประเภทสินค้า",
+                    "id": "product_type",
+                    "placeholder": "Enter type",
+                    "value": "",
+                    "size": "6",
+                    "required": true,
+                    "options": [
+                        {
+                            "value": "1",
+                            "text": "เสื้อผ้า"
+                        },
+                        {
+                            "value": "2",
+                            "text": "รองเท้า"
+                        },
+                        {
+                            "value": "3",
+                            "text": "กระเป๋า"
+                        },
+                        {
+                            "value": "4",
+                            "text": "เครื่องประดับ"
+                        },
+                        {
+                            "value": "5",
+                            "text": "อุปกรณ์อื่นๆ"
+                        }
+                    ]
+                },
+                {
                     "type": "text",
-                    "name": "product_price",
+                    "name": "ราคาสินค้า",
                     "id": "product_price",
                     "placeholder": "Enter price",
                     "value": "",
@@ -48,7 +77,7 @@
                 },
                 {
                     "type": "text",
-                    "name": "product_stock",
+                    "name": "จำนวนสินค้า",
                     "id": "product_stock",
                     "placeholder": "Enter quantity",
                     "value": "",
@@ -57,13 +86,24 @@
                 },
                 {
                     "type": "file",
-                    "name": "product_img",
+                    "name": "รูปภาพสินค้า",
                     "id": "product_img",
                     "placeholder": "Enter image",
                     "value": "",
-                    "size": "6",
+                    "size": "12",
+                    "required": true
+                },
+                {
+                    "type": "textarea",
+                    "name": "รายละเอียดสินค้า",
+                    "id": "product_detail",
+                    "placeholder": "Enter detail",
+                    "value": "",
+                    "size": "12",
+                    "rows": "5",
                     "required": true
                 }
+
             ]
         }
     }

@@ -8,7 +8,7 @@
             header('Location: ../../views/product_manager.php?error=emptyfields');
             exit();
         }*/
-
+// ถ้ามีการกดปุ่มแก้ไข
 if(isset($_POST['Proedit'])){
   if(empty($_POST['Proedit'])){
       toast('ไม่มีค่าข้อมูล','text-success','check-circle-fill');
@@ -18,7 +18,7 @@ if(isset($_POST['Proedit'])){
       $productId = $_POST['Proedit'];
       $result = getAnySql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added,product_img','products','product_id',$productId);
       $row = $result->fetch_assoc();
-      echo modalForm('EditProduct','2', formTemplate('test',CONFIG['form']['EditProduct']['fields'], $row));
+      echo modalForm('EditProduct','แก้ไขสินค้า', formTemplate('test',CONFIG['form']['EditProduct']['fields'], $row));
       exit();
   }
 }       

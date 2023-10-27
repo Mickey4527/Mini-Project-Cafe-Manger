@@ -28,7 +28,7 @@ function table($result,$table_name,$table_id,$table_header,$table_body,$table_fo
     foreach ($table_header as $name){
         $content_header .= '<th scope="col">'.$name.'</th>';
     }
-    $content_header .= '<th scope="col">edit</th>';
+    $content_header .= '<th scope="col"></th>';
     $content_header .= '</tr>';
 
     // display table data
@@ -42,9 +42,9 @@ function table($result,$table_name,$table_id,$table_header,$table_body,$table_fo
             $content .= '<td>'.$row[$name].'</td>';
         }
         $content .= '<td><button class="btn small py-0 px-2" data-id="'.$row[$table_id].'" id="Edit">
-        <i class="bi bi-pencil-square text-primary"></i>แก้ไขบัญชี</button>
+        <i class="bi bi-pencil-square text-cafe-brown-800"></i>แก้ไข</button>
         <button class="btn small py-0 px-2" data-id="'.$row[$table_id].'" data-bs-toggle="modal" data-bs-target="#Delete">
-        <i class="bi bi-trash-fill text-danger"></i>ลบบัญชี</button></td>';
+        <i class="bi bi-trash-fill text-danger"></i>ลบ</button></td>';
         $content .= '</tr>';
 
     }
@@ -93,39 +93,45 @@ function modalForm($ModalId, $header, $content){
 }
 
 function formTemplate($form_id,$input, $inputVal = null, $submit = false , $submitId = null){
-    $output = '<form id="'.$form_id.'">';
+    $output = '<form id="'.$form_id.'"><div class="row g-3">';
     foreach ($input as $col){
-        $output .= '<div class="col-'.$col['size'].'">';
-        $output .= '<div class="mb-3">';
-        $output .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
+        $inputForm = '';
+        // กรณีที่ไม่ได้กำหนดค่าให้กับ inputVal
+        if(!isset($inputVal[$col['id']])){
+            $inputVal[$col['id']] = '';
+        }
+        // กรณีของ input ที่มี type เป็นแบบต่างๆ
         switch ($col['type']){
             case 'select':
-                $output .= '<select class="form-select" id="'.$col['id'].'">';
-                foreach ($col['option'] as $option){
-                    $output .= '<option value="'.$option['value'].'">'.$option['name'].'</option>';
+                $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
+                $inputForm .= '<select class="form-select" id="'.$col['id'].'">';
+                foreach ($col['options'] as $option){
+                    $inputForm .= '<option value="'.$option['value'].'">'.$option['text'].'</option>';
                 }
-                $output .= '</select>';
+                $inputForm .= '</select>';
                 break;
             case 'textarea':
-                $output .= '<textarea class="form-control" id="'.$col['id'].'" rows="'.$col['rows'].'">'.$inputVal[$col['id']].'</textarea>';
+                $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
+                $inputForm .= '<textarea class="form-control" id="'.$col['id'].'" rows="'.$col['rows'].'">'.$inputVal[$col['id']].'</textarea>';
                 break;
             case 'hidden':
-                $output .= '<input type="'.$col['type'].'" class="form-control" id="'.$col['id'].'" value="'.$inputVal[$col['id']].'">';
+                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$col['id'].'" value="'.$inputVal[$col['id']].'">';
                 break;
             default:
-                $output .= '<input type="'.$col['type'].'" class="form-control" id="'.$col['id'].'" placeholder="'.$col['placeholder'].'" value="'.$inputVal[$col['id']].'">';
+                $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
+                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$col['id'].'" placeholder="'.$col['placeholder'].'" value="'.$inputVal[$col['id']].'">';
                 break;
         }
         if(isset($col['description'])){
             $output .= '<div id="'.$col['id'].'_description" class="form-text">'.$col['description'].'</div>';
         }
-        $output .= '</div>';
-        $output .= '</div>';
+        $output .= ($col['type'] == 'hidden') ? '' : '<div class="col-'.$col['size'].'"><div class="mb-3">'.$inputForm.'</div></div>';
     }
    
     if($submit){
         $output .= '<button type="submit" class="btn btn-primary" id="'.$submitId.'">Submit</button>';
     }
+    $output .= '</div>';
     $output .= '</form>';
     return $output;
 }

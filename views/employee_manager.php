@@ -14,7 +14,7 @@
 
     $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone,creation_date','employees_account','roles','employee');
 ?>
-<div class="container p-5">
+<div class="container-fluid p-5">
     <div class="col-12 d-flex justify-content-between align-items-center">
         <h1 class="h3">จัดการบัญชีพนักงาน</h1>
         <form class="d-flex mt-3 mt-lg-0" role="search">
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-12 my-3 d-flex justify-content-between align-items-center">
             <div>
-                <a class="btn small " href="#" data-bs-toggle="modal" data-bs-target="#ModalCrate"><i class="bi bi-plus-lg text-primary"></i>เพิ่มบัญชี</a>
+                <a class="btn small " href="#" data-bs-toggle="modal" data-bs-target="#ModalCrate"><i class="bi bi-plus-lg text-cafe-brown-800"></i>เพิ่มบัญชี</a>
             </div>
             <div>
                 <span class="text-secondary">จำนวนพนักงานทั้งหมด <?php echo $result->num_rows;?> คน</span>

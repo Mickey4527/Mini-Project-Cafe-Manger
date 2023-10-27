@@ -12,6 +12,10 @@ if (isset($_POST['loginSubmit'])){
     }
 
     if(authLogin($conn,$email,$password)){
+        if(isset($_GET['callback'])){
+            header("Location: ".$_GET['callback']."");
+            exit();
+        }
         header("Location: ../../views/index.php");
         exit();
     }
