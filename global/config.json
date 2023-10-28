@@ -13,7 +13,7 @@
     ],
 
     "form": {
-        "EditProduct":{
+        "Product":{
             "action": "edit_product",
             "method": "POST",
             "enctype": "multipart/form-data",
@@ -37,32 +37,17 @@
                 },
                 {
                     "type": "select",
-                    "name": "ประเภทสินค้า",
+                    "name": "หมวดหมู่เตรื่องดื่ม",
                     "id": "product_type",
-                    "placeholder": "Enter type",
+                    "placeholder": "เลือกหมวดหมู่",
                     "value": "",
                     "size": "6",
                     "required": true,
+                    "pull_data": "categories",
                     "options": [
                         {
-                            "value": "1",
-                            "text": "เสื้อผ้า"
-                        },
-                        {
-                            "value": "2",
-                            "text": "รองเท้า"
-                        },
-                        {
-                            "value": "3",
-                            "text": "กระเป๋า"
-                        },
-                        {
-                            "value": "4",
-                            "text": "เครื่องประดับ"
-                        },
-                        {
-                            "value": "5",
-                            "text": "อุปกรณ์อื่นๆ"
+                            "value": "cat_id",
+                            "text": "cat_name"
                         }
                     ]
                 },

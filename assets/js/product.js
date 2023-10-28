@@ -27,6 +27,38 @@ $('#Delete').on('show.bs.modal', function (event) {
     });
 });
 
+$('#addPro').click(function(){
+    var name = $('#product_name').val();
+    var price = $('#product_price').val();
+    var stock = $('#product_stock').val();
+    var type = $('#product_type').val();
+    var detail = $('#product_detail').val();
+    var image = $('#product_image').val();
+
+    $.ajax({
+        url: '../global/product/product.php',
+        type: 'post',
+        data: {
+            Proadd: 'add',
+            name: name,
+            price: price,
+            unit: stock,
+            category: type,
+            detail: detail,
+            image: image,
+        },
+        beforeSend: function(){
+            $('#addPro').attr('disabled',true);
+        },
+        success: function(response){
+            console.log(response);
+            $('#add').html(response);
+            //show modal
+            $('#AddProduct').modal('show');
+            $('#addPro').attr('disabled',false);
+        },
+    });
+}
 
 // ถ้ากดแก้ไขบัญชี ให้ดึงข้อมูลมาแสดงใน modal
 $('[id^=Edit]').click(function(){

@@ -105,8 +105,12 @@ function formTemplate($form_id,$input, $inputVal = null, $submit = false , $subm
             case 'select':
                 $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
                 $inputForm .= '<select class="form-select" id="'.$col['id'].'">';
-                foreach ($col['options'] as $option){
-                    $inputForm .= '<option value="'.$option['value'].'">'.$option['text'].'</option>';
+                $inputForm .= '<option selected>'.$col['placeholder'].'</option>';
+                if(isset($col['pull_data'])){
+                    $inputForm .= selectData($col['options'],null,$col['pull_data']);
+                }
+                else{
+                    $inputForm .= selectData($col['options']);
                 }
                 $inputForm .= '</select>';
                 break;
@@ -136,5 +140,22 @@ function formTemplate($form_id,$input, $inputVal = null, $submit = false , $subm
     return $output;
 }
 
+function selectData($options,$selected = null,$pull_data = null){
+    global $conn;
+    $output = '';
+    if(isset($pull_data)){
+        $val = $options[0]['value'];
+        $text = $options[0]['text'];
+        $result = getAllSql($conn,$val.','.$text,$pull_data)->fetch_all(MYSQLI_ASSOC);
+        $options = [];
+        foreach ($result as $row){
+            $options[] = ['value' => $row[$val], 'text' => $row[$text]];
+        }
+    }
+    foreach ($options as $option){
+        $output .= '<option value="'.$option['value'].'">'.$option['text'].'</option>';
+    }
+    return $output;
+}
 ?>
 

@@ -32,7 +32,6 @@
     </div>
 </div>
 
-
 <!--Modal Add Product-->
 <div class="modal" id="Addpro" tabindex="-1" aria-labelledby="AddproLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -43,62 +42,14 @@
       </div>
     <div class="modal-body">
         <div class="container p-3">
-            <form method="post" action="../global/product/product.php" enctype="multipart/form-data">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="mb-3">
-                            <label for="ProductPic" class="form-label">รูปสินค้า</label>
-                            <input name="ProImg" type="file" class="form-control" id="ProductPic" placeholder="รูปสินค้า" accept="image/*">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="ProductName" class="form-label">ชื่อสินค้า</label>
-                            <input name="ProductName" type="text" class="form-control" id="ProductName" placeholder="ชื่อสินค้า">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                
-                        <label for="Category" class="form-label">ประเภทสินค้า</label>
-                        <select name="ProCat" class="form-select" id="Category" aria-label="Floating label select example">
-                            <option selected>ประเภทสินค้า</option>
-                            <option value="1">Coffee</option>
-                            <option value="2">Tea</option>
-                        </select>
-                        </div>
-                    </div>
-                    
-
-                    <label for="Stock" class="form-label">จำนวน</label>
-                    <div class="input-group mb-3">
-                        <input name="Procount" type="number" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Stock">
-                        <span class="input-group-text" id="Stock">หน่วย/แก้ว</span>
-                    </div>
-
-                    <label for="Price" class="form-label">ราคา</label>
-                    <div class="input-group mb-3">
-                        <input name="ProPrice" type="number" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Price">
-                        <span class="input-group-text" id="Price">บาท</span>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="mb-3">
-                            <label for="Dateadded" class="form-label">วันที่เพิ่มสินค้า</label>
-                            <input name="Dateadded" type="date" class="form-control" id="date" placeholder="วันที่เพิ่มสินค้า">
-                            <div class="form-check mt-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    ตั้งเป็นวันที่ปัจจุบัน
-                                </label>
-                            </div>
-                </div>
-            </div>
+            <?php
+                echo formTemplate('addPro',CONFIG['form']['Product']['fields']);
+            ?>
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-            <button name="add_product" type="submit" class="btn btn-primary">เพิ่ม</button>
+            <button name="add_product" type="submit" id="addPro" class="btn btn-primary">เพิ่ม</button>
         </div>
-        </form>
     </div>
     </div>
     </div>
@@ -119,64 +70,6 @@
   </div>
 </div>
 
-
-
-<div class="modal" id="Edit" tabindex="-1" aria-labelledby="EditLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="EditLabel">เพิ่มสินค้า</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="container p-3">
-            <form method="post" action="../global/product/product.php">
-                <div class="row">
-                    <div class="col-6">
-                        <div class="mb-3">
-                            <label for="ProductName" class="form-label">ชื่อสินค้า</label>
-                            <input type="text" class="form-control" id="ProductName" placeholder="ชื่อสินค้า">
-                        </div>
-                    </div>
-                    <div class="col-6">
-                
-                        <label for="Category" class="form-label">ประเภทสินค้า</label>
-                        <select class="form-select" id="Category" aria-label="Floating label select example">
-                            <option selected>ประเภทสินค้า</option>
-                            <option value="1">Coffee</option>
-                            <option value="2">Tea</option>
-                        </select>
-                        </div>
-                    </div>
-
-                    <label for="Stock" class="form-label">จำนวน</label>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="จำนวน" aria-label="จำนวน" aria-describedby="Stock">
-                        <span class="input-group-text" id="Stock">ชอต/แก้ว</span>
-                    </div>
-
-                    <div class="col-12">
-                        <div class="mb-3">
-                            <label for="Dateadded" class="form-label">วันที่เพิ่มสินค้า</label>
-                            <input name="Dateadded" type="date" class="form-control" id="date" placeholder="วันที่เพิ่มสินค้า">
-                            <div class="form-check mt-3">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    ตั้งเป็นวันที่ปัจจุบัน
-                                </label>
-                            </div>
-                </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-        <button type="submit" class="btn btn-primary">เพิ่ม</button>
-      </div>
-      </form>
-    </div>
-  </div>
-</div> 
-</div>
 
 <div id="edit"></div>
 <?php

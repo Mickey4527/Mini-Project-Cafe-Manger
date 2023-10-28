@@ -53,6 +53,9 @@ function authRegister($conn,$email,$password,$firstName,$lastName){
     return $conn->query("INSERT INTO `employees_account` (`email`, `password`, `first_name`, `last_name`, `roles`) VALUES ('$email', '$password', '$firstName', '$lastName', 'employee')");
 }
 
+function querySql($conn,$sql){
+    return $conn->query($sql);
+}
 // สำหรับการเข้าถึงข้อมูลในตาราง
 function getAnySql($conn,$val,$table,$key,$KeyVal){
     if($val === null || $table === null || $key === null || $KeyVal === null)
@@ -134,5 +137,6 @@ function checkImgFile($file){
     }
     return true;
 }
+
 ?>
 

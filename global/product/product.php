@@ -18,7 +18,7 @@ if(isset($_POST['Proedit'])){
       $productId = $_POST['Proedit'];
       $result = getAnySql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added,product_img','products','product_id',$productId);
       $row = $result->fetch_assoc();
-      echo modalForm('EditProduct','แก้ไขสินค้า', formTemplate('test',CONFIG['form']['EditProduct']['fields'], $row));
+      echo modalForm('EditProduct','แก้ไขสินค้า', formTemplate('test',CONFIG['form']['Product']['fields'], $row));
       exit();
   }
 }       
