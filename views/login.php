@@ -10,6 +10,7 @@
     ');
 
     htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-cafe-body');
+    $_GET['callback'] = isset($_GET['callback']) ? $_GET['callback'] : '';
 
 ?>
 <main class="form-signin px-5 pt-5 w-100 m-auto bg-cafe-white border rounded">

@@ -12,7 +12,7 @@ if (isset($_POST['loginSubmit'])){
     }
 
     if(authLogin($conn,$email,$password)){
-        if(isset($_GET['callback'])){
+        if(isset($_GET['callback']) && $_GET['callback'] != ''){
             header("Location: ".$_GET['callback']."");
             exit();
         }
