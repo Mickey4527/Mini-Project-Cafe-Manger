@@ -72,7 +72,12 @@ function displayEmptyMsg($table_name){
             </div>';
 }
 
-function modalForm($ModalId, $header, $content){
+function modalForm($ModalId, $header, $content,$footer = false,$content_footer = null,$save_id = null){
+    $button = '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+               <button name="save'.$save_id.'" type="submit" id="save'.$save_id.'" class="btn btn-primary">บันทึก</button>';
+    $content_footer = $content_footer === null ? $button : $content_footer;
+    $footer = $footer === false ? '' : '<div class="modal-footer">'.$content_footer.'</div>';
+
     echo '<div class="modal fade" id="'.$ModalId.'" tabindex="-1" aria-labelledby="'.$ModalId.'Label" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -83,17 +88,14 @@ function modalForm($ModalId, $header, $content){
         <div class="modal-body">
           '.$content.'
         </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        '.$footer.'
       </div>
     </div>
   </div>';
 }
 
-function formTemplate($form_id,$input, $inputVal = null, $submit = false , $submitId = null){
-    $output = '<form id="'.$form_id.'"><div class="row g-3">';
+function formTemplate($formId,$input, $inputVal = null){
+    $output = '<form id="'.$formId.'"><div class="row g-3">';
     foreach ($input as $col){
         $inputForm = '';
         // กรณีที่ไม่ได้กำหนดค่าให้กับ inputVal
@@ -104,37 +106,75 @@ function formTemplate($form_id,$input, $inputVal = null, $submit = false , $subm
         switch ($col['type']){
             case 'select':
                 $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
-                $inputForm .= '<select class="form-select" id="'.$col['id'].'">';
-                foreach ($col['options'] as $option){
-                    $inputForm .= '<option value="'.$option['value'].'">'.$option['text'].'</option>';
+                $inputForm .= '<select class="form-select" id="'.$formId.'-'.$col['id'].'">';
+                if(isset($col['pull_data'])){
+                    $inputForm .= selectData($col['options'],null,$col['pull_data'],$inputVal[$col['id']]);
+                }
+                else{
+                    $inputForm .= selectData($col['options']);
                 }
                 $inputForm .= '</select>';
                 break;
             case 'textarea':
                 $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
-                $inputForm .= '<textarea class="form-control" id="'.$col['id'].'" rows="'.$col['rows'].'">'.$inputVal[$col['id']].'</textarea>';
+                $inputForm .= '<textarea class="form-control" id="'.$formId.'-'.$col['id'].'" rows="'.$col['rows'].'">'.$inputVal[$col['id']].'</textarea>';
                 break;
             case 'hidden':
-                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$col['id'].'" value="'.$inputVal[$col['id']].'">';
+                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$formId.'-'.$col['id'].'" value="'.$inputVal[$col['id']].'">';
+                break;
+            case 'file':
+                $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
+                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$formId.'-'.$col['id'].'" value="'.$inputVal[$col['id']].'">';
+                $inputForm .= '<div class="invalid-feedback" id="invalid_'.$col['id'].'"></div>';
+                break;
+            case 'date':
+                $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
+                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$formId.'-'.$col['id'].'" value="'.$inputVal[$col['id']].'">';
+                $inputForm .= '<div class="form-check mt-3">
+                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault">
+                                    ตั้งเป็นวันที่ปัจจุบัน
+                                    </label>
+                                </div>';
+                $inputForm .= '<div class="invalid-feedback" id="invalid_'.$col['id'].'"></div>';
                 break;
             default:
                 $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
-                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$col['id'].'" placeholder="'.$col['placeholder'].'" value="'.$inputVal[$col['id']].'">';
+                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$formId.'-'.$col['id'].'" placeholder="'.$col['placeholder'].'" value="'.$inputVal[$col['id']].'">';
                 break;
         }
         if(isset($col['description'])){
             $output .= '<div id="'.$col['id'].'_description" class="form-text">'.$col['description'].'</div>';
         }
-        $output .= ($col['type'] == 'hidden') ? '' : '<div class="col-'.$col['size'].'"><div class="mb-3">'.$inputForm.'</div></div>';
+        $output .= ($col['type'] == 'hidden') ? $inputForm : '<div class="col-'.$col['size'].'"><div class="mb-3">'.$inputForm.'</div></div>';
     }
    
-    if($submit){
-        $output .= '<button type="submit" class="btn btn-primary" id="'.$submitId.'">Submit</button>';
-    }
-    $output .= '</div>';
-    $output .= '</form>';
+    $output .= '</div></form>';
+
     return $output;
 }
 
+function selectData($options,$selected = null,$pull_data = null,$data_selected = null){
+    global $conn;
+    $output = '<option value="">เลือกรายการ</option>';
+    if(isset($pull_data)){
+        $val = $options[0]['value'];
+        $text = $options[0]['text'];
+        $result = getAllSql($conn,$val.','.$text,$pull_data)->fetch_all(MYSQLI_ASSOC);
+        $options = [];
+        foreach ($result as $row){
+            $options[] = ['value' => $row[$val],'text' => $row[$text]];
+        }
+    }
+    foreach ($options as $option){
+        $output .= '<option value="'.$option['value'].'"';
+        if($selected == $option['value'] || $data_selected == $option['value']){
+            $output .= ' selected';
+        }
+        $output .= '>'.$option['text'].'</option>';
+    }
+    
+    return $output;
+}
 ?>
 

@@ -32,7 +32,7 @@
 
     <div class="d-flex justify-content-between align-items-center mt-5">
         <a class="btn small py-2" href="register.php">สมัครสมาชิก</a>
-        <button name="loginSubmit" class="btn btn-primary py-2" type="submit">ลงชื่อเข้าใช้</button>
+        <button name="loginSubmit" class="btn btn-primary py-2" type="submit" onclick="login()">ลงชื่อเข้าใช้</button>
     </div>
 
     <p class="mt-5 mb-3 text-body-secondary small">©2023 <?php echo APP['app']['name'];?> - เวอร์ชั่น <?php echo APP['app']['version'];?></p>
@@ -40,5 +40,5 @@
 </main>
 
 <?php
-    htmlFooter();
+    htmlFooter(jsOut(['../assets/js/login.js']));
 ?>

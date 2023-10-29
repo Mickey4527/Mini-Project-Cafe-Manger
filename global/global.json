@@ -65,10 +65,6 @@
             "icon": "bi bi-box-seam",
             "isOwner": true,
             "sub": {
-                "stock": {
-                    "title": "จัดการสต๊อกสินค้า",
-                    "url": "/seed/views/stock_manager.php"
-                },
                 "product": {
                     "title": "จัดการเมนูสินค้า",
                     "url": "/seed/views/product_manager.php"

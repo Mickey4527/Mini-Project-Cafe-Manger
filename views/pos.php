@@ -28,7 +28,7 @@
             <div class="border p-5 ">
             <div class="row ">
             <?php
-                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added,product_img','products');
+                    $result = getAllSql($conn,'product_id,product_name,product_type,product_stock,product_price,date_added,product_img','products');
                     if(!$result){
                         echo '<tr><td class="text-center" colspan="6">ไม่มีข้อมูล</td></tr>';
                     }
