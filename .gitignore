@@ -1,3 +1,2 @@
 global/conn.php
-global/DigiCertGlobalRootCA.crt.pem
-source/img/product/
+global/DigiCertGlobalRootCA.crt.pems
