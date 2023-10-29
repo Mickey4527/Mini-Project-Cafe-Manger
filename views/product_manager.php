@@ -23,9 +23,20 @@
         <div class="col-12">
             <div id="table">
                 <?php 
-                    $result = getAllSql($conn,'product_id,product_name,product_category,product_stock,product_price,date_added,product_img','products');
+
+                     $result = joinOnSql(  $conn,
+                                'products.product_id,products.product_name,products.product_type,
+                                products.product_stock,products.product_price,products.date_added,products.product_img,
+                                categories.cat_name',
+                                'products',
+                                'categories',
+                                'product_type',
+                                'cat_id'
+                            );
+
+                    //$result = getAllSql($conn,'product_id,product_name,product_type,product_stock,product_price,date_added,product_img','products');
                     table($result,'สินค้า','product_id',['รูปภาพ','ชื่อสินค้า','หมวดหมู่','จำนวน','ราคา','วันที่เปลี่ยนแปลง'],
-                    ['product_img','product_name','product_category','product_stock','product_price','date_added'],null,true,'product_img','../source/img/product/');
+                    ['product_img','product_name','cat_name','product_stock','product_price','date_added'],null,true,'product_img','../source/img/product/');
                 ?>
             </div>
         </div>
@@ -34,24 +45,24 @@
 
 <!--Modal Add Product-->
 <div class="modal" id="Addpro" tabindex="-1" aria-labelledby="AddproLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="AddproLabel">เพิ่มสินค้า</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-    <div class="modal-body">
-        <div class="container p-3">
-            <?php
-                echo formTemplate('addPro',CONFIG['form']['Product']['fields']);
-            ?>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="AddproLabel">เพิ่มสินค้า</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container p-3">
+                    <?php
+                        echo formTemplate("add",CONFIG['form']['Product']['fields']);
+                    ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+                <button name="save_product" type="submit" id="savePro" class="btn btn-primary">เพิ่ม</button>
+            </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-            <button name="add_product" type="submit" id="addPro" class="btn btn-primary">เพิ่ม</button>
-        </div>
-    </div>
-    </div>
     </div>
 </div>
 
@@ -72,6 +83,7 @@
 
 
 <div id="edit"></div>
+<div id="toast"></div>
 <?php
     htmlFooter(jsOut(['../assets/js/product.js']));
 ?>

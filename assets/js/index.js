@@ -17,7 +17,4 @@ function setDateNow(){
     document.getElementById("date").addEventListener("change", function(){
         document.getElementById("flexCheckDefault").checked = false;
     });
-
-    
-
 }

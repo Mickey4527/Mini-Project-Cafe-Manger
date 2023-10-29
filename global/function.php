@@ -77,6 +77,11 @@ function insertAnySql($conn,$table,$val,$val2){
     return $conn->query("INSERT INTO $table ($val) VALUES ($val2)");
 }
 
+function joinOnSql($conn,$val,$table,$table2,$key,$key2){
+    if($val === null || $table === null || $table2 === null || $key === null || $key2 === null)
+        return false;
+    return $conn->query("SELECT $val FROM $table INNER JOIN $table2 ON $table.$key = $table2.$key2");
+}
 // เช็คการมีข้อมูลในตาราง
 function checkValueSQL($conn,$table,$val,$val2){
     if($val === null || $table === null || $val2 === null)
@@ -111,7 +116,7 @@ function validate_fields($var){
     foreach ($var as $field) {
       $val = remove_junk($_POST[$field]);
       if(isset($val) && $val==''){
-        $errors = $field ." ไม่สามารถเป็นค่าว่างได้";
+        $errors = $field ." ไม่ได้ระบุ";
         return true;
       }
     }

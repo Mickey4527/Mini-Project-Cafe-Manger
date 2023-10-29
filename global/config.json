@@ -79,16 +79,24 @@
                     "required": true
                 },
                 {
+                    "type": "date",
+                    "name": "วันที่เพิ่มสินค้า",
+                    "id": "date_added",
+                    "placeholder": "Enter date",
+                    "value": "",
+                    "size": "12",
+                    "required": true
+                },
+                {
                     "type": "textarea",
                     "name": "รายละเอียดสินค้า",
-                    "id": "product_detail",
+                    "id": "product_desc",
                     "placeholder": "Enter detail",
                     "value": "",
                     "size": "12",
                     "rows": "5",
                     "required": true
                 }
-
             ]
         }
     }
