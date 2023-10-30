@@ -1,6 +1,7 @@
 <?php
     include_once('../conn.php');
     include_once '../function.php';
+    include_once '../layout.php';
 
     // เพิ่มข้อมูล 
     if(isset($_POST['submitCreateCat'])){
@@ -85,19 +86,19 @@
 
     //ลบข้อมูล
 
-    if(isset($_POST['Prodelete'])){
-        if(empty($_POST['Prodelete'])){
+    if(isset($_POST['Catdelete'])){
+        if(empty($_POST['Catdelete'])){
             toast('ไม่มีค่าข้อมูล','text-success','check-circle-fill');
             exit();
         }
         else{
-            $productId = $_POST['Prodelete'];
-            if(deleteAnySql($conn,'products','product_id',$productId)){
+            $categoryId = $_POST['Catdelete'];
+            if(deleteAnySql($conn,'categories','cat_id',$categoryId)){
                 toast('ลบข้อมูลเรียบร้อย','text-success','check-circle-fill');
                 exit();
             }
             else{
-                echo $productId.'error';
+                echo $categoryId.'error';
                 exit();
             }
         }

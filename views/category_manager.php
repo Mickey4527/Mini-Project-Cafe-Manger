@@ -47,6 +47,8 @@
     </div>
   </div>
 </div>
+
+
 <div class="modal" id="catCreate" tabindex="-1" aria-labelledby="catcreateLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -87,6 +89,10 @@
     </div>
   </div>
 </div>
+
+<div id="edit"></div>
+<div id="toast"></div>
 <?php
-    htmlFooter(jsOut(['../assets/js/category_manager.js']));
+    htmlFooter(jsOut(['../assets/js/category.js']));
 ?>
+
