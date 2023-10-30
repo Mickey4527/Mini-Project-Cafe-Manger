@@ -151,9 +151,7 @@ $(document).ready(function() {
                 $('#saveEditPro').attr('disabled', true);
             },
             success: function(response, status, xhr) {
-                console.log(response);
                 if(xhr.status == 200) {
-
                     $('#saveEditPro').modal('hide');
                     $('#notify').html(response);
                     const toast = new bootstrap.Toast(document.querySelector('.toast'));

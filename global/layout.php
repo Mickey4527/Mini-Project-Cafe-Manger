@@ -41,8 +41,8 @@ function table($result,$table_name,$table_id,$table_header,$table_body,$table_fo
             }
             $content .= '<td>'.$row[$name].'</td>';
         }
-        $content .= '<td><span class="btn small py-0 px-2" data-id="'.$row[$table_id].'" id="Edit-'.$row[$table_id].'">
-        <i class="bi bi-pencil-square text-cafe-brown-800"></i>แก้ไข</span>
+        $content .= '<td><button class="btn small py-0 px-2" data-id="'.$row[$table_id].'" id="Edit-'.$row[$table_id].'">
+        <i class="bi bi-pencil-square text-cafe-brown-800"></i>แก้ไข</button>
         <button class="btn small py-0 px-2" data-id="'.$row[$table_id].'" data-bs-toggle="modal" data-bs-target="#Delete">
         <i class="bi bi-trash-fill text-danger"></i>ลบ</button></td>';
         $content .= '</tr>';

@@ -38,12 +38,14 @@ function authLogin($conn,$email,$password){
 
     if($result->num_rows > 0){
         $row = $result->fetch_assoc();
-        $_SESSION['user_id'] = $row['user_id'];
-        $_SESSION['email'] = $row['email'];
-        $_SESSION['first_name'] = $row['first_name'];
-        $_SESSION['last_name'] = $row['last_name'];
-        $_SESSION['roles'] = $row['roles'];
-        return true;
+        return array(
+            'status' => true,
+            'user_id' => $row['user_id'],
+            'email' => $row['email'],
+            'first_name' => $row['first_name'],
+            'last_name' => $row['last_name'],
+            'roles' => $row['roles']
+        );
     }
 
     return false;
@@ -100,7 +102,23 @@ function updateAnySql($conn,$table,$val,$key,$keyVal)
 
 // สำหรับการลบข้อมูลในตาราง
 function deleteAnySql($conn,$table,$key,$keyVal){
-    return $conn->query("DELETE FROM $table WHERE $key = '$keyVal'");
+    try{
+        if($key === null || $table === null || $keyVal === null)
+            return (array(
+                'status' => false,
+                'error' => 'ไม่สามารถลบข้อมูลได้'
+            ));
+        return array(
+            'status' => true,
+            'result' => $conn->query("DELETE FROM $table WHERE $key = '$keyVal'")
+        );
+    }
+    catch(Exception $e){
+        return array(
+            'status' => false,
+            'error' => $e->getCode()
+        );
+    }
 }
 
 // ฟังก์ชั่นสำหรับลบอักขระ html toon--------------------------------------
