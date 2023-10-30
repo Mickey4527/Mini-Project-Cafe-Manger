@@ -36,6 +36,7 @@
             }
         }
     }
+    // สำหรับการแก้ไขบัญชี
     if(isset($_POST['submitEditUser'])){
         if(empty($_POST['EmpfirstName']) || empty($_POST['EmplastName']) || empty($_POST['Empemail'])){
             header('Location: ../../views/employee_manager.php?error=emptyfields');

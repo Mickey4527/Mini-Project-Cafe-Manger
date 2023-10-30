@@ -41,8 +41,8 @@ function table($result,$table_name,$table_id,$table_header,$table_body,$table_fo
             }
             $content .= '<td>'.$row[$name].'</td>';
         }
-        $content .= '<td><button class="btn small py-0 px-2" data-id="'.$row[$table_id].'" id="Edit">
-        <i class="bi bi-pencil-square text-cafe-brown-800"></i>แก้ไข</button>
+        $content .= '<td><span class="btn small py-0 px-2" data-id="'.$row[$table_id].'" id="Edit-'.$row[$table_id].'">
+        <i class="bi bi-pencil-square text-cafe-brown-800"></i>แก้ไข</span>
         <button class="btn small py-0 px-2" data-id="'.$row[$table_id].'" data-bs-toggle="modal" data-bs-target="#Delete">
         <i class="bi bi-trash-fill text-danger"></i>ลบ</button></td>';
         $content .= '</tr>';
@@ -114,6 +114,7 @@ function formTemplate($formId,$input, $inputVal = null){
                     $inputForm .= selectData($col['options']);
                 }
                 $inputForm .= '</select>';
+                $inputForm .= '<div class="invalid-feedback" id="invalid_'.$col['id'].'"></div>';
                 break;
             case 'textarea':
                 $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
@@ -141,6 +142,7 @@ function formTemplate($formId,$input, $inputVal = null){
             default:
                 $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
                 $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$formId.'-'.$col['id'].'" placeholder="'.$col['placeholder'].'" value="'.$inputVal[$col['id']].'">';
+                $inputForm .= '<div class="invalid-feedback" id="invalid_'.$col['id'].'"></div>';
                 break;
         }
         if(isset($col['description'])){

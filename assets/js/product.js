@@ -73,11 +73,18 @@ $(document).ready(function() {
             },
             error: function(xhr, status, error) {
                 if(xhr.status == 400) {
-                    //let error = JSON.parse(xhr.responseText);
-                    console.log(error);
+                    let error = JSON.parse(xhr.responseText);
                     if(error.type == 'img'){
-                        $('#product_img').addClass('is-invalid');
+                        $('#add-product_img').addClass('is-invalid');
                         $('#invalid_product_img').html(error.msg);
+                    }
+                    if(error.type == 'empty'){
+                        $('#add-product_name').addClass('is-invalid');
+                        $('#invalid_product_name').html(error.msg);
+                        $('#add-product_price').addClass('is-invalid');
+                        $('#invalid_product_price').html(error.msg);
+                        $('#add-product_stock').addClass('is-invalid');
+                        $('#invalid_product_stock').html(error.msg);
                     }
                 }
             }
@@ -93,8 +100,10 @@ $(document).ready(function() {
             data: {Proedit: id},
             beforeSend: function(){
                 $('[id^=Edit]').attr('disabled',true);
+                $('#loading').css('display', 'block');
             },
             success: function(response){
+                $('#loading').css('display', 'none');
                 $('#edit').html(response);
                 //show modal
                 $('#EditProduct').modal('show');
@@ -159,7 +168,7 @@ $(document).ready(function() {
                 if(xhr.status == 400) {
                     let error = JSON.parse(xhr.responseText);
                     if(error.type == 'img'){
-                        $('#product_img').addClass('is-invalid');
+                        $('#edit-product_img').addClass('is-invalid');
                         $('#invalid_product_img').html(error.msg);
                     }
                 }

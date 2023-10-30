@@ -19,11 +19,7 @@
                 <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
                     การตั้งค่าทั่วไป
                 </a>
-                <a href="#" class="list-group-item list-group-item-action">บัญชีผู้ใช้</a>
-                <a href="#" class="list-group-item list-group-item-action">บริษัท</a>
-                <a href="#" class="list-group-item list-group-item-action">สินค้า</a>
-                <a href="#" class="list-group-item list-group-item-action">ผู้ใช้</a>
-                <a href="#" class="list-group-item list-group-item-action">ออกจากระบบ</a>
+                <a href="../global/auth/logout.php" class="list-group-item list-group-item-action">ออกจากระบบ</a>
             </div>
         </div>
         <div class="col-9 border rounded-1 p-3">
