@@ -83,13 +83,16 @@
         }
         else{
             $categoryId = $_POST['Catdelete'];
-            if(deleteAnySql($conn,'categories','cat_id',$categoryId)){
+            $result = deleteAnySql($conn,'categories','cat_id',$categoryId);
+            if($result['status']){
                 toast('ลบข้อมูลเรียบร้อย','text-success','check-circle-fill');
                 exit();
             }
             else{
-                echo $categoryId.'error';
-                exit();
+              if($result['error'] === 1451){
+                toast('ไม่สามารถลบข้อมูลได้ เนื่องจากมีการใช้งานอยู่','text-danger','exclamation-triangle-fill');
+              }
+              exit();
             }
         }
       }

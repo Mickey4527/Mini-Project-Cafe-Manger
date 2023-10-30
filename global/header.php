@@ -9,7 +9,7 @@
 // output header of the page
 function htmlHeader($title, $style = null,$BodyClass = null, $lang = null){
     echo '<!DOCTYPE html><html lang="'.$lang.'" data-bs-theme="light"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>'.$title.' - '.
-    APP['app']['name'].'</title>'.cssOut(CONFIG['enqueue_style']).jsOut(CONFIG['enqueue_script']).'</head>'.$style.'<body class="'.$BodyClass.'">';
+    APP['app']['name'].'</title>'.cssOut(CONFIG['enqueue_style']).jsOut(CONFIG['enqueue_script']).'</head>'.$style.'<body class="'.$BodyClass.'"><div id="loading" class="loader-line"></div>';
 }
 
 // output footer of the page

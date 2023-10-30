@@ -4,19 +4,32 @@ include_once '../function.php';
 
 if (isset($_POST['loginSubmit'])){
     $password = $_POST['password'];
-    $email = $_POST['email'];
+    $email = $_POST['username'];
 
     if(empty($password) || empty($email)){
-        header("Location: ../../views/login.php?error=emptyfields");
+        http_response_code(400);
+        $res = array(
+            'type' => 'empty',
+            'msg' => 'โปรดกรอกข้อมูลให้ครบถ้วน'
+        );
+        echo json_encode($res);
         exit();
     }
 
-    if(authLogin($conn,$email,$password)){
+    $result = authLogin($conn,$email,$password);
+    if($result['status']){
         if(isset($_GET['callback']) && $_GET['callback'] != ''){
             header("Location: ".$_GET['callback']."");
             exit();
         }
-        header("Location: ../../views/index.php");
+
+        $_SESSION['user_id'] = $result['user_id'];
+        $_SESSION['email'] = $result['email'];
+        $_SESSION['first_name'] = $result['first_name'];
+        $_SESSION['last_name'] = $result['last_name'];
+        $_SESSION['roles'] = $result['roles'];
+
+        http_response_code(200);
         exit();
     }
     else{

@@ -46,7 +46,12 @@ if(isset($_POST['Proadd']) && $_POST['Proadd'] === 'add'){
 
   if(validate_fields($req_fields)){
     http_response_code(400);
-    echo "Please fill all fields";
+    $res = array(
+      'type' => 'empty',
+      'input' => 'name,price,unit',
+      'msg' => 'โปรดกรอกข้อมูลให้ครบถ้วน'
+    );
+    echo json_encode($res);
     exit();
   }
 
@@ -88,7 +93,7 @@ if(isset($_POST['saveProedit']) && $_POST['saveProedit'] === 'edit'){
   $req_fields = array('name','price','unit');
 
   if(validate_fields($req_fields)){
-    //http_response_code(400);
+    http_response_code(400);
     echo "Please fill all fields";
     exit();
   }

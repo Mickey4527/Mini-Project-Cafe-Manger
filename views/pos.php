@@ -114,10 +114,10 @@
                     <h1 class="text-center text-secondary">ชำระเงิน</h1>
                 </div>
                 <div class="col-12">
-                    <input type="text" class="form-control form-control-lg text-center" style="height: 75px; font-size: 75px;" id="paycash" placeholder="กรอกจำนวนเงินที่ชำระ" oninput="checkCash()" autofocus>
+                    <input type="text" class="form-control form-control-lg text-center" style="height: 75px; font-size: 75px;" id="paycash" placeholder="กรอกจำนวนเงินที่ชำระ" oninput="checkCash()">
                 </div>
                 <div class="col-12 mt-5">
-                    <button class="btn btn-primary w-100 mt-3" id="paycash_btn" style="height: 125px;">เสร็จสิ้นการขาย</button>
+                    <button class="btn btn-primary w-100 mt-3" id="paycash_btn" style="height: 125px;" disabled>เสร็จสิ้นการขาย</button>
                 </div>
             </div>
         </div>
@@ -137,9 +137,9 @@
         console.log("Net value: ", netValue);
 
         if (!isNaN(paycashValue) && paycashValue >= netValue) {
-            document.getElementById('paycash_btn').disabled = false;
+            document.getElementById('paycash_btn').disabled = false
         } else {
-            document.getElementById('paycash_btn').disabled = true;
+            document.getElementById('paycash_btn').disabled = false
         }
     }
 </script>
