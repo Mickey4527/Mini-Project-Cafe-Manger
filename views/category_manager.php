@@ -41,12 +41,14 @@
             <p class="mb-0">เมื่อลบข้อมูลแล้ว จะไม่สามารถกู้คืนกลับมาได้</p>
         </div>
         <div class="modal-footer flex-nowrap p-0">
-            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" id="confirm"><strong class="text-danger">ลบบัญชี</strong></button>
+            <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" id="confirm"><strong class="text-danger">ลบหมวดหมู่</strong></button>
             <button type="button" class="btn btn-lg btn-link fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">ยกเลิก</button>
         </div>
     </div>
   </div>
 </div>
+
+
 <div class="modal" id="catCreate" tabindex="-1" aria-labelledby="catcreateLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
@@ -87,6 +89,10 @@
     </div>
   </div>
 </div>
+
+<div id="edit"></div>
+<div id="toast"></div>
 <?php
-    htmlFooter(jsOut(['../assets/js/category_manager.js']));
+    htmlFooter(jsOut(['../assets/js/category.js']));
 ?>
+
