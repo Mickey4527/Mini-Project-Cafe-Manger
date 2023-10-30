@@ -17,9 +17,33 @@ function checkTime(i){
     }
     return i;
 }
+
 document.addEventListener("DOMContentLoaded", function(){
     showTime("time");
 });
+
+function checkCash() {
+    let paycashInput = document.getElementById('paycash_input');
+    let paycashValue = parseFloat(paycashInput.value);
+    let netElement = document.getElementById('net');
+    let netValue = parseFloat(netElement.innerText);
+
+    if (paycashValue >= netValue) {
+        document.getElementById('paycash_btn').disabled = false   
+        document.getElementById('paycash_btn').addEventListener('click',() => {
+            let myModalEl = document.getElementById('paycashModal')
+            let modal = bootstrap.Modal.getInstance(myModalEl)
+            modal.hide()
+            document.getElementById('receive').innerHTML = paycashValue;
+            document.getElementById('change').innerHTML = Math.ceil(paycashValue - netValue);
+            document.getElementById('pay').style.display = 'none';
+            document.getElementById('pay_final').style.display = 'block';
+        })
+    } else {
+        document.getElementById('paycash_btn').disabled = true
+    }
+}
+
 
 let list = [];
 function addList(id,name,price){
@@ -61,6 +85,25 @@ function pay(){
     document.getElementById('paycash').disabled = false;
 }
 
+function cancel(){
+    list = [];
+    document.getElementById('list').innerHTML = '';
+    document.getElementById('total').innerHTML = '';
+    document.getElementById('val').innerHTML = '';
+    document.getElementById('net').innerHTML = '';
+    document.getElementById('receive').innerHTML = '';
+    document.getElementById('change').innerHTML = '';
+    document.getElementById('paycash').disabled = true;
+    document.querySelectorAll('#product').forEach((item) => {
+        item.disabled = false;
+    });
+    document.getElementById('pay').disabled = false;
+    document.getElementById('pay_final').style.display = 'none';
+    document.getElementById('pay').style.display = 'block';
+    document.getElementById('cancel').disabled = true;
+    document.getElementById('cancel').disabled = true;
+}
+
 
 document.querySelectorAll('#product').forEach((item) => {
     item.addEventListener('click',() => {
@@ -72,6 +115,7 @@ document.getElementById('pay').addEventListener('click',() => {
         document.querySelectorAll('#product').forEach((item) => {
             item.disabled = true;
         });
+
         document.getElementById('pay').disabled = true;
         document.getElementById('cancel').disabled = false;
         pay();
@@ -92,4 +136,31 @@ document.getElementById('cancel').addEventListener('click',() => {
     });
     document.getElementById('pay').disabled = false;
     document.getElementById('cancel').disabled = true;
+});
+
+$('#pay_final').click(function() {
+    console.log(list);
+    $.ajax({
+        url: '../global/pos/pos.php',
+        type: 'post',
+        data: {list: list},
+        beforeSend: function(){
+            $('#pay_final').attr('disabled',true);
+        },
+        success: function(response, status, xhr){
+            $('#pay_final').attr('disabled',false);
+            if(xhr.status == 200){
+                console.log(response);
+                alert('success');
+                cancel();
+            }
+        },
+        error: function(xhr, status, error){
+            $('#pay_final').attr('disabled',false);
+            if(xhr.status == 400){
+                console.log(xhr.responseText);
+                alert('error');
+            }
+        }
+    });
 });

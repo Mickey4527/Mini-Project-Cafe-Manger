@@ -76,9 +76,23 @@ function getAllSql($conn,$val,$table){
 
 // สำหรับการแทรกข้อมูลในตาราง
 function insertAnySql($conn,$table,$val,$val2){
-    if($val === null || $table === null || $val2 === null)
-        return false;
-    return $conn->query("INSERT INTO $table ($val) VALUES ($val2)");
+    try{
+        if($val === null || $table === null || $val2 === null)
+            return (array(
+                'status' => false,
+                'error' => 'ไม่สามารถเพิ่มข้อมูลได้'
+            ));
+        return array(
+            'status' => true,
+            'result' => $conn->query("INSERT INTO $table ($val) VALUES ($val2)")
+        );
+    }
+    catch(Exception $e){
+        return array(
+            'status' => false,
+            'error' => $e->getCode()
+        );
+    }
 }
 
 function joinOnSql($conn,$val,$table,$table2,$key,$key2){
@@ -86,6 +100,7 @@ function joinOnSql($conn,$val,$table,$table2,$key,$key2){
         return false;
     return $conn->query("SELECT $val FROM $table INNER JOIN $table2 ON $table.$key = $table2.$key2");
 }
+
 // เช็คการมีข้อมูลในตาราง
 function checkValueSQL($conn,$table,$val,$val2){
     if($val === null || $table === null || $val2 === null)
@@ -97,9 +112,23 @@ function checkValueSQL($conn,$table,$val,$val2){
 
 function updateAnySql($conn,$table,$val,$key,$keyVal)
 {
-    if($val === null || $table === null || $key === null || $keyVal === null)
-        return false;
-    return $conn->query("UPDATE $table SET $val WHERE $key = '$keyVal'");
+    try{
+        if($val === null || $table === null || $key === null || $keyVal === null)
+            return (array(
+                'status' => false,
+                'error' => 'ไม่สามารถแก้ไขข้อมูลได้'
+            ));
+        return array(
+            'status' => true,
+            'result' => $conn->query("UPDATE $table SET $val WHERE $key = '$keyVal'")
+        );
+    }
+    catch(Exception $e){
+        return array(
+            'status' => false,
+            'error' => $e->getCode()
+        );
+    }
 }
 
 // สำหรับการลบข้อมูลในตาราง

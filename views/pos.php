@@ -65,10 +65,10 @@
             <div class="border py-5 px-1 row h-100">
                 <div class="col-12">
                     <span class="small text-secondary">รายการสินค้า</span>
-                    <div class="p-3" id="list" style="height: 120px;"></div>
+                    <div class="p-3" id="list" style="height: 160px; overflow: auto;"></div>
                 </div>
 
-                <div class="col-12">
+                <div class="col-12 d-flex flex-column justify-content-end">
                     <span class="small text-secondary">สรุปยอด</span>
                     <div class="row">
                         <div class="col-12 d-flex align-items-center">
@@ -92,7 +92,8 @@
 
                 <div class="col-12 d-flex flex-column justify-content-end h-0">
                     <button class="btn btn-primary w-100" id="pay" style="height: 75px;">ชำระเงิน</button>
-                    <button class="btn w-100 border mt-1" id="cancel" style="height: 75px;" disabled>ยกเลิก</button>
+                    <button class="btn btn-primary w-100" id="pay_final" style="display: none; height: 75px;">เสร็จสิ้นการขาย</button>
+                    <button class="btn w-100 border mt-1" id="cancel" style="height: 75px;" onclick="cancel()" disabled>ยกเลิก</button>
                 </div>
             </div>
         </div>
@@ -114,7 +115,7 @@
                     <h1 class="text-center text-secondary">ชำระเงิน</h1>
                 </div>
                 <div class="col-12">
-                    <input type="text" class="form-control form-control-lg text-center" style="height: 75px; font-size: 75px;" id="paycash" placeholder="กรอกจำนวนเงินที่ชำระ" oninput="checkCash()">
+                    <input type="number" class="form-control form-control-lg text-center" style="height: 75px; font-size: 75px;" id="paycash_input" placeholder="กรอกจำนวนเงินที่ชำระ" oninput="checkCash()">
                 </div>
                 <div class="col-12 mt-5">
                     <button class="btn btn-primary w-100 mt-3" id="paycash_btn" style="height: 125px;" disabled>เสร็จสิ้นการขาย</button>
@@ -127,21 +128,6 @@
 </div>
 
 <script>
-    function checkCash() {
-        var paycashInput = document.getElementById('paycash').value;
-        var paycashValue = parseFloat(paycashInput.value);
-        var netElement = document.getElementById('net');
-        var netValue = parseFloat(netElement.innerText);
-
-        console.log("Paycash value: ", paycashValue);
-        console.log("Net value: ", netValue);
-
-        if (!isNaN(paycashValue) && paycashValue >= netValue) {
-            document.getElementById('paycash_btn').disabled = false
-        } else {
-            document.getElementById('paycash_btn').disabled = false
-        }
-    }
 </script>
 
 <?php
