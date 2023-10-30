@@ -59,6 +59,12 @@
             "icon": "bi bi-person-fill-gear",
             "isOwner": true
         },
+        "product_report":{
+            "title": "รายงานสินค้า",
+            "url": "report_sale.php",
+            "icon": "bi bi-file-earmark-bar-graph",
+            "isOwner": true
+        },
         "product_manager":{
             "title": "จัดการสินค้า",
             "url": "",

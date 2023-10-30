@@ -1,3 +1,4 @@
+@import '/seed/node_modules/animate.css/animate.css';
 @font-face {
     font-family: 'Noto Sans Thai Regular';
     src: url(/assets/fonts/NotoSansThai.ttf) format('truetype');
@@ -181,3 +182,14 @@ html,body {
 }
 
 
+.modal{
+    animation: zoomIn !important;
+    animation-duration: 0.2s !important;
+    transition: animation 0.2s linear !important;
+}
+.modal-content{
+    border: none !important;
+}
+.btn-close{
+    
+}

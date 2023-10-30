@@ -78,7 +78,7 @@ function modalForm($ModalId, $header, $content,$footer = false,$content_footer =
     $content_footer = $content_footer === null ? $button : $content_footer;
     $footer = $footer === false ? '' : '<div class="modal-footer">'.$content_footer.'</div>';
 
-    echo '<div class="modal fade" id="'.$ModalId.'" tabindex="-1" aria-labelledby="'.$ModalId.'Label" aria-hidden="true">
+    echo '<div class="modal" id="'.$ModalId.'" tabindex="-1" aria-labelledby="'.$ModalId.'Label" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
