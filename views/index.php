@@ -14,7 +14,7 @@
     navbar();
 ?>
 <div class="container p-5">
-    <h1 class="h3">สวัสดี <?php echo $_SESSION['user']['name'];?></h1>
+    <h1 class="h3">สวัสดี <?php echo $_SESSION['first_name'];?></h1>
     <?php
         checkGetttingStart();
     ?>
