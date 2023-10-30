@@ -5,6 +5,10 @@
     include_once('../global/navbar.php');
     include_once('../global/layout.php');
 
+    if(!checkLogin()){
+        header('Location: login.php?callback='.$_SERVER['REQUEST_URI']);
+    }
+
     htmlHeader('จัดการหมวดหมู่',null,'d-flex bg-cafe-white');
     navbar();
 

@@ -28,4 +28,73 @@ $(document).ready(function() {
             });
         });
     });
+
+
+    // ถ้ากดแก้ไขบัญชี ให้ดึงข้อมูลมาแสดงใน modal
+
+    $('[id^=Edit]').click(function(){
+        let id = $(this).data('id');
+        $.ajax({
+            url: '../global/product/cat.php',
+            type: 'post',
+            data: {Catedit: id},
+            beforeSend: function(){
+                $('[id^=Edit]').attr('disabled',true);
+            },
+            success: function(response){
+                $('#edit').html(response);
+                //show modal
+                $('#EditCategory').modal('show');
+                $('[id^=Edit]').attr('disabled',false);
+            },
+        });
+    });
+
+
+    $('body').on('change', '.is-invalid', function(){
+        $(this).removeClass('is-invalid');
+        $(this).next().html('');
+    });
+    
+    $(document).on('click', '#saveEditCat', function(event) { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+        event.preventDefault();
+
+        let id = $('#edit-cat_id').val();
+        let name = $('#edit-cat_name').val();
+        let desc = $('#edit-cat_desc').val();
+        let color = $('#edit-color').val();
+
+        let formData = new FormData();
+        formData.append('saveCatedit', 'edit');
+        formData.append('id', id);
+        formData.append('name', name);
+        formData.append('desc', desc);
+        formData.append('color', color);
+
+        $.ajax({
+            url: '../global/product/cat.php',
+            type: 'post',
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function() {
+                $('#saveEditCat').attr('disabled', true);
+            },
+            success: function(response, status, xhr) {
+                console.log(response);
+                if(xhr.status == 200) {
+
+                    $('#saveEditCat').modal('hide');
+                    $('#notify').html(response);
+                    const toast = new bootstrap.Toast(document.querySelector('.toast'));
+                    toast.show();
+                    $('#table').css('opacity', '0.5');
+                    setTimeout(function(){
+                        window.location.reload();
+                    }, 2000);
+                }
+            },
+
+        });
+    });
 });
