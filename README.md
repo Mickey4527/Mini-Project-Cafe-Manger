@@ -11,7 +11,7 @@
 + [Excel ข้อมูล, ตาราง, รูปประกอบ](https://mailrmuttac-my.sharepoint.com/:x:/g/personal/1164109051311_mail_rmutt_ac_th/EeM59Yh529RClZh2KcGH-RwBCQoQnuh4ZBjJDD42kF1ZqQ?e=K02Clp&nav=MTVfe0UzMzI3RjA5LUE5NTctNDY0RS05NEVCLUNFRjM4ODBFQjg0OH0)
 + [MsWord เล่มโครงงาน](https://mailrmuttac-my.sharepoint.com/:w:/g/personal/1164109050834_mail_rmutt_ac_th/EVoxOPICQLNOlR3Os3zXfJUB_4y-54cq6vF33k4R58UFgQ?e=Y0dhyo)
 + [Structural ระบบจัดการร้านกาแฟ](https://drive.google.com/file/d/10tnQR85ry4G7kxlfGzbBJACbgS88NZxF/view?usp=sharing)
-+ [Canva สไลด์](https://www.canva.com/design/DAFyqBbLcTg/tiXLjFfqj8ZIqurpWdHjHg/edit)
++ [Canva สไลด์]([https://www.canva.com/design/DAFyqBbLcTg/tiXLjFfqj8ZIqurpWdHjHg/edit](https://www.canva.com/design/DAFyvoDxEiw/INDAWLqc02l5BzKQAY2wMQ/edit?ui=eyJBIjp7IkIiOnsiQiI6dHJ1ZX19LCJFIjp7IkE_IjoiQSJ9LCJHIjp7IkciOiJCIn19))
 
 ## Roadmap
 
