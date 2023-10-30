@@ -15,7 +15,7 @@
           $categoryId = $_POST['Catedit'];
           $result = getAnySql($conn,'cat_id,cat_name,cat_desc,color','categories','cat_id',$categoryId);
           $row = $result->fetch_assoc();
-          echo modalForm('EditCategory','แก้ไขหมวดหมู่', formTemplate('edit',CONFIG['form']['Category']['fields'], $row),true,null,'EditCat');
+          echo modalForm('EditCategory','แก้ไขหมวดหมู่', formTemplate('edit',CONFIG['form']['categories']['fields'], $row),true,null,'EditCat');
           exit();
       }
     }   
