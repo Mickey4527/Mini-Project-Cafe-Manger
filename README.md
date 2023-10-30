@@ -12,6 +12,7 @@
 + [MsWord เล่มโครงงาน](https://mailrmuttac-my.sharepoint.com/:w:/g/personal/1164109050834_mail_rmutt_ac_th/EVoxOPICQLNOlR3Os3zXfJUB_4y-54cq6vF33k4R58UFgQ?e=Y0dhyo)
 + [Structural ระบบจัดการร้านกาแฟ](https://drive.google.com/file/d/10tnQR85ry4G7kxlfGzbBJACbgS88NZxF/view?usp=sharing)
 + [Canva สไลด์](https://www.canva.com/design/DAFyvoDxEiw/INDAWLqc02l5BzKQAY2wMQ/edit?ui=eyJBIjp7IkIiOnsiQiI6dHJ1ZX19LCJFIjp7IkE_IjoiQSJ9LCJHIjp7IkciOiJCIn19)
++ [คู่มือการใช้งานระบบจัดการร้านกาแฟ](https://1drv.ms/w/s!As9sLCSdOV99gYBGQI8m9uUgS-rjuQ?e=6nUfqi)
 
 ## Roadmap
 
