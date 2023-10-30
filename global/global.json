@@ -60,8 +60,8 @@
             "isOwner": true
         },
         "product_report":{
-            "title": "รายงานสินค้า",
-            "url": "report_sale.php",
+            "title": "รายงานการขาย",
+            "url": "/seed/views/report_sale.php",
             "icon": "bi bi-file-earmark-bar-graph",
             "isOwner": true
         },
