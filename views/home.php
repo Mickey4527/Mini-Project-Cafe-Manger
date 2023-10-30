@@ -18,9 +18,7 @@
         <header>
             <a href="#" ><img src="../source/img/home/logo.png" class="logo"></a>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="login.php">login</a>
         </header>
         <div class="content">
             <div class="textBox">
