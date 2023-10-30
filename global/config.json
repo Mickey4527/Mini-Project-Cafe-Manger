@@ -135,6 +135,33 @@
                     "required":true
                 }
             ]
+        },
+        "employees":{
+            "fields": [
+                {
+                    "type":"hidden",
+                    "name":"รหัสพนักงาน",
+                    "id":"emp_id"
+                },
+                {
+                    "type":"text",
+                    "name":"ชื่อพนักงาน",
+                    "id":"emp_name",
+                    "placeholder":"Enter name",
+                    "value":"",
+                    "size":"6",
+                    "required":true
+                },
+                {
+                    "type":"text",
+                    "name":"นามสกุลพนักงาน",
+                    "id":"emp_surname",
+                    "placeholder":"Enter surname",
+                    "value":"",
+                    "size":"6",
+                    "required":true
+                }
+            ]
         }
     }
 }

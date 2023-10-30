@@ -15,8 +15,9 @@
     htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-cafe-body');
     $_GET['callback'] = isset($_GET['callback']) ? $_GET['callback'] : '';
 ?>
-<main class="form-signin px-5 pt-5 w-100 m-auto bg-cafe-white border rounded">
-  <form name="loginForm" >
+<main class="form-signin p-0 w-100 m-auto bg-cafe-white border rounded">
+  <div id="loading-login" class="loader-line" style="position: relative;"></div>
+  <form name="loginForm" class="px-5 pt-5">
     <h6 class="mb-4">Code name : <?php echo APP['app']['name'];?></h6>
 
     <h1 class="h4 fw-normal">ลงชื่อเข้าใช้งาน</h1>

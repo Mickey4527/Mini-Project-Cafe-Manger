@@ -31,20 +31,28 @@ $(document).ready(function() {
             type: 'post',
             data: {loginSubmit: true, username: username, password: password, callback: callback},
             beforeSend: function(){
+                $('#username').attr('disabled',true);
+                $('#password').attr('disabled',true);
                 $('#loginSubmit').attr('disabled',true);
-                $('#loading').css('display', 'block');
+                $('#loading-login').css('display', 'block');
             },
             success: function(response, status, xhr) {
-                $('#loading').css('display', 'none');
+                $('#loading-login').css('display', 'none');
                 if(xhr.status == 200){
                     window.location.href = 'index.php';
                 }
             },
             error: function(xhr, status, error) {
                 if(xhr.status == 400) {
+                    $('#loading-login').css('display', 'none');
+                    $('#username').attr('disabled',false);
+                    $('#password').attr('disabled',false);
                     let error = JSON.parse(xhr.responseText);
-                    $('#invalid_feedback').addClass('is-invalid');
-                    $('#invalid_feedback').html(error.msg);
+                    if(error.type == 'invalid'){
+                        $('#invalid_feedback').css('display', 'block');
+                        $('#invalid_feedback').html(error.msg);
+                    }      
+                    $('#loginSubmit').attr('disabled',false);
                 }
             }
         });

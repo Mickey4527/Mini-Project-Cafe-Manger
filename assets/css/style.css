@@ -1,14 +1,11 @@
 @font-face {
-    font-family: 'Noto Sans Thai', sans-serif;
-    src: url(/assets/fonts/NotoSans/NotoSansThai.ttf);
+    font-family: 'Noto Sans Thai Regular';
+    src: url(/assets/fonts/NotoSansThai.ttf) format('truetype');
 }
 *{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: 'Noto Sans Thai', sans-serif;
-}
-h1,h2,h3,h4,h5,h6{
     font-family: 'Noto Sans Thai', sans-serif;
 }
 :root{
