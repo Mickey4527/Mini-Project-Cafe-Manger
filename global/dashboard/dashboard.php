@@ -7,7 +7,7 @@
                     <p class="text-center text-secondary mb-4">นี้เป็นครั้งแรกที่คุณเข้ามาใช้งานใช่มั้ย? เรียนรู้วิธีการใช้งานได้ที่นี่</p>
                 </div>
                 <div class="col-6">
-                  '.CardSetup('เพิ่มสินค้า','เพิ่มสินค้าเข้าสู่ระบบของคุณ','<a href="#" class="btn btn-primary">เพิ่มสินค้า</a>','plus').'
+                  '.CardSetup('เพิ่มสินค้า','เพิ่มสินค้าเข้าสู่ระบบของคุณ','<a href="product_manager.php" class="btn btn-primary">เพิ่มสินค้า</a>','plus').'
                 </div> 
               </div>';
       }
