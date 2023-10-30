@@ -48,7 +48,9 @@ function authLogin($conn,$email,$password){
         );
     }
 
-    return false;
+    return array(
+        'status' => false
+    );
 }
 // สำหรับการลงทะเบียน
 function authRegister($conn,$email,$password,$firstName,$lastName){

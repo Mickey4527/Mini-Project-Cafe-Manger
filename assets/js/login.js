@@ -39,14 +39,14 @@ $(document).ready(function() {
                 if(xhr.status == 200){
                     window.location.href = 'index.php';
                 }
-                else{
-                    $('#loginSubmit').attr('disabled',false);
-                    $('#notify').html(response);
-                    const toast = new bootstrap.Toast(document.querySelector('.toast'));
-                    toast.show();
-                    return false;
-                }
             },
+            error: function(xhr, status, error) {
+                if(xhr.status == 400) {
+                    let error = JSON.parse(xhr.responseText);
+                    $('#invalid_feedback').addClass('is-invalid');
+                    $('#invalid_feedback').html(error.msg);
+                }
+            }
         });
     });
     $('#username').keyup(function(){

@@ -55,9 +55,8 @@
         $id = $_POST['id'];
         $name = $_POST['name'];
         $desc = $_POST['desc'];
-        $color = $_POST['color'];
+        $color =  substr($_POST['color'],1);
       
-        
         if(updateAnySql($conn,'categories',"cat_name = '$name',cat_desc = '$desc',color = '$color'","cat_id",$id)){
             http_response_code(200);
             toast('แก้ไขสินค้าเรียบร้อย','text-success','check-circle-fill');
@@ -67,10 +66,7 @@
             http_response_code(200);
             toast('แก้ไขสินค้าไม่สำเร็จ','text-danger','exclamation-triangle-fill');
             exit();
-          }
-        
-        
-        
+          }     
       }
 
 

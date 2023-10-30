@@ -102,6 +102,11 @@
         "categories":{
             "fields": [
                 {
+                    "type":"hidden",
+                    "name":"รหัสหมวดหมู่",
+                    "id":"cat_id"
+                },
+                {
                     "type":"text",
                     "name":"ชื่อหมวดหมู่",
                     "id":"cat_name",
@@ -113,7 +118,7 @@
                 {
                     "type":"color",
                     "name":"สีหมวดหมู่",
-                    "id":"cat_color",
+                    "id":"color",
                     "placeholder":"Enter color",
                     "value":"",
                     "size":"6",

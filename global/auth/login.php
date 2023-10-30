@@ -33,7 +33,12 @@ if (isset($_POST['loginSubmit'])){
         exit();
     }
     else{
-        header("Location: ../../views/login.php?error=wrongpassword");
+        http_response_code(400);
+        $res = array(
+            'type' => 'invalid',
+            'msg' => 'อีเมลหรือรหัสผ่านไม่ถูกต้อง'
+        );
+        echo json_encode($res);
         exit();
     }
 

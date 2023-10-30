@@ -139,6 +139,11 @@ function formTemplate($formId,$input, $inputVal = null){
                                 </div>';
                 $inputForm .= '<div class="invalid-feedback" id="invalid_'.$col['id'].'"></div>';
                 break;
+            case 'color':
+                $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
+                $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$formId.'-'.$col['id'].'" value="#'.$inputVal[$col['id']].'">';
+                $inputForm .= '<div class="invalid-feedback" id="invalid_'.$col['id'].'"></div>';
+                break;
             default:
                 $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
                 $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$formId.'-'.$col['id'].'" placeholder="'.$col['placeholder'].'" value="'.$inputVal[$col['id']].'">';
