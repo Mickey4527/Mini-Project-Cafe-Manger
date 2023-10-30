@@ -98,6 +98,38 @@
                     "required": true
                 }
             ]
+        },
+        "categories":{
+            "fields": [
+                {
+                    "type":"text",
+                    "name":"ชื่อหมวดหมู่",
+                    "id":"cat_name",
+                    "placeholder":"Enter name",
+                    "value":"",
+                    "size":"6",
+                    "required":true
+                },
+                {
+                    "type":"color",
+                    "name":"สีหมวดหมู่",
+                    "id":"cat_color",
+                    "placeholder":"Enter color",
+                    "value":"",
+                    "size":"6",
+                    "required":true
+                },
+                {
+                    "type":"textarea",
+                    "name":"รายละเอียดหมวดหมู่",
+                    "id":"cat_desc",
+                    "placeholder":"Enter detail",
+                    "value":"",
+                    "size":"12",
+                    "rows":"5",
+                    "required":true
+                }
+            ]
         }
     }
 }
