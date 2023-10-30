@@ -37,7 +37,6 @@ $(document).ready(function() {
                 $('#loading-login').css('display', 'block');
             },
             success: function(response, status, xhr) {
-                $('#loading-login').css('display', 'none');
                 if(xhr.status == 200){
                     window.location.href = 'index.php';
                 }

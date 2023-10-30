@@ -8,18 +8,24 @@
     if(!checkLogin()){
         header('Location: login.php');
     }
-
+    if($_SESSION['roles'] != 'manager'){
+        header('Location: index.php');
+    }
     htmlHeader('จัดการบัญชีพนักงาน',null,'d-flex bg-cafe-white');
     navbar();
 
     $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone,creation_date','employees_account','roles','employee');
 ?>
 <div class="container-fluid p-5">
-    <div class="col-12 d-flex justify-content-between align-items-center">
-        <h1 class="h3">จัดการบัญชีพนักงาน</h1>
-        <form class="d-flex mt-3 mt-lg-0" role="search">
-            <input class="form-control me-2" type="search" placeholder="ค้นหารายชื่อ" aria-label="Search">
-          </form>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-9">
+                 <h1 class="h3">จัดการบัญชีพนักงาน</h1>
+            </div>
+            <div class="col-3">
+            <input class="form-control me-2" type="search" placeholder="ค้นหารายชื่อ" aria-label="Search" id="search">
+            </div>
+        </div>   
     </div>
     <div class="row">
         <div class="col-12 my-3 d-flex justify-content-between align-items-center">
@@ -30,7 +36,11 @@
                 <span class="text-secondary">จำนวนพนักงานทั้งหมด <?php echo $result->num_rows;?> คน</span>
             </div>
         </div>
-        <div class="col-12">
+        <div class="col-12" id="table-content">
+            <div class="my-2">
+                <div id="loading-search" class="loader-line" style="position: relative;"></div>
+            </div>
+
             <div id="table">
                 <?php table($result,'พนักงาน','user_id',['รหัสพนักงาน','ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่สร้าง'],['user_id','first_name','last_name','email','telephone','creation_date']);?>
             </div>

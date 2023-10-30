@@ -30,3 +30,20 @@ $('#Delete').on('show.bs.modal', function (event) {
         });
     });
 });
+
+// search employee
+$('#search').keyup(function(){
+    let search = $('#search').val();
+    $.ajax({
+        url: '../global/employee/employee.php',
+        type: 'post',
+        data: {search: search},
+        beforeSend: function(){
+            $('#loading-search').css('display', 'block');
+        },
+        success: function(response){
+            $('#loading-search').css('display', 'none');
+            $('#table').html(response);
+        }
+    });
+});
