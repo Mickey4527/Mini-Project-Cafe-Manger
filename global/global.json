@@ -46,30 +46,37 @@
         "home": {
             "title": "หน้าแรก",
             "url": "/seed/views/index.php",
-            "icon": "bi bi-house-fill"
+            "icon": "bi bi-house-fill",
+            "isOwner": true,
+            "isEmployee": true
         },
         "pos":{
             "title": "ขายหน้าร้าน",
             "url": "/seed/views/pos.php",
-            "icon": "bi bi-cash-stack"
+            "icon": "bi bi-cash-stack",
+            "isOwner": true,
+            "isEmployee": true
         },
         "employee_manager": {
             "title": "จัดการบัญชีพนักงาน",
             "url": "/seed/views/employee_manager.php",
             "icon": "bi bi-person-fill-gear",
-            "isOwner": true
+            "isOwner": true,
+            "isEmployee": false
         },
         "product_report":{
             "title": "รายงานการขาย",
             "url": "/seed/views/report_sale.php",
             "icon": "bi bi-file-earmark-bar-graph",
-            "isOwner": true
+            "isOwner": true,
+            "isEmployee": false
         },
         "product_manager":{
             "title": "จัดการสินค้า",
             "url": "",
             "icon": "bi bi-box-seam",
             "isOwner": true,
+            "isEmployee": true,
             "sub": {
                 "product": {
                     "title": "จัดการเมนูสินค้า",

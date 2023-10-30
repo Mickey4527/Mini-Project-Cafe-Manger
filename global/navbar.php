@@ -4,44 +4,58 @@
 //
 
 // สำหรับเรียกใช้ลิงค์ที่กำหนดไว้ในไฟล์ global/app.json
-  function menuNavbar(){
+  function menuList(){
     $list_menu = '';
-    $sub_menu = '';
-    $toggle = '';
     $url = explode('?',$_SERVER['REQUEST_URI']);
+    $role = $_SESSION['roles'];
 
     foreach(APP['menu'] as $menu){
-      if(isset($menu['sub'])){
-        $toggle = 'data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true"';
-        $sub_menu .= '<div class="collapse show" id="dashboard-collapse"><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">';
-        foreach($menu['sub'] as $sub){
-          $sub_menu .= ($sub['url'] == $url[0]) ? '<li><a class="nav-link text-cafe-dark ms-4 py-2 active" href="'.$sub['url'].'">'.$sub['title'].'</a></li>' : '<li><a class="nav-link text-cafe-dark ms-4 py-2" href="'.$sub['url'].'">'.$sub['title'].'</a></li>';
-        }
-        $sub_menu .= '</ul></li>';
+      if($role == 'manager' && $menu['isOwner']){
+        $list_menu .= menu($menu,$url);
+        continue;
       }
-
-      // ถ้า $_SERVER['REQUEST_URI'] มี ? ให้ตัดเอาเฉพาะ url ไม่เอาค่าที่อยู่หลัง ?
-      if($menu['url'] == $url[0]){
-          $list_menu .= '<li class="nav-item">';
-          $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark dropdown-toggle active" '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark active">';
-          $list_menu .= '<i class="'.$menu['icon'].'"></i>
-                '.$menu['title'].'
-            </a>
-            '.$sub_menu.'
-          </li>';
-          continue;
+      else if($role == 'employee' && $menu['isEmployee']){
+        $list_menu .= menu($menu,$url);
+        continue;
       }
-      
-      $list_menu .= '<li class="nav-item">';
-      $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark dropdown-toggle" '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark-800">';
-      $list_menu .= '<i class="'.$menu['icon'].'"></i>
-            '.$menu['title'].'
-        </a>
-        '.$sub_menu.'
-      </li>';
     }
     return $list_menu;
   }
+
+function menu($menu,$url){
+  $list_menu = '';
+  $sub_menu = '';
+
+  if(isset($menu['sub'])){
+    $toggle = 'data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="true"';
+    $sub_menu .= '<div class="collapse show" id="dashboard-collapse"><ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">';
+    foreach($menu['sub'] as $sub){
+      $sub_menu .= ($sub['url'] == $url[0]) ? '<li><a class="nav-link text-cafe-dark ms-4 py-2 active" href="'.$sub['url'].'">'.$sub['title'].'</a></li>' : '<li><a class="nav-link text-cafe-dark ms-4 py-2" href="'.$sub['url'].'">'.$sub['title'].'</a></li>';
+    }
+    $sub_menu .= '</ul></li>';
+    }
+
+  // ถ้า $_SERVER['REQUEST_URI'] มี ? ให้ตัดเอาเฉพาะ url ไม่เอาค่าที่อยู่หลัง ?
+    if($menu['url'] == $url[0]){
+        $list_menu .= '<li class="nav-item">';
+        $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark dropdown-toggle active" '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark active">';
+        $list_menu .= '<i class="'.$menu['icon'].'"></i>
+              '.$menu['title'].'
+          </a>
+          '.$sub_menu.'
+        </li>';
+        return $list_menu;
+    }
+
+  $list_menu .= '<li class="nav-item">';
+  $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark dropdown-toggle" '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark-800">';
+  $list_menu .= '<i class="'.$menu['icon'].'"></i>
+        '.$menu['title'].'
+    </a>
+    '.$sub_menu.'
+  </li>';
+  return $list_menu;
+}
 // โครงสร้างของ Navbar
   function layoutNavbar($nav = null){
     return '<main class="d-flex flex-nowrap" id="side-open">
@@ -70,6 +84,6 @@
   }
 // เรียกใช้งาน Navbar
   function navbar(){
-    echo layoutNavbar(menuNavbar());
+    echo layoutNavbar(menuList());
   }
 ?>

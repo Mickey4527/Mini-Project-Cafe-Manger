@@ -33,7 +33,8 @@
                                 'product_type',
                                 'cat_id'
                             );
-
+                            
+                            
                     //$result = getAllSql($conn,'product_id,product_name,product_type,product_stock,product_price,date_added,product_img','products');
                     table($result,'สินค้า','product_id',['รูปภาพ','ชื่อสินค้า','หมวดหมู่','จำนวน','ราคา','วันที่เปลี่ยนแปลง'],
                     ['product_img','product_name','cat_name','product_stock','product_price','date_added'],null,true,'product_img','../source/img/product/');
