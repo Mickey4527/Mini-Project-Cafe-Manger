@@ -9,7 +9,16 @@
         header('Location: login.php');
     }
 
-    htmlHeader('รายงานการขาย',null,'d-flex bg-cafe-white');
+    $css = styleOnly('
+    .edit{
+        display: none;
+    }
+    ');
+    if(checkLogin()){
+        header('Location: index.php');
+    }
+
+    htmlHeader('รายงานการขาย',$css,'d-flex align-items-center py-4');
     navbar();
 
     $result = querySql($conn,'select sum(price) as price, trace_id, max(sale_date) as sale_date from history_sales group by trace_id');
