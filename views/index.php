@@ -17,12 +17,43 @@
 
 <div class="container-fluid p-5">
     <h1 class="h3">สวัสดี <?php echo $_SESSION['first_name'];?></h1>
+    <div class="row mb-4 p-4">
     <?php
         checkGetttingStart();
-        if(checkManager()){
-            echo '<canvas id="myChart" style="width:100%;"></canvas>';
-        }
+        if(checkManager()){?>
+        <div class="col-5 border bg-body p-4 rounded">
+            <h2 class="h5">รายงานการขาย</h2>
+            <small class="text-secondary">รายงานการขายช่วง 7 วันที่ผ่านมา</small>
+            <canvas id="myChart" style="width:100%;"></canvas>
+        </div>
+        <div class="col-5 mx-3">
+            <div class="row">
+                <div class="col-6 border bg-body p-4 rounded">
+                    <h2 class="h5 text-secondary">จำนวนพนักงานทั้งหมด</h2>
+                    <small class="h1">
+                        <?php
+                            $result = getAllSql($conn,'COUNT(user_id) AS count','employees_account');
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row['count'];
+                        ?>
+                    </small>
+                </div>
+                <div class="col-6 border bg-body p-4 rounded">
+                    <h2 class="h5 text-secondary">จำนวนสินค้า</h2>
+                    <small class="h1">
+                        <?php
+                            $result = getAllSql($conn,'COUNT(product_id) AS count','products');
+                            $row = mysqli_fetch_assoc($result);
+                            echo $row['count'];
+                        ?>
+                    </small>
+                </div>
+            </div>
+
+        </div>
+    <?php  }
     ?>
+    </div>
 </div>
 
 <?php if(checkManager()){?>
@@ -62,7 +93,7 @@ new Chart("myChart", {
   data: {
     labels: xValues,
     datasets: [{
-        label: 'รายได้ในช่วง 7 วันที่ผ่านมา',
+        label: 'รายได้ในแต่ละวัน',
         backgroundColor: barColors,
         data: yValues
     }]
