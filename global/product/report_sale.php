@@ -11,7 +11,7 @@
         }
         else{
             $reportId = $_POST['Saledelete'];
-            $result = deleteAnySql($conn,'history_sales','sale_id',$reportId);
+            $result = deleteAnySql($conn,'history_sales','trace_id',$reportId);
             if($result['status']){
                 toast('ลบข้อมูลเรียบร้อย','text-success','check-circle-fill');
                 exit();

@@ -30,6 +30,25 @@ $('#Delete').on('show.bs.modal', function (event) {
         });
     });
 });
+$('[id^=Edit]').click(function(){
+    let id = $(this).data('id');
+    $.ajax({
+        url: '../global/employee/employee.php',
+        type: 'post',
+        data: {Proedit: id},
+        beforeSend: function(){
+            $('[id^=Edit]').attr('disabled',true);
+            $('#loading').css('display', 'block');
+        },
+        success: function(response){
+            $('#loading').css('display', 'none');
+            $('#edit').html(response);
+            //show modal
+            $('#EditProduct').modal('show');
+            $('[id^=Edit]').attr('disabled',false);
+        },
+    });
+});
 
 // search employee
 $('#search').keyup(function(){
