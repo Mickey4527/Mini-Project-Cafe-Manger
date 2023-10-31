@@ -13,7 +13,7 @@
     htmlHeader('Home',null,'d-flex bg-cafe-white');
     navbar();
 ?>
-<script src="/seed/node_modules/chart.js/dist/chart.umd.js"></script>
+<script src="/node_modules/chart.js/dist/chart.umd.js"></script>
 
 <div class="container-fluid p-5">
     <h1 class="h3">สวัสดี <?php echo $_SESSION['first_name'];?></h1>
