@@ -11,7 +11,7 @@
     htmlHeader('Settings',null,'d-flex bg-cafe-white');
     navbar();
 ?>
-<div class="container p-5">
+<div class="container p-5"  style="overflow: scroll;">
     <h1>การตั้งค่า</h1>
     <div class="row mt-5">
         <div class="col-3">

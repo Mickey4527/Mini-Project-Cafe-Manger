@@ -11,12 +11,36 @@
     .form-signin{
         max-width: 550px;
     }
+    body::before{
+      content: "";
+      background-image: url(../assets/img/bg.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      filter: blur(5px);
+      z-index: -1;
+    }
+    body::after{
+      content: "";
+      background-color: rgba(0,0,0,0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
     ');
 
-    htmlHeader('Register',$css,'d-flex align-items-center py-4 bg-body-tertiary');
+    htmlHeader('Register',$css,'d-flex align-items-center py-4');
 ?>
 
-<main class="form-signin px-5 pt-5 w-100 m-auto bg-body border rounded">
+<main class="form-signin px-5 pt-5 w-100 m-auto bg-cafe-white border rounded">
   <form name="registerForm" method="post" action="../global/auth/login.php" aria-autocomplete="off">
     <h6 class="mb-4">Code name : <?php echo APP['app']['name'];?></h6>
 
@@ -71,6 +95,9 @@
   </form>
 </main>
 
+<small class="text-white position-absolute bottom-0 end-0 me-3 mb-3">
+  <a class="text-white" href="https://www.freepik.com/free-photo/closeup-latte-art-coffee-cup-wooden-table_2791480.htm#page=2&query=cafe&position=48&from_view=search&track=sph">Image by rawpixel.com</a> on Freepik
+</small>
 <?php
     htmlFooter(jsOut(['../assets/js/login.js']));
 ?>

@@ -16,7 +16,7 @@
 
     $result = getAnySql($conn,'user_id,first_name,last_name,email,telephone,creation_date','employees_account','roles','employee');
 ?>
-<div class="container-fluid p-5">
+<div class="container-fluid p-5" style="overflow: scroll;">
     <div class="col-12">
         <div class="row">
             <div class="col-9">

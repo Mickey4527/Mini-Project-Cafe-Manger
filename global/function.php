@@ -38,6 +38,16 @@ function checkRole($role){
     return false;
 }
 
+//check roles manager
+function checkManager(){
+    if(!checkLogin())
+        return false;
+    if($_SESSION['roles'] === 'manager')
+        return true;
+    return false;
+}
+
+// สำหรับการเข้าสู่ระบบ
 function authLogin($conn,$email,$password){
     $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles  FROM employees_account WHERE email = '$email' AND password = ?");
     $stmt->bind_param("s",$password);
@@ -66,7 +76,9 @@ function authRegister($conn,$email,$password,$firstName,$lastName){
 }
 
 function querySql($conn,$sql){
-    return $conn->query($sql);
+    $result = $conn->query($sql);
+
+    return $result;
 }
 // สำหรับการเข้าถึงข้อมูลในตาราง
 function getAnySql($conn,$val,$table,$key,$KeyVal){

@@ -203,3 +203,14 @@ html,body {
 .toast{
     border: none !important;
 }
+
+.dropdown-menu{
+    animation: zoomIn !important;
+    animation-duration: 0.2s !important;
+}
+.nav-link[aria-expanded="true"] i.bi-chevron-up::before {
+    transform: rotate(180deg);
+}
+i.bi-chevron-up::before {
+    transition: 0.3s;
+}

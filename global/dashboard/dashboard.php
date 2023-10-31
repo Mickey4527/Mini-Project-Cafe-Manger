@@ -3,12 +3,18 @@
       if($_SESSION['roles'] == 'employee'){
         echo '<div class = "row justify-content-center">
                 <div class="col-12">
-                    <h2 class="text-center mb-3">เริ่มต้นใช้งาน</h2>
-                    <p class="text-center text-secondary mb-4">นี้เป็นครั้งแรกที่คุณเข้ามาใช้งานใช่มั้ย? เรียนรู้วิธีการใช้งานได้ที่นี่</p>
+                    <h4 class="mb-3 mt-5">เริ่มต้นใช้งาน</h4>
+                    <p class="text-secondary mb-4">นี้เป็นครั้งแรกที่คุณเข้ามาใช้งานใช่มั้ย? เรียนรู้วิธีการใช้งานได้ที่นี่</p>
                 </div>
-                <div class="col-6">
+                <div class="col-4">
                   '.CardSetup('เพิ่มสินค้า','เพิ่มสินค้าเข้าสู่ระบบของคุณ','<a href="product_manager.php" class="btn btn-primary">เพิ่มสินค้า</a>','plus').'
                 </div> 
+                <div class="col-4">
+                  '.CardSetup('เพิ่มหมวดหมู่','เพิ่มหมวดหมู่สินค้า','<a href="category_manager.php" class="btn btn-primary">เพิ่มหมวดหมู่</a>','plus').'
+                .</div>
+                <div class="col-4">
+                  '.CardSetup('ขายหน้าร้าน','เริ่มต้นการขายสินค้าของคุณ','<a href="pos.php" class="btn btn-primary">ขายสินค้า</a>','cash').'
+                </div>
               </div>';
       }
     }

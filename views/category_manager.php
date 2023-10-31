@@ -16,7 +16,7 @@
 ?>
 
 
-<div class="container-fluid p-5">
+<div class="container-fluid p-5" style="overflow: scroll;">
     <div class="col-12 d-flex justify-content-between align-items-center">
         <h1 class="h3">จัดการหมวดหมู่</h1>
         <form class="d-flex mt-3 mt-lg-0" role="search">

@@ -16,7 +16,7 @@
     //$result = getAllSql($conn,'sale_id,trace_id,product_id,sale_date,amount,price','history_sales')
 ?>
 
-<div class="container-fluid p-5">
+<div class="container-fluid p-5" style="overflow: scroll;">
     <div class="col-12">
         <div class="row">
             <div class="col-9">

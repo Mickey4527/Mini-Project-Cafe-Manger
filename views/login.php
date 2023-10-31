@@ -7,12 +7,36 @@
     .form-signin{
         max-width: 400px;
     }
+    body::before{
+      content: "";
+      background-image: url(../assets/img/bg.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      filter: blur(5px);
+      z-index: -1;
+    }
+    body::after{
+      content: "";
+      background-color: rgba(0,0,0,0.5);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
     ');
     if(checkLogin()){
         header('Location: index.php');
     }
 
-    htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4 bg-cafe-body');
+    htmlHeader('ลงชื่อเข้าใช้งาน',$css,'d-flex align-items-center py-4');
     $_GET['callback'] = isset($_GET['callback']) ? $_GET['callback'] : '';
 ?>
 <main class="form-signin p-0 w-100 m-auto bg-cafe-white border rounded">
@@ -45,6 +69,9 @@
   </form>
 </main>
 
+<small class="text-white position-absolute bottom-0 end-0 me-3 mb-3">
+  <a class="text-white" href="https://www.freepik.com/free-photo/closeup-latte-art-coffee-cup-wooden-table_2791480.htm#page=2&query=cafe&position=48&from_view=search&track=sph">Image by rawpixel.com</a> on Freepik
+</small>
 <?php
     htmlFooter(jsOut(['../assets/js/login.js']));
 ?>

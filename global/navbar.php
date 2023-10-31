@@ -48,12 +48,11 @@ function menu($menu,$url){
     }
 
   $list_menu .= '<li class="nav-item">';
-  $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark dropdown-toggle" '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark-800">';
+  $list_menu .= (isset($menu['sub'])) ? '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark " '.$toggle.'>' : '<a href="'.$menu['url'].'" class="nav-link text-cafe-dark-800">';
   $list_menu .= '<i class="'.$menu['icon'].'"></i>
-        '.$menu['title'].'
-    </a>
-    '.$sub_menu.'
-  </li>';
+        '.$menu['title'];
+  $list_menu .= (isset($menu['sub'])) ? '<i class="bi bi-chevron-up" style="position: relative; right: -80px;"></i></a>' : '</a>';
+  $list_menu .= $sub_menu.'</li>';
   return $list_menu;
 }
 // โครงสร้างของ Navbar
