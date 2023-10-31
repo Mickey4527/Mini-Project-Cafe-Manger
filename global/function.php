@@ -30,6 +30,14 @@ function checkLogin(){
     return isset($_SESSION['user_id']);
 }
 
+function checkRole($role){
+    if(!checkLogin())
+        return false;
+    if($_SESSION['roles'] === $role)
+        return true;
+    return false;
+}
+
 function authLogin($conn,$email,$password){
     $stmt = $conn->prepare("SELECT user_id, email, first_name, last_name, roles  FROM employees_account WHERE email = '$email' AND password = ?");
     $stmt->bind_param("s",$password);
@@ -94,7 +102,7 @@ function insertAnySql($conn,$table,$val,$val2){
         );
     }
 }
-
+// สำหรับการเชื่อมตาราง
 function joinOnSql($conn,$val,$table,$table2,$key,$key2){
     if($val === null || $table === null || $table2 === null || $key === null || $key2 === null)
         return false;

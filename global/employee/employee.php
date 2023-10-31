@@ -93,7 +93,7 @@
 
     if(isset($_POST['search'])){
         $search = $_POST['search'];
-        $result = querySql($conn,"SELECT * FROM employees_account WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR email LIKE '%$search%' OR telephone LIKE '%$search%'");
+        $result = querySql($conn,"SELECT * FROM employees_account WHERE roles='employee' AND (first_name LIKE '%$search%' OR last_name LIKE '%$search%' OR email LIKE '%$search%' OR telephone LIKE '%$search%')");
         table($result,'พนักงาน','user_id',['รหัสพนักงาน','ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่สร้าง'],['user_id','first_name','last_name','email','telephone','creation_date']);
     }
     

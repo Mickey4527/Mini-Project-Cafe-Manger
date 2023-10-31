@@ -8,12 +8,12 @@
         header('Location: login.php');
     }
 
-    htmlHeader('Settings',null,'d-flex');
+    htmlHeader('Settings',null,'d-flex bg-cafe-white');
     navbar();
 ?>
 <div class="container p-5">
     <h1>การตั้งค่า</h1>
-    <div class="row">
+    <div class="row mt-5">
         <div class="col-3">
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action active" aria-current="true">
@@ -22,13 +22,17 @@
                 <a href="../global/auth/logout.php" class="list-group-item list-group-item-action">ออกจากระบบ</a>
             </div>
         </div>
-        <div class="col-9 border rounded-1 p-3">
-            <h4>การตั้งค่าทั่วไป</h4>
+        <div class="col-9">
             <!--about-->
-            <div class="">
-                <i class="bi bi-info-circle"></i> เกี่ยวกัยแอพพลิเคชั่น
-                <span class="text-secondary">ระบบจัดการสินค้าและพนักงาน</span>
-                <span class="small">v. <?php echo APP['app']['version'];?></span>
+            <div class="border rounded-1 py-3 px-4 bg-body d-flex align-items-center justify-content-between w-100">
+                <div class="d-flex">
+                    <i class="bi bi-info-circle" style="font-size: 24px;"></i>
+                    <div class="d-flex flex-column ms-3">
+                        <span class="fw-bold">เกี่ยวกับ</span>
+                        <span class="text-secondary">ระบบจัดการสินค้าและพนักงาน</span>
+                    </div>
+                </div>
+                <span class="small">เวอร์ชัน <?php echo APP['app']['version'];?></span>
             </div>
         </div>  
     </div>  
@@ -36,4 +40,3 @@
 <?php
     htmlFooter();
 ?>
-

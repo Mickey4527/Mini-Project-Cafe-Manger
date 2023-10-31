@@ -98,7 +98,6 @@ function cancel(){
     document.querySelectorAll('#product').forEach((item) => {
         item.disabled = false;
     });
-    document.getElementById('netValue ').innerHTML = '';
     document.getElementById('pay').disabled = false;
     document.getElementById('pay_final').style.display = 'none';
     document.getElementById('pay').style.display = 'block';

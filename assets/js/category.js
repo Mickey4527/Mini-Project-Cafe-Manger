@@ -11,6 +11,8 @@ $(document).ready(function() {
                 data: {Catdelete: id},
                 beforeSend: function(){
                     button.attr('disabled',true);
+                    $('#confirm').attr('disabled',true);
+                    $('#loading').css('display', 'block');
                 },
                 success: function(response){
                     //hide modal

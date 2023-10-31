@@ -193,3 +193,13 @@ html,body {
 .btn-close{
     
 }
+
+.btn-check:checked+.btn, .btn.active, .btn.show, .btn:first-child:active, :not(.btn-check)+.btn:active {
+    border-color: transparent !important;
+}
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    border-color: transparent !important;
+}
+.toast{
+    border: none !important;
+}

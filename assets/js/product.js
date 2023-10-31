@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     // Add product
     $('#savePro').click(function() {
-        let name = $('#add-product_name').val();
+        let name = $('add-product_name').val();
         let price = $('#add-product_price').val();
         let stock = $('#add-product_stock').val();
         let type = $('#add-product_type').val();
@@ -148,6 +148,7 @@ $(document).ready(function() {
             processData: false,
             contentType: false,
             beforeSend: function() {
+                $('#loadingSub').addClass('spinner-border spinner-border-sm');
                 $('#saveEditPro').attr('disabled', true);
             },
             success: function(response, status, xhr) {

@@ -111,7 +111,7 @@
                                 <input name="Empdate" type="date" class="form-control" id="date" placeholder="วันที่เข้าทำงาน">
                                 <div class="form-check mt-3">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
+                                    <label class="form-check-label" for="flexCheckDefault" onclick="setDateNow()">
                                         ตั้งเป็นวันที่ปัจจุบัน
                                     </label>
                                 </div>

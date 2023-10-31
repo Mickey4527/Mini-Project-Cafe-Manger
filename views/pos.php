@@ -19,6 +19,7 @@
     </ul>
     <div class="text-end text-secondary mx-5">
         <h4 id="time"></h4>
+        <span>ไอดีประจำตัว : <?php echo $_SESSION['user_id'];?></span>
     </div>
 </div>
 <div class="container-fluid mt-3">

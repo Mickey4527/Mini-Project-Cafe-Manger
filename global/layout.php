@@ -74,7 +74,7 @@ function displayEmptyMsg($table_name){
 
 function modalForm($ModalId, $header, $content,$footer = false,$content_footer = null,$save_id = null){
     $button = '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
-               <button name="save'.$save_id.'" type="submit" id="save'.$save_id.'" class="btn btn-primary">บันทึก</button>';
+               <button name="save'.$save_id.'" type="submit" id="save'.$save_id.'" class="btn btn-primary"><span class="" id="loadingSub" aria-hidden="true"></span> บันทึก</button>';
     $content_footer = $content_footer === null ? $button : $content_footer;
     $footer = $footer === false ? '' : '<div class="modal-footer">'.$content_footer.'</div>';
 
@@ -131,12 +131,6 @@ function formTemplate($formId,$input, $inputVal = null){
             case 'date':
                 $inputForm .= '<label for="'.$col['id'].'" class="form-label">'.$col['name'].'</label>';
                 $inputForm .= '<input type="'.$col['type'].'" class="form-control" id="'.$formId.'-'.$col['id'].'" value="'.$inputVal[$col['id']].'">';
-                $inputForm .= '<div class="form-check mt-3">
-                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                    <label class="form-check-label" for="flexCheckDefault">
-                                    ตั้งเป็นวันที่ปัจจุบัน
-                                    </label>
-                                </div>';
                 $inputForm .= '<div class="invalid-feedback" id="invalid_'.$col['id'].'"></div>';
                 break;
             case 'color':

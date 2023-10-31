@@ -12,22 +12,27 @@
     htmlHeader('รายงานการขาย',null,'d-flex bg-cafe-white');
     navbar();
 
-    //querySql($conn,'SELECT * FROM history_sales')
-    $result = getAllSql($conn,'sale_id,trace_id,product_id,sale_date,amount,price','history_sales')
+    $result = querySql($conn,'select sum(price) as price, trace_id, max(sale_date) as sale_date from history_sales group by trace_id');
+    //$result = getAllSql($conn,'sale_id,trace_id,product_id,sale_date,amount,price','history_sales')
 ?>
 
 <div class="container-fluid p-5">
-    <div class="col-12 d-flex justify-content-between align-items-center">
+    <div class="col-12">
         <div class="row">
-                <div class="col-12 my-3 d-flex justify-content-between align-items-center">
-                </div>
-                <div class="col-12">
-                    <div id="table">
-                        <?php table($result,'รายงานการขาย','sale_id',['รหัส','รหัสสินค้า','วันขาย','จำนวน','ราคา'],['trace_id','product_id','sale_date','amount','price']);?>
-                    </div>
-                </div>
+            <div class="col-9">
+                 <h1 class="h3">รายงานการขาย</h1>
             </div>
+        </div>   
+    </div>
+    <div class="row">
+        <div class="col-12 my-3 d-flex justify-content-between align-items-center">
         </div>
+         <div class="col-12">
+            <div id="table">
+                <?php table($result,'รายงานการขาย','trace_id',['รหัส','วันขาย','จำนวนเงินที่รับ'],['trace_id','sale_date','price']);?>
+            </div>
+         </div>
+    </div>
 
 <div class="modal" id="Delete" tabindex="-1" aria-labelledby="DeleteLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
