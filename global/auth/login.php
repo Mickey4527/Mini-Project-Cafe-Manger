@@ -50,27 +50,57 @@ if (isset($_POST['registerSubmit'])){
     $email = $_POST['email'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
-
+    
     if(empty($password) || empty($passwordCheck) || empty($email) || empty($firstName)){
-        header("Location: ../../views/register.php?error=emptyfields");
+       http_response_code(400);
+         $res = array(
+                'type' => 'empty',
+                'msg' => 'โปรดกรอกข้อมูลให้ครบถ้วน',
+                'password' => empty($password),
+                'passwordCheck' => empty($passwordCheck),
+                'email' => empty($email),
+                'firstName' => empty($firstName)
+            );
+        echo json_encode($res);
         exit();
     }
 
     if($password !== $passwordCheck){
-        header("Location: ../../views/register.php?error=passwordcheck");
+        http_response_code(400);
+        $res = array(
+            'type' => 'password',
+            'msg' => 'รหัสผ่านไม่ตรงกัน'
+        );
+        echo json_encode($res);
         exit();
     }
 
     if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-        header("Location: ../../views/register.php?error=invalidemail");
+        http_response_code(400);
+        $res = array(
+            'type' => 'email',
+            'msg' => 'รูปแบบอีเมลไม่ถูกต้อง'
+        );
+        echo json_encode($res);
         exit();
     }
     if(checkValueSQL($conn,'employees_account','email',$email)){
-        header("Location: ../../views/register.php?error=emailtaken");
+        http_response_code(400);
+        $res = array(
+            'type' => 'email',
+            'msg' => 'อีเมลนี้มีผู้ใช้งานแล้ว'
+        );
+        echo json_encode($res);
         exit();
     }
     if(authRegister($conn,$email,$password,$firstName,$lastName)){
-        header("Location: ../../views/login.php?success=register");
+        http_response_code(200);
+        echo '
+        <i class="bi bi-check-circle-fill text-success" style="font-size: 24px;"></i>
+        <h3 class="mt-3">สมัครสมาชิกสำเร็จ</h3>
+        <p class="text-muted">คุณสามารถเข้าสู่ระบบได้ทันที</p>
+        <a href="login.php" class="btn btn-primary">เข้าสู่ระบบ</a>
+        ';
         exit();
     }
 
