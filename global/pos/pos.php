@@ -23,11 +23,8 @@ if(isset($_POST['list'])){
     }
     if(!in_array(false,$status)){
         http_response_code(200);
-        $res = array(
-            'type' => 'success',
-            'msg' => 'บันทึกข้อมูลสำเร็จ'
-        );
-        echo json_encode($res);
+        modalForm('success','','<div class="d-flex align-items-center justify-content-center" style="height: 600px;">
+        <h1 class="text-success">บันทึกข้อมูลสำเร็จ</h1></div>',true,'<button type="button" class="btn btn-success w-100" data-dismiss="modal" style="height: 75px;">ตกลง</button>');
         exit();
     }
     else{

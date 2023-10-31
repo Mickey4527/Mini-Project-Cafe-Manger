@@ -128,8 +128,7 @@
   </div>
 </div>
 
-<script>
-</script>
+<div id="modal_noti"></div>
 
 <?php
     htmlFooter(jsOut(['../assets/js/pos.js']));

@@ -151,8 +151,9 @@ $('#pay_final').click(function() {
         success: function(response, status, xhr){
             $('#pay_final').attr('disabled',false);
             if(xhr.status == 200){
-                console.log(response);
-                alert('success');
+                $('#modal_noti').html(response);
+                $('#success').modal('show');
+
                 cancel();
             }
         },
