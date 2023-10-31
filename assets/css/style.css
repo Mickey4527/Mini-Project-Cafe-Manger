@@ -1,4 +1,5 @@
 @import '/seed/node_modules/animate.css/animate.css';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&display=swap');
 @font-face {
     font-family: 'Noto Sans Thai Regular';
     src: url(/assets/fonts/NotoSansThai.ttf) format('truetype');
