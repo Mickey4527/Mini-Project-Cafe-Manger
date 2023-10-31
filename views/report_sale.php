@@ -22,6 +22,9 @@
             <div class="col-9">
                  <h1 class="h3">รายงานการขาย</h1>
             </div>
+            <div class="col-3">
+            <input class="form-control me-2" type="search" placeholder="ค้นหา" aria-label="Search" id="search">
+            </div>
         </div>   
     </div>
     <div class="row">

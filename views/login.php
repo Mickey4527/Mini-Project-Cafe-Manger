@@ -42,7 +42,7 @@
 <main class="form-signin p-0 w-100 m-auto bg-cafe-white border rounded">
   <div id="loading-login" class="loader-line" style="position: relative;"></div>
   <form name="loginForm" class="px-5 pt-5">
-    <h6 class="mb-4">Code name : <?php echo APP['app']['name'];?></h6>
+    <h6 class="mb-4"><?php echo APP['app']['name'];?></h6>
 
     <h1 class="h4 fw-normal">ลงชื่อเข้าใช้งาน</h1>
     <p class="mb-5 small">เพื่อใช้งานระบบจัดการร้านของคุณ</p>

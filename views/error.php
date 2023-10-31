@@ -26,7 +26,9 @@
 
     <h1 class="h4 fw-normal">ข้อผิดพลาด</h1>
     <p class="mb-5 small"><?php echo $error;?></p>
-    <p class="mb-4 small">รายละเอียด : <?php echo $_GET['error'];?></p>
+    <p class="small m-0">รายละเอียด : <?php echo $_GET['error'];?></p>
+    <p class="small m-0">รหัส : <?php echo $_GET['type'];?></p>
+    <p class="mb-4 small">เวลา : <?php echo date('d/m/Y H:i:s');?></p>
 
     <p class="mt-1 mb-3 text-body-secondary small">กรุณาติดต่อผู้ดูแลระบบ</p>
     <p class="mt-5 mb-3 text-body-secondary small">©2023 <?php echo APP['app']['name'];?> - เวอร์ชั่น <?php echo APP['app']['version'];?></p>
