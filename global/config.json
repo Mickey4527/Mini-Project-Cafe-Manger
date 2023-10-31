@@ -141,12 +141,12 @@
                 {
                     "type":"hidden",
                     "name":"รหัสพนักงาน",
-                    "id":"emp_id"
+                    "id":"user_id"
                 },
                 {
                     "type":"text",
                     "name":"ชื่อพนักงาน",
-                    "id":"emp_name",
+                    "id":"first_name",
                     "placeholder":"Enter name",
                     "value":"",
                     "size":"6",
@@ -155,8 +155,17 @@
                 {
                     "type":"text",
                     "name":"นามสกุลพนักงาน",
-                    "id":"emp_surname",
+                    "id":"last_name",
                     "placeholder":"Enter surname",
+                    "value":"",
+                    "size":"6",
+                    "required":true
+                },
+                {
+                    "type":"text",
+                    "name":"เบอร์โทรศัพท์",
+                    "id":"telephone",
+                    "placeholder":"Enter tel",
                     "value":"",
                     "size":"6",
                     "required":true

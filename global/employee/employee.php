@@ -37,35 +37,21 @@
         }
     }
     // สำหรับการแก้ไขบัญชี
-    if(isset($_POST['submitEditUser'])){
-        if(empty($_POST['EmpfirstName']) || empty($_POST['EmplastName']) || empty($_POST['Empemail'])){
-            header('Location: ../../views/employee_manager.php?error=emptyfields');
-            exit();
-        }
-        else if(!filter_var($_POST['Empemail'],FILTER_VALIDATE_EMAIL)){
-            header('Location: ../../views/employee_manager.php?error=invalidemail');
-            exit();
-        }
-        // ตรวจสอบว่ามี email นี้ในระบบหรือยัง
-        else if(checkValueSQL($conn,'employees_account','email',$_POST['Empemail'])){
-            header('Location: ../../views/employee_manager.php?error=emailtaken');
+    if(isset($_POST['saveEmpedit'])){
+        $id = $_POST['id'];
+        $firstName = $_POST['firstName'];
+        $lastName = $_POST['lastName'];
+        $tele = $_POST['tele'];
+
+        if(updateAnySql($conn,'employees_account',"first_name='$firstName',last_name='$lastName',telephone='$tele'",'user_id',$id)){
+            http_response_code(200);
+            toast('แก้ไขข้อมูลเรียบร้อย','text-success','check-circle-fill');
             exit();
         }
         else{
-            $firstName = $_POST['EmpfirstName'];
-            $lastName = $_POST['EmplastName'];
-            $email = $_POST['Empemail'];
-            $telephone = $_POST['Emptelephone'];
-            $user_id = $_POST['Empuser_id'];
-
-            if(updateAnySql($conn,'employees_account',"first_name = '$firstName',last_name = '$lastName',email = '$email',telephone = '$telephone'","user_id",$user_id)){
-                header('Location: ../../views/employee_manager.php?success=update');
-                exit();
-            }
-            else{
-                header('Location: ../../views/employee_manager.php?error=update');
-                exit();
-            }
+            http_response_code(200);
+            toast('แก้ไขข้อมูลไม่สำเร็จ','text-danger','exclamation-triangle-fill');
+            exit();
         }
     }
     // สำหรับการลบบัญชี
@@ -97,5 +83,18 @@
         table($result,'พนักงาน','user_id',['รหัสพนักงาน','ชื่อจริง','นามสกุล','อีเมล','เบอร์โทรศัพท์','วันที่สร้าง'],['user_id','first_name','last_name','email','telephone','creation_date']);
     }
     
+    if(isset($_POST['Empedit'])){
+        if(empty($_POST['Empedit'])){
+            toast('ไม่มีค่าข้อมูล','text-success','check-circle-fill');
+            exit();
+        }
+        else{
+            $userId = $_POST['Empedit'];
+            $result = getAnySql($conn,'user_id,first_name,last_name,telephone','employees_account','user_id',$userId);
+            $row = $result->fetch_assoc();
+            echo modalForm('EditUser','แก้ไขข้อมูลพนักงาน', formTemplate('edit',CONFIG['form']['employees']['fields'], $row),true,null,'EditUser');
+            exit();
+        }
+      }     
 ?>	
 	

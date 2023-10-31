@@ -42,9 +42,11 @@ $(document).ready(function() {
             type: 'post',
             data: {Catedit: id},
             beforeSend: function(){
+                $('#loading').css('display', 'block');
                 $('[id^=Edit]').attr('disabled',true);
             },
             success: function(response){
+                $('#loading').css('display', 'none');
                 $('#edit').html(response);
                 //show modal
                 $('#EditCategory').modal('show');
@@ -81,12 +83,13 @@ $(document).ready(function() {
             processData: false,
             contentType: false,
             beforeSend: function() {
+                $('#loadingSub').addClass('spinner-border spinner-border-sm');
                 $('#saveEditCat').attr('disabled', true);
             },
             success: function(response, status, xhr) {
                 console.log(response);
                 if(xhr.status == 200) {
-
+                    $('#loadingSub').removeClass('spinner-border spinner-border-sm');
                     $('#saveEditCat').modal('hide');
                     $('#notify').html(response);
                     const toast = new bootstrap.Toast(document.querySelector('.toast'));

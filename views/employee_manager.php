@@ -99,7 +99,6 @@
                     </div>
 
                     <small class="mt-3 text-danger">* จำเป็นต้องกรอก</small><br>
-                    <small class="text-secondary">** รหัสผ่านจะถูกส่งไปยังอีเมลที่ระบุ</small>
 
                     <button class="btn mt-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                         ข้อมูลเพิ่มเติม <i class="bi bi-caret-down-fill"></i>
@@ -155,6 +154,8 @@
   </div>
 </div>
 
+<div id="edit"></div>
+<div id="toast"></div>
 <?php
     htmlFooter(jsOut(['../assets/js/employee.js']));
 ?>

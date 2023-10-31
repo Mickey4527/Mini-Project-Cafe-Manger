@@ -73,13 +73,13 @@ function displayEmptyMsg($table_name){
 }
 
 function modalForm($ModalId, $header, $content,$footer = false,$content_footer = null,$save_id = null){
-    $button = '<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">ปิด</button>
+    $button = '<button type="button" class="btn" data-bs-dismiss="modal">ปิด</button>
                <button name="save'.$save_id.'" type="submit" id="save'.$save_id.'" class="btn btn-primary"><span class="" id="loadingSub" aria-hidden="true"></span> บันทึก</button>';
     $content_footer = $content_footer === null ? $button : $content_footer;
     $footer = $footer === false ? '' : '<div class="modal-footer">'.$content_footer.'</div>';
 
     echo '<div class="modal" id="'.$ModalId.'" tabindex="-1" aria-labelledby="'.$ModalId.'Label" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5" id="'.$ModalId.'Label">'.$header.'</h1>

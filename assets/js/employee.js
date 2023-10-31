@@ -35,7 +35,7 @@ $('[id^=Edit]').click(function(){
     $.ajax({
         url: '../global/employee/employee.php',
         type: 'post',
-        data: {Proedit: id},
+        data: {Empedit: id},
         beforeSend: function(){
             $('[id^=Edit]').attr('disabled',true);
             $('#loading').css('display', 'block');
@@ -44,7 +44,7 @@ $('[id^=Edit]').click(function(){
             $('#loading').css('display', 'none');
             $('#edit').html(response);
             //show modal
-            $('#EditProduct').modal('show');
+            $('#EditUser').modal('show');
             $('[id^=Edit]').attr('disabled',false);
         },
     });
@@ -63,6 +63,45 @@ $('#search').keyup(function(){
         success: function(response){
             $('#loading-search').css('display', 'none');
             $('#table').html(response);
+        }
+    });
+});
+
+//edit employee save
+$(document).on('click', '#saveEditUser', function(event) { // When HTML DOM "click" event is invoked on element with ID "somebutton", execute the following function...
+    event.preventDefault();
+    let id = $('#edit-user_id').val();
+    let firstname = $('#edit-first_name').val();
+    let lastname = $('#edit-last_name').val();
+    let tele = $('#edit-telephone').val();
+
+    let formData = new FormData();
+    formData.append('saveEmpedit', 'edit');
+    formData.append('id', id);
+    formData.append('firstName', firstname);
+    formData.append('lastName', lastname);
+    formData.append('tele', tele);
+
+    $.ajax({
+        url: '../global/employee/employee.php',
+        type: 'post',
+        data: formData,
+        processData: false,
+        contentType: false,
+        beforeSend: function(){
+            $('#loadingSub').addClass('spinner-border spinner-border-sm');
+            $('#saveEditUser').attr('disabled',true);
+        },
+        success: function(response){
+            $('#loadingSub').removeClass('spinner-border spinner-border-sm');
+            $('#edit').modal('hide');
+            $('#notify').html(response);
+            const toast = new bootstrap.Toast(document.querySelector('.toast'));
+            toast.show();
+            $('#table').css('opacity', '0.5');
+            setTimeout(function(){
+                window.location.reload();
+            }, 2000);
         }
     });
 });

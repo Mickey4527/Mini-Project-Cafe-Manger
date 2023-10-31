@@ -31,7 +31,7 @@ $(document).ready(function() {
 
     // Add product
     $('#savePro').click(function() {
-        let name = $('add-product_name').val();
+        let name = $('#add-product_name').val();
         let price = $('#add-product_price').val();
         let stock = $('#add-product_stock').val();
         let type = $('#add-product_type').val();
@@ -153,7 +153,7 @@ $(document).ready(function() {
             },
             success: function(response, status, xhr) {
                 if(xhr.status == 200) {
-                    $('#saveEditPro').modal('hide');
+                    $('#edit').modal('hide');
                     $('#notify').html(response);
                     const toast = new bootstrap.Toast(document.querySelector('.toast'));
                     toast.show();
