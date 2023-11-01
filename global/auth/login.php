@@ -29,11 +29,11 @@ if (isset($_POST['loginSubmit'])){
         $_SESSION['last_name'] = $result['last_name'];
         $_SESSION['roles'] = $result['roles'];
 
-        http_response_code(200);
+        header("HTTP/1.0 200 OK");
         exit();
     }
     else{
-        http_response_code(400);
+        header("HTTP/1.0 400 Bad Request");
         $res = array(
             'type' => 'invalid',
             'msg' => 'อีเมลหรือรหัสผ่านไม่ถูกต้อง'
@@ -50,27 +50,57 @@ if (isset($_POST['registerSubmit'])){
     $email = $_POST['email'];
     $firstName = $_POST['firstName'];
     $lastName = $_POST['lastName'];
-
+    
     if(empty($password) || empty($passwordCheck) || empty($email) || empty($firstName)){
-        header("Location: ../../views/register.php?error=emptyfields");
+        header("HTTP/1.0 400 Bad Request");
+         $res = array(
+                'type' => 'empty',
+                'msg' => 'โปรดกรอกข้อมูลให้ครบถ้วน',
+                'password' => empty($password),
+                'passwordCheck' => empty($passwordCheck),
+                'email' => empty($email),
+                'firstName' => empty($firstName)
+            );
+        echo json_encode($res);
         exit();
     }
 
     if($password !== $passwordCheck){
-        header("Location: ../../views/register.php?error=passwordcheck");
+        header("HTTP/1.0 400 Bad Request");
+        $res = array(
+            'type' => 'password',
+            'msg' => 'รหัสผ่านไม่ตรงกัน'
+        );
+        echo json_encode($res);
         exit();
     }
 
     if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-        header("Location: ../../views/register.php?error=invalidemail");
+        header("HTTP/1.0 400 Bad Request");
+        $res = array(
+            'type' => 'email',
+            'msg' => 'รูปแบบอีเมลไม่ถูกต้อง'
+        );
+        echo json_encode($res);
         exit();
     }
     if(checkValueSQL($conn,'employees_account','email',$email)){
-        header("Location: ../../views/register.php?error=emailtaken");
+        header("HTTP/1.0 400 Bad Request");
+        $res = array(
+            'type' => 'email',
+            'msg' => 'อีเมลนี้มีผู้ใช้งานแล้ว'
+        );
+        echo json_encode($res);
         exit();
     }
     if(authRegister($conn,$email,$password,$firstName,$lastName)){
-        header("Location: ../../views/login.php?success=register");
+        header("HTTP/1.0 200 OK");
+        echo '
+        <i class="bi bi-check-circle-fill text-success" style="font-size: 24px;"></i>
+        <h3 class="mt-3">สมัครสมาชิกสำเร็จ</h3>
+        <p class="text-muted">คุณสามารถเข้าสู่ระบบได้ทันที</p>
+        <a href="login.php" class="btn btn-primary">เข้าสู่ระบบ</a>
+        ';
         exit();
     }
 
