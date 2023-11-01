@@ -1,5 +1,4 @@
 // คือการรอให้หน้าเว็บโหลดเสร็จก่อน จึงจะทำงาน
-$(document).ready(function() {
     // ถ้ากดลบบัญชี ให้ยืนยันอีกครั้ง ส่งการลบด้วย ajax
     $('#Delete').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget) // Button that triggered the modal
@@ -104,9 +103,7 @@ $(document).ready(function() {
 
         });
     });
-});
-
-// search employee
+    // search employee
 $('#search').keyup(function(){
     let search = $('#search').val();
     $.ajax({
@@ -122,3 +119,5 @@ $('#search').keyup(function(){
         }
     });
 });
+
+

@@ -17,11 +17,15 @@
 
 
 <div class="container-fluid p-5" style="overflow: scroll;">
-    <div class="col-12 d-flex justify-content-between align-items-center">
-        <h1 class="h3">จัดการหมวดหมู่</h1>
-        <form class="d-flex mt-3 mt-lg-0" role="search">
-            <input class="form-control me-2" type="search" placeholder="ค้นหาหมวดหมู่" aria-label="Search">
-          </form>
+    <div class="col-12">
+        <div class="row">
+            <div class="col-9">
+                 <h1 class="h3">จัดการหมวดหมู่</h1>
+            </div>
+            <div class="col-3">
+            <input class="form-control me-2" type="search" placeholder="ค้นหาหมวดหมู่" aria-label="Search" id="search">
+            </div>
+        </div>   
     </div>
     <div class="row">
         <div class="col-12 my-3 d-flex justify-content-between align-items-center">
@@ -30,8 +34,14 @@
             </div>
         </div>
         <div class="col-12">
-            <div id="table">
+            <div class="col-12" id="table-content">
+                <div class="my-2">
+                    <div id="loading-search" class="loader-line" style="position: relative;"></div>
+                </div>
+
+                <div id="table">
                 <?php table($result,'หมวดหมู่สินค้า','cat_id',['รหัส','ชื่อหมวดหมู่','สี'],['cat_id','cat_name','color']);?>
+                </div>
             </div>
         </div>
     </div>
