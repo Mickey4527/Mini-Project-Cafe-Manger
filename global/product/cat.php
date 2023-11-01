@@ -92,4 +92,9 @@
             }
         }
       }
+      if(isset($_POST['search'])){
+        $search = $_POST['search'];
+        $result = getAllSql($conn,'cat_id,cat_name,cat_desc,color','categories',"cat_name LIKE '%$search%'");
+        table($result,'หมวดหมู่สินค้า','cat_id',['รหัสหมวดหมู่','ชื่อหมวดหมู่','รายละเอียด','สี'],['cat_id','cat_name','cat_desc','color']);
+    }
 ?>

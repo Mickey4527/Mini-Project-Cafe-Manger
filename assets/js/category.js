@@ -105,3 +105,20 @@ $(document).ready(function() {
         });
     });
 });
+
+// search employee
+$('#search').keyup(function(){
+    let search = $('#search').val();
+    $.ajax({
+        url: '../global/product/cat.php',
+        type: 'post',
+        data: {search: search},
+        beforeSend: function(){
+            $('#loading-search').css('display', 'block');
+        },
+        success: function(response){
+            $('#loading-search').css('display', 'none');
+            $('#table').html(response);
+        }
+    });
+});
