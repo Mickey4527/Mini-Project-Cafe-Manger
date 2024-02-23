@@ -1,6 +1,6 @@
 # Mini-Project-Cafe-Manger (Old name: Seed)
 
-เป็นโปรเจค mini สำหรับวิชา Web Application Program Development และ Business System Software Development
+เป็นโปรเจค mini สำหรับวิชา Web Application Program Development และ Business System Software Development  โดยตัวระบบสามารถจัดการบริหารร้านกาแฟได้
 
 
 ## Author
