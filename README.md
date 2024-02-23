@@ -1,4 +1,4 @@
-# Seed
+# Mini-Project-Cafe-Manger (old name: Seed)
 
 เป็นโปรเจค mini สำหรับวิชา Web Application Program Development และ Business System Software Development
 
